@@ -1,0 +1,482 @@
+﻿[
+    {
+        "file":  "1.sticky header or shrinking navigation bar.announcement banner.png",
+        "width":  1886,
+        "height":  913,
+        "sample_stride_px":  8,
+        "most_common":  [
+                            {
+                                "hex":  "#FFFFFF",
+                                "samples":  9141
+                            },
+                            {
+                                "hex":  "#EE0000",
+                                "samples":  1389
+                            },
+                            {
+                                "hex":  "#FFE75A",
+                                "samples":  1279
+                            },
+                            {
+                                "hex":  "#0D020A",
+                                "samples":  266
+                            },
+                            {
+                                "hex":  "#07090C",
+                                "samples":  243
+                            },
+                            {
+                                "hex":  "#516072",
+                                "samples":  217
+                            },
+                            {
+                                "hex":  "#231F20",
+                                "samples":  196
+                            },
+                            {
+                                "hex":  "#07080C",
+                                "samples":  129
+                            }
+                        ]
+    },
+    {
+        "file":  "2.sticky shrinking header.png",
+        "width":  1888,
+        "height":  907,
+        "sample_stride_px":  8,
+        "most_common":  [
+                            {
+                                "hex":  "#FFFFFF",
+                                "samples":  8535
+                            },
+                            {
+                                "hex":  "#EE0000",
+                                "samples":  1389
+                            },
+                            {
+                                "hex":  "#08090D",
+                                "samples":  306
+                            },
+                            {
+                                "hex":  "#000004",
+                                "samples":  240
+                            },
+                            {
+                                "hex":  "#080A0D",
+                                "samples":  232
+                            },
+                            {
+                                "hex":  "#231F20",
+                                "samples":  194
+                            },
+                            {
+                                "hex":  "#07090C",
+                                "samples":  184
+                            },
+                            {
+                                "hex":  "#080A0E",
+                                "samples":  164
+                            }
+                        ]
+    },
+    {
+        "file":  "3.About and Impact section with a two-column layout the organization’s mission on the left and tabbed impact statistics on the right.png",
+        "width":  1885,
+        "height":  912,
+        "sample_stride_px":  8,
+        "most_common":  [
+                            {
+                                "hex":  "#FFFFFF",
+                                "samples":  17980
+                            },
+                            {
+                                "hex":  "#F3F4F0",
+                                "samples":  6368
+                            },
+                            {
+                                "hex":  "#231F20",
+                                "samples":  1049
+                            },
+                            {
+                                "hex":  "#EE0000",
+                                "samples":  258
+                            },
+                            {
+                                "hex":  "#CFD3D8",
+                                "samples":  185
+                            },
+                            {
+                                "hex":  "#ED1C24",
+                                "samples":  36
+                            },
+                            {
+                                "hex":  "#000000",
+                                "samples":  19
+                            },
+                            {
+                                "hex":  "#9F9F9F",
+                                "samples":  17
+                            }
+                        ]
+    },
+    {
+        "file":  "4.About and Impact section with a two-column layout the organization’s mission on the left and tabbed impact statistics on the right2.png",
+        "width":  1881,
+        "height":  911,
+        "sample_stride_px":  8,
+        "most_common":  [
+                            {
+                                "hex":  "#FFFFFF",
+                                "samples":  15851
+                            },
+                            {
+                                "hex":  "#F3F4F0",
+                                "samples":  7064
+                            },
+                            {
+                                "hex":  "#231F20",
+                                "samples":  953
+                            },
+                            {
+                                "hex":  "#EE0000",
+                                "samples":  520
+                            },
+                            {
+                                "hex":  "#FCFCFC",
+                                "samples":  405
+                            },
+                            {
+                                "hex":  "#FDFDFD",
+                                "samples":  388
+                            },
+                            {
+                                "hex":  "#CFD3D8",
+                                "samples":  185
+                            },
+                            {
+                                "hex":  "#FBFBFB",
+                                "samples":  153
+                            }
+                        ]
+    },
+    {
+        "file":  "5.Latest News \u0026 Stories” section.png",
+        "width":  1885,
+        "height":  911,
+        "sample_stride_px":  8,
+        "most_common":  [
+                            {
+                                "hex":  "#231F20",
+                                "samples":  6709
+                            },
+                            {
+                                "hex":  "#FFFFFF",
+                                "samples":  2550
+                            },
+                            {
+                                "hex":  "#FCFCFC",
+                                "samples":  465
+                            },
+                            {
+                                "hex":  "#FDFDFD",
+                                "samples":  322
+                            },
+                            {
+                                "hex":  "#F8F8F8",
+                                "samples":  318
+                            },
+                            {
+                                "hex":  "#242021",
+                                "samples":  287
+                            },
+                            {
+                                "hex":  "#F3F4F0",
+                                "samples":  268
+                            },
+                            {
+                                "hex":  "#EE0000",
+                                "samples":  250
+                            }
+                        ]
+    },
+    {
+        "file":  "6.news and stories section with a featured article card on the left and a list of recent articles on the right.png",
+        "width":  1887,
+        "height":  907,
+        "sample_stride_px":  8,
+        "most_common":  [
+                            {
+                                "hex":  "#231F20",
+                                "samples":  13439
+                            },
+                            {
+                                "hex":  "#FFFFFF",
+                                "samples":  3068
+                            },
+                            {
+                                "hex":  "#EE0000",
+                                "samples":  338
+                            },
+                            {
+                                "hex":  "#000000",
+                                "samples":  329
+                            },
+                            {
+                                "hex":  "#2A3441",
+                                "samples":  261
+                            },
+                            {
+                                "hex":  "#010101",
+                                "samples":  153
+                            },
+                            {
+                                "hex":  "#020202",
+                                "samples":  46
+                            },
+                            {
+                                "hex":  "#010104",
+                                "samples":  43
+                            }
+                        ]
+    },
+    {
+        "file":  "7.newsletter signup section, with a social media links bar above it..png",
+        "width":  1890,
+        "height":  912,
+        "sample_stride_px":  8,
+        "most_common":  [
+                            {
+                                "hex":  "#FFFFFF",
+                                "samples":  19457
+                            },
+                            {
+                                "hex":  "#231F20",
+                                "samples":  4130
+                            },
+                            {
+                                "hex":  "#EE0000",
+                                "samples":  573
+                            },
+                            {
+                                "hex":  "#EFF0EB",
+                                "samples":  363
+                            },
+                            {
+                                "hex":  "#221E1F",
+                                "samples":  268
+                            },
+                            {
+                                "hex":  "#CFD3D8",
+                                "samples":  261
+                            },
+                            {
+                                "hex":  "#FEFEFE",
+                                "samples":  153
+                            },
+                            {
+                                "hex":  "#FDFDFD",
+                                "samples":  139
+                            }
+                        ]
+    },
+    {
+        "file":  "8.Our Principles” section, also commonly called a core values section, with a call-to-action button at the bottom..png",
+        "width":  1883,
+        "height":  908,
+        "sample_stride_px":  8,
+        "most_common":  [
+                            {
+                                "hex":  "#FFFFFF",
+                                "samples":  25066
+                            },
+                            {
+                                "hex":  "#231F20",
+                                "samples":  1057
+                            },
+                            {
+                                "hex":  "#EE0000",
+                                "samples":  226
+                            },
+                            {
+                                "hex":  "#ED1C24",
+                                "samples":  37
+                            },
+                            {
+                                "hex":  "#000000",
+                                "samples":  18
+                            },
+                            {
+                                "hex":  "#23469A",
+                                "samples":  14
+                            },
+                            {
+                                "hex":  "#E3FFFF",
+                                "samples":  14
+                            },
+                            {
+                                "hex":  "#BF7120",
+                                "samples":  13
+                            }
+                        ]
+    },
+    {
+        "file":  "9.image-and-text section with a two-column layout an image on the left and text with a call-to-action link on the right..png",
+        "width":  1883,
+        "height":  910,
+        "sample_stride_px":  8,
+        "most_common":  [
+                            {
+                                "hex":  "#FFFFFF",
+                                "samples":  17226
+                            },
+                            {
+                                "hex":  "#000000",
+                                "samples":  244
+                            },
+                            {
+                                "hex":  "#F3F4F0",
+                                "samples":  236
+                            },
+                            {
+                                "hex":  "#EE0000",
+                                "samples":  225
+                            },
+                            {
+                                "hex":  "#EFF4FA",
+                                "samples":  58
+                            },
+                            {
+                                "hex":  "#231F20",
+                                "samples":  40
+                            },
+                            {
+                                "hex":  "#ED1C24",
+                                "samples":  36
+                            },
+                            {
+                                "hex":  "#EEF3F9",
+                                "samples":  31
+                            }
+                        ]
+    },
+    {
+        "file":  "10.alternating image-and-text layout.with the text on the left and image on the right.png",
+        "width":  1883,
+        "height":  908,
+        "sample_stride_px":  8,
+        "most_common":  [
+                            {
+                                "hex":  "#FFFFFF",
+                                "samples":  17472
+                            },
+                            {
+                                "hex":  "#F9FAF8",
+                                "samples":  236
+                            },
+                            {
+                                "hex":  "#EE0000",
+                                "samples":  215
+                            },
+                            {
+                                "hex":  "#000000",
+                                "samples":  186
+                            },
+                            {
+                                "hex":  "#ED1C24",
+                                "samples":  41
+                            },
+                            {
+                                "hex":  "#231F20",
+                                "samples":  27
+                            },
+                            {
+                                "hex":  "#311D12",
+                                "samples":  13
+                            },
+                            {
+                                "hex":  "#331F14",
+                                "samples":  13
+                            }
+                        ]
+    },
+    {
+        "file":  "11.How You Can Help” section with a three-column card layout and a “Get Involved” call-to-action button..png",
+        "width":  1883,
+        "height":  911,
+        "sample_stride_px":  8,
+        "most_common":  [
+                            {
+                                "hex":  "#FFFFFF",
+                                "samples":  21716
+                            },
+                            {
+                                "hex":  "#231F20",
+                                "samples":  381
+                            },
+                            {
+                                "hex":  "#EE0000",
+                                "samples":  249
+                            },
+                            {
+                                "hex":  "#516072",
+                                "samples":  217
+                            },
+                            {
+                                "hex":  "#ED1C24",
+                                "samples":  36
+                            },
+                            {
+                                "hex":  "#000000",
+                                "samples":  31
+                            },
+                            {
+                                "hex":  "#BF7120",
+                                "samples":  26
+                            },
+                            {
+                                "hex":  "#FFFFE2",
+                                "samples":  21
+                            }
+                        ]
+    },
+    {
+        "file":  "12.website footer. It contains navigation links, a newsletter signup form, social media links, and a section showing how funds are used..png",
+        "width":  1887,
+        "height":  912,
+        "sample_stride_px":  8,
+        "most_common":  [
+                            {
+                                "hex":  "#EFF0EB",
+                                "samples":  13705
+                            },
+                            {
+                                "hex":  "#FFFFFF",
+                                "samples":  10616
+                            },
+                            {
+                                "hex":  "#231F20",
+                                "samples":  474
+                            },
+                            {
+                                "hex":  "#EE0000",
+                                "samples":  356
+                            },
+                            {
+                                "hex":  "#F3F4F0",
+                                "samples":  239
+                            },
+                            {
+                                "hex":  "#CFD3D8",
+                                "samples":  185
+                            },
+                            {
+                                "hex":  "#ED1C24",
+                                "samples":  94
+                            },
+                            {
+                                "hex":  "#000000",
+                                "samples":  92
+                            }
+                        ]
+    }
+]

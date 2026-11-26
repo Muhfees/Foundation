@@ -1,0 +1,54 @@
+{
+  "status": "proposed-awaiting-design-approval",
+  "units": "px unless otherwise specified",
+  "provenance": "Colour values are screenshot estimates from reference-colours.json; responsive, semantic and interaction values are original proposals.",
+  "color": {
+    "action": "#EE0000",
+    "actionHover": "#C60000",
+    "ink": "#231F20",
+    "page": "#FFFFFF",
+    "surface": "#F3F4F0",
+    "footer": "#EFF0EB",
+    "urgent": "#FFE75A",
+    "focus": "#005FCC",
+    "success": "#176B43",
+    "warning": "#805800",
+    "error": "#B42318"
+  },
+  "font": {
+    "displayAndUI": "'Source Sans 3', Arial, sans-serif",
+    "editorial": "'Source Serif 4', Georgia, serif",
+    "displayWeight": 800,
+    "uiWeight": 600,
+    "bodyWeight": 400,
+    "loading": "swap"
+  },
+  "type": {
+    "hero": { "mobile": [38, 41], "desktop1440": [64, 68], "max": [88, 92] },
+    "section": { "mobile": [30, 35], "desktop1440": [44, 49], "max": [56, 62] },
+    "prose": { "mobile": [18, 28], "desktop1440": [21, 32], "max": [28, 44] },
+    "ui": { "mobile": [16, 24], "desktop1440": [18, 26] },
+    "caption": { "mobile": [14, 21], "desktop1440": [14, 21] }
+  },
+  "space": [4, 8, 12, 16, 24, 32, 48, 64, 96, 128],
+  "layout": {
+    "mainMax": 1400,
+    "mainDesktopWidth": "74vw",
+    "helpMax": 1120,
+    "helpDesktopWidth": "60vw",
+    "mobileGutter": 20,
+    "tabletGutter": 24,
+    "desktopHeaderGutter": "3.2vw",
+    "desktopSectionSpace": 96,
+    "mobileSectionSpace": 56
+  },
+  "breakpoints": { "tablet": 768, "desktop": 1024, "wideNavigation": 1280 },
+  "testWidths": [375, 768, 1024, 1440],
+  "radius": { "button": 0, "card": 0, "field": 0 },
+  "border": { "field": 2, "secondaryButton": 3 },
+  "shadow": { "socialStrip": "0 12px 36px rgba(35,31,32,0.08)" },
+  "button": { "height": 56, "minimumTarget": 44 },
+  "motion": { "durationMs": 180, "reducedMotionDurationMs": 0 },
+  "imageAspectRatio": { "feature": "5/4", "help": "8/5", "newsFeatured": "5/4", "newsThumbnail": "6/5", "panorama": "4/1" },
+  "budget": { "homepageJavaScriptGzipKB": 150, "homepageCSSGzipKB": 60, "initialFontsKB": 160, "mobileHeroKB": 250, "initialMobileTransferKB": 1000 }
+}
