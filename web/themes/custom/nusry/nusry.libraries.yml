@@ -1,0 +1,2 @@
+# Asset paths are supplied from the Vite manifest by the theme hook.
+global: {}

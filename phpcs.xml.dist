@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<ruleset name="Nusry">
+  <description>Drupal standards for custom application code.</description>
+  <file>web/modules/custom</file>
+  <file>web/themes/custom/nusry/nusry.theme</file>
+  <arg name="extensions" value="php,module,theme"/>
+  <rule ref="Drupal"/>
+  <rule ref="DrupalPractice"/>
+</ruleset>

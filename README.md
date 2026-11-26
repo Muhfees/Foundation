@@ -1,41 +1,66 @@
 # Nusry Foundation
 
-A fictional medical humanitarian nonprofit website demo. No affiliation with Doctors Without Borders / MSF. No real donations, patients, field operations, tax status or awards are represented.
+A fictional medical humanitarian nonprofit website demo. No affiliation with Doctors Without Borders / MSF. No real donations, patients, operations, tax status or awards are represented.
 
 ## Status
 
-Phase 1 planning is ready for review. No application, CMS, payment integration or deployment has been built. Implementation begins only after design approval and the user's `next`.
+Phase 2 is complete in [draft PR #2](https://github.com/Muhfees/Foundation/pull/2), with both [CI jobs passing](https://github.com/Muhfees/Foundation/actions/runs/45869936401). It provides Drupal 11, PHP 8.3, a Twig/Vite theme shell, exported CMS configuration, safe setup scripts and CI checks. The reference homepage, editorial content types and donation flows are later phases. Phase 1 was approved by the user's `next`; [planning PR #1](https://github.com/Muhfees/Foundation/pull/1) remains a draft.
 
-Confirmed direction: Drupal 11, Twig, Vite, MariaDB, Redis; original Nusry Foundation branding in red, charcoal and white. Fictional international emergency medical care, outbreak response and support for people affected by conflict and disasters. English first; USD is a provisional demo currency.
+## Local setup
 
-## Review the plan
+Recommended stack: Docker with DDEV, Node 24 inside DDEV, MariaDB 10.11 and Redis 7.4. With Docker running and DDEV installed, from the repository root:
 
-- [Design specification and reference analysis](docs/design-spec.md)
-- [Architecture and planned folder structure](docs/architecture.md)
-- [Content model and permissions](docs/content-model.md)
-- [Homepage and template wireframes](docs/wireframes.md)
-- [Design direction](DESIGN.md), [decision record](docs/design-contract.md), and [implementation handoff](docs/implementation-handoff.md)
-- [Design tokens](docs/design-tokens.json)
-- [Tool availability and setup guidance](docs/tooling.md)
-- [Phases and acceptance criteria](docs/phase-plan.md)
-- [Phase 1 review checklist and PR handoff](docs/phase-1-summary.md)
-
-## Run and check Phase 1
-
-Open the Markdown documents in VS Code and use its Markdown preview. There is no web server to start yet.
-
-Reproduce colour sampling on Windows, using built-in .NET System.Drawing:
-
-```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File ./scripts/sample-reference.ps1
+```sh
+ddev setup
 ```
 
-This reads the 12 PNG references and writes [reference-colours.json](docs/reference-colours.json). It does not alter the images. Colour readings are screenshot estimates, not original site CSS.
+Visit https://nusry-foundation.ddev.site. Setup installs dependencies, builds the theme and initializes an empty database. It refuses to overwrite a nonempty unbootable database. On an existing Drupal site it preserves content/configuration; use the explicit update steps below to apply reviewed changes. Generated credentials live in ignored `.local/admin-password`; obtain a local login link using `ddev drush uli`. Never publish that link or password.
 
-Phase 2 will provide the Docker/DDEV setup command after checking local prerequisites. Docker, PHP, Composer and `gh` were not found on the current shell's PATH; that is not proof they are absent from the computer.
+Docker/WSL/DDEV are absent on the current Windows machine; that path has not been executed locally. A portable SQLite preview is available for Windows x64 with Node.js 24 and the Microsoft Visual C++ 2015?2022 x64 runtime:
 
-## Project boundaries
+```powershell
+powershell -File scripts/setup-local.ps1
+powershell -File scripts/serve-local.ps1
+```
 
-Reference screenshots are private design evidence, never public website assets. All stories, metrics, campaigns, portal records and receipts must be labelled synthetic/demo. Use locally stored, licensed placeholder photographs with provenance and credits; never imply that pictured people received care from this fictional organization. Public previews will be noindex and visibly marked as demos. Real payments, email delivery and deployment require later configuration and explicit readiness approval.
+Setup downloads pinned, SHA-256-verified PHP 8.3.37 and Composer 2.11.3 into ignored `.tools`, then installs dependencies. Visit http://127.0.0.1:8765. This loopback-only PHP development server and SQLite preview are for local testing; they do not exercise Redis or MariaDB. Keep the public document root at `web`, never the project root. No global PHP/Composer installation is changed. If PowerShell policy blocks scripts, follow your machine's approved script policy.
 
-No Git repository or GitHub remote is present in this folder. Phase 1 cannot have a pull request until the target repository and authenticated access are available; the draft scope is recorded in the phase summary.
+## Development and checks
+
+```sh
+npm run dev                 # Rebuild theme on source edits
+npm run build
+npm run lint
+npm test
+npm run check:assets
+composer validate --strict
+composer audit
+vendor/bin/phpcs
+npm run test:e2e             # Requires a running local server
+```
+
+Before browser checks, install Chromium once: `npx playwright install chromium`. Tests default to port 8765; set `BASE_URL` to test another local origin. For DDEV commands, prefix PHP/Node commands with `ddev exec` or use `ddev composer` / `ddev drush`. On the portable Windows setup use `.tools/php/php.exe .tools/composer.phar` for Composer and `.tools/php/php.exe vendor/drush/drush/drush.php` for Drush, with `NUSRY_ENV=local` and `NUSRY_LOCAL_SQLITE=1`.
+
+After pulling reviewed application/configuration updates on an existing DDEV site:
+
+```sh
+ddev composer install
+ddev exec npm ci
+ddev exec npm run build
+ddev drush updatedb --yes
+ddev drush config:import --yes
+ddev drush cache:rebuild
+```
+
+Review configuration diffs and back up valuable local content before importing. Setup itself never imports over an existing site. Export intentional changes with `ddev drush config:export`. Do not commit generated credentials, local databases or uploaded files.
+
+GitHub Actions installs from committed configuration against MariaDB, checks Redis with a cache round-trip, audits dependencies, builds assets and runs Chromium/axe checks at 375/768/1024/1440px. A second job exercises `ddev setup` using the [official DDEV action](https://github.com/ddev/github-action-setup-ddev). CI uploads browser evidence and built theme assets; it does not deploy. See [Phase 2 evidence and limitations](docs/phase-2-summary.md).
+
+## Project guide
+
+- [Design specification](docs/design-spec.md), [design tokens](docs/design-tokens.json), [design direction](DESIGN.md)
+- [Architecture](docs/architecture.md), [content model](docs/content-model.md), [wireframes](docs/wireframes.md)
+- [Design decisions](docs/design-contract.md), [handoff](docs/implementation-handoff.md), [delivery phases](docs/phase-plan.md)
+- [Phase 1 review](docs/phase-1-summary.md), [tooling guidance](docs/tooling.md)
+
+Reference screenshots remain private design evidence and are ignored by Git. Use original copy and licensed imagery with provenance. Public previews must remain visibly marked as demos and noindex. Real payments, email delivery and deployment require later configuration and explicit approval.

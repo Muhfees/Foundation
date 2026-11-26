@@ -1,6 +1,6 @@
 # Phase 1 review and handoff
 
-Status: planning deliverables prepared; design approval and GitHub PR remain pending. No app code, CMS installation or infrastructure deployment performed.
+Status update: the user approved progression with `next` and supplied the repository. [Draft PR #1](https://github.com/Muhfees/Foundation/pull/1) contains Phase 1. The remainder records the original Phase 1 handoff. No app code, CMS installation or infrastructure deployment performed.
 
 ## Produced
 
