@@ -1,6 +1,6 @@
 # Phase 2: runnable Drupal foundation
 
-Status: implemented and locally verified; remote CI verification is pending the draft PR. Scope is the runtime and theme skeleton. Phase 3 has not started.
+Status: complete. Local checks and both jobs in [CI run 45869936401](https://github.com/Muhfees/Foundation/actions/runs/45869936401) passed. [Draft PR #2](https://github.com/Muhfees/Foundation/pull/2) is ready for review. Scope is the runtime and theme skeleton. Phase 3 has not started.
 
 ## Delivered
 
@@ -28,7 +28,7 @@ Environment: Windows x64, PHP 8.3.37, SQLite 3.54.1, Node 24.21.0, Chromium 159 
 
 The shell establishes the sampled red/charcoal/pale-surface palette and readable responsive spacing. It intentionally contains only a wordmark, introductory content, demo disclosure and footer. Reference hero, donation panel, navigation, news cards, photographs, final fonts and other homepage sections belong to Phase 4. No pixel-level homepage parity is claimed. Mobile/desktop shell screenshots were reviewed in one completed visual round after runtime/asset integration failures were corrected.
 
-Docker, WSL and DDEV are absent on this Windows machine. Local evidence uses SQLite and does not validate Redis/MariaDB. Remote CI is configured to test those services and the DDEV command; record its actual result before declaring that gate passed. The complete Windows setup command passed using the tools already downloaded; its download hashes were verified during tool installation. No fresh-machine Windows/Visual C++ installation test is claimed.
+Docker, WSL and DDEV are absent on this Windows machine. Local evidence uses SQLite and does not validate Redis/MariaDB. Remote Linux CI passed fresh MariaDB installation from committed configuration, safe installer rerun, Redis backend read/write, configuration comparison, six Chromium/axe tests, and the separate `ddev setup` job. The Docker path is therefore verified in CI; Docker was not installed or run on this Windows machine. The complete Windows setup command passed using the tools already downloaded; its download hashes were verified during tool installation. No fresh-machine Windows/Visual C++ installation test is claimed.
 
 Automated axe checks do not certify WCAG compliance. Lighthouse, full assistive-technology checks, other browser engines and real devices remain later-phase work. No live payments, email, deployment or production migration was performed.
 
@@ -36,4 +36,4 @@ Automated axe checks do not certify WCAG compliance. Lighthouse, full assistive-
 
 See [README](../README.md) for DDEV and Windows commands. Current local preview: http://127.0.0.1:8765. Keep the document root at `web`; the PHP built-in server is a loopback-only development preview.
 
-Phase 2 is stacked on [Phase 1 draft PR #1](https://github.com/Muhfees/Foundation/pull/1); no branch is merged automatically. Stop at the phase boundary and wait for `next` before editorial/content-model implementation.
+[Phase 2 draft PR #2](https://github.com/Muhfees/Foundation/pull/2) is stacked on [Phase 1 draft PR #1](https://github.com/Muhfees/Foundation/pull/1); no branch is merged automatically. Stop at the phase boundary and wait for `next` before editorial/content-model implementation.

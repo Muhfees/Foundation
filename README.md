@@ -4,7 +4,7 @@ A fictional medical humanitarian nonprofit website demo. No affiliation with Doc
 
 ## Status
 
-Phase 2 provides Drupal 11, PHP 8.3, a Twig/Vite theme shell, exported CMS configuration, safe setup scripts and CI checks. The reference homepage, editorial content types and donation flows are later phases. Phase 1 was approved by the user's `next`; [planning PR #1](https://github.com/Muhfees/Foundation/pull/1) remains a draft.
+Phase 2 is complete in [draft PR #2](https://github.com/Muhfees/Foundation/pull/2), with both [CI jobs passing](https://github.com/Muhfees/Foundation/actions/runs/45869936401). It provides Drupal 11, PHP 8.3, a Twig/Vite theme shell, exported CMS configuration, safe setup scripts and CI checks. The reference homepage, editorial content types and donation flows are later phases. Phase 1 was approved by the user's `next`; [planning PR #1](https://github.com/Muhfees/Foundation/pull/1) remains a draft.
 
 ## Local setup
 
