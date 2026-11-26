@@ -1,0 +1,30 @@
+<?php
+
+/**
+ * @file
+ * Asset integration for the Nusry Foundation theme.
+ */
+
+/**
+ * Implements hook_library_info_alter().
+ */
+function nusry_library_info_alter(array &$libraries, string $extension): void {
+  if ($extension !== 'nusry') {
+    return;
+  }
+  $manifest_path = __DIR__ . '/dist/.vite/manifest.json';
+  if (!is_file($manifest_path)) {
+    throw new \RuntimeException('Theme assets are missing. Run npm run build.');
+  }
+  $manifest = json_decode(file_get_contents($manifest_path), TRUE, 512, JSON_THROW_ON_ERROR);
+  $entry = $manifest['src/main.js'];
+  $library = ['version' => hash_file('sha256', $manifest_path)];
+  $library['js']['dist/' . $entry['file']] = [
+    'attributes' => ['type' => 'module'],
+    'preprocess' => FALSE,
+  ];
+  foreach ($entry['css'] ?? [] as $css) {
+    $library['css']['theme']['dist/' . $css] = ['preprocess' => FALSE];
+  }
+  $libraries['global'] = $library;
+}

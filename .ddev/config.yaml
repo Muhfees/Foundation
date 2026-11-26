@@ -1,0 +1,16 @@
+name: nusry-foundation
+type: drupal11
+docroot: web
+php_version: "8.3"
+webserver_type: nginx-fpm
+xdebug_enabled: false
+database:
+  type: mariadb
+  version: "10.11"
+nodejs_version: "24"
+composer_version: "2"
+timezone: UTC
+disable_settings_management: true
+web_environment:
+  - NUSRY_ENV=local
+  - NUSRY_REDIS_HOST=redis

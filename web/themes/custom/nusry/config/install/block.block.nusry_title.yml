@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - nusry
+id: nusry_title
+theme: nusry
+region: content
+weight: -10
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Title'
+  label_display: '0'
+  provider: system
+visibility: {}

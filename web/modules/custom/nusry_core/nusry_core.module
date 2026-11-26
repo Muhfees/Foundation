@@ -1,0 +1,17 @@
+<?php
+
+/**
+ * @file
+ * Demo-only page metadata.
+ */
+
+/**
+ * Implements hook_page_attachments().
+ */
+function nusry_core_page_attachments(array &$attachments): void {
+  $attachments['#attached']['html_head'][] = [
+    ['#tag' => 'meta', '#attributes' => ['name' => 'robots', 'content' => 'noindex, nofollow']],
+    'nusry_demo_robots',
+  ];
+  $attachments['#attached']['http_header'][] = ['X-Robots-Tag', 'noindex, nofollow', TRUE];
+}

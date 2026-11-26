@@ -1,0 +1,7 @@
+nusry_core.welcome:
+  path: '/welcome'
+  defaults:
+    _controller: '\Drupal\nusry_core\Controller\WelcomeController::page'
+    _title: 'Care, dignity and solidarity'
+  requirements:
+    _permission: 'access content'

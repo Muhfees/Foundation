@@ -1,0 +1,20 @@
+uuid: bff489a5-5f5b-49d3-9ed1-d1a85f2b0134
+langcode: en
+status: true
+dependencies:
+  theme:
+    - nusry
+_core:
+  default_config_hash: 4Zzh58d729GwNVthC1nRUc4nyniqapeirEVlZBV8k4c
+id: nusry_title
+theme: nusry
+region: content
+weight: -10
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: Title
+  label_display: '0'
+  provider: system
+visibility: {  }

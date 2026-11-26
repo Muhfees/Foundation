@@ -1,0 +1,7 @@
+name: Nusry Core
+type: module
+description: 'Demo identity and initial landing route for Nusry Foundation.'
+package: Nusry
+core_version_requirement: ^11
+dependencies:
+  - drupal:system

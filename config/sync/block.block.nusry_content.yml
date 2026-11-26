@@ -1,0 +1,22 @@
+uuid: ea2b1b27-5ba6-423b-ae1e-ce3ef88d1ae3
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - nusry
+_core:
+  default_config_hash: nBlIZ2TYziQyC5goKYsJ1wYWltP1VX_9TJfCjXc0jnA
+id: nusry_content
+theme: nusry
+region: content
+weight: 0
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: Content
+  label_display: '0'
+  provider: system
+visibility: {  }

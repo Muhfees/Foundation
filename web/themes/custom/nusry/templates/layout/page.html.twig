@@ -1,0 +1,12 @@
+<div class="demo-notice">Fictional demonstration. No real donations are collected.</div>
+<header class="site-header">
+  <a class="wordmark" href="{{ path('<front>') }}">Nusry <span>Foundation</span></a>
+  {{ page.header }}
+  {% if page.primary_menu %}<nav aria-label="{{ 'Primary navigation'|t }}">{{ page.primary_menu }}</nav>{% endif %}
+</header>
+<main id="main-content" class="site-main" tabindex="-1">
+  {{ page.breadcrumb }}
+  {{ page.highlighted }}
+  {{ page.content }}
+</main>
+<footer class="site-footer">{{ page.footer }}<p>Care, dignity and solidarity. A fictional nonprofit website demonstration.</p></footer>
