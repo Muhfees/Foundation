@@ -644,4 +644,49 @@ $seedMenu('footer', [
   ['title' => 'Accessibility Statement', 'path' => '/accessibility', 'children' => []],
 ]);
 
-echo "Synthetic demo content seeded cleanly (8 published stories, 1 draft, 1 scheduled, 4 countries, 4 medical issues, 3 events, 2 campaigns, 2 reports, flexible pages, menus, synthetic users).\n";
+// 12. Synthetic gifts owned by demo-donor for portal & donor-services testing.
+if (\Drupal::hasService('nusry_donations.repository') && isset($users['demo-donor'])) {
+  /** @var \Drupal\nusry_donations\Service\DonationRepository $donationRepo */
+  $donationRepo = \Drupal::service('nusry_donations.repository');
+  $donorUid = (int) $users['demo-donor']->id();
+  if ($donationRepo->findByReference('DEMO-SEED-ONCE-001') === NULL) {
+    $donationRepo->createIdempotent([
+      'reference' => 'DEMO-SEED-ONCE-001',
+      'idempotency_key' => 'seed-once-001',
+      'uid' => $donorUid,
+      'donor_name' => 'Demo Donor',
+      'donor_email' => 'demo-donor@example.test',
+      'amount_minor' => 7500,
+      'currency' => 'USD',
+      'frequency' => 'once',
+      'campaign_id' => 'DEMO-MAT-2025',
+      'tribute_type' => 'none',
+      'tribute_name' => '',
+      'employer_match' => FALSE,
+      'payment_method' => 'demo_card',
+      'status' => 'completed',
+      'recurring_active' => FALSE,
+    ]);
+  }
+  if ($donationRepo->findByReference('DEMO-SEED-MON-002') === NULL) {
+    $donationRepo->createIdempotent([
+      'reference' => 'DEMO-SEED-MON-002',
+      'idempotency_key' => 'seed-mon-002',
+      'uid' => $donorUid,
+      'donor_name' => 'Demo Donor',
+      'donor_email' => 'demo-donor@example.test',
+      'amount_minor' => 3500,
+      'currency' => 'USD',
+      'frequency' => 'monthly',
+      'campaign_id' => 'DEMO-WAT-2025',
+      'tribute_type' => 'honor',
+      'tribute_name' => 'Community Health Volunteers',
+      'employer_match' => TRUE,
+      'payment_method' => 'demo_wallet',
+      'status' => 'completed',
+      'recurring_active' => TRUE,
+    ]);
+  }
+}
+
+echo "Synthetic demo content seeded cleanly (8 published stories, 1 draft, 1 scheduled, 4 countries, 4 medical issues, 3 events, 2 campaigns, 2 reports, flexible pages, menus, synthetic users, sample demo gifts).\n";

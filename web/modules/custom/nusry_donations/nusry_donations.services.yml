@@ -1,0 +1,11 @@
+services:
+  nusry_donations.repository:
+    class: Drupal\nusry_donations\Service\DonationRepository
+    arguments: ['@database', '@datetime.time']
+  nusry_donations.gateway:
+    class: Drupal\nusry_donations\Service\MockDonationGateway
+    arguments: ['@nusry_donations.repository', '@entity_type.manager']
+  nusry_donations.private_headers:
+    class: Drupal\nusry_donations\EventSubscriber\PrivateResponseHeaderSubscriber
+    tags:
+      - { name: event_subscriber }

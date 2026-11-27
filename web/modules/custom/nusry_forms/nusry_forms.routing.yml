@@ -1,0 +1,57 @@
+nusry_forms.newsletter_page:
+  path: '/newsletter'
+  defaults:
+    _controller: '\Drupal\nusry_forms\Controller\NewsletterController::page'
+    _title: 'Newsletter Updates (Demo)'
+  requirements:
+    _permission: 'access content'
+
+nusry_forms.newsletter_subscribe:
+  path: '/newsletter/subscribe'
+  defaults:
+    _controller: '\Drupal\nusry_forms\Controller\NewsletterController::subscribe'
+    _title: 'Newsletter Subscription'
+  methods: [POST]
+  requirements:
+    _permission: 'access content'
+
+nusry_forms.newsletter_confirm:
+  path: '/newsletter/confirm/{token}'
+  defaults:
+    _controller: '\Drupal\nusry_forms\Controller\NewsletterController::confirm'
+    _title: 'Confirm Demo Subscription'
+  requirements:
+    _permission: 'access content'
+    token: '[A-Za-z0-9_-]+'
+  options:
+    no_cache: TRUE
+
+nusry_forms.newsletter_unsubscribe:
+  path: '/newsletter/unsubscribe/{token}'
+  defaults:
+    _controller: '\Drupal\nusry_forms\Controller\NewsletterController::unsubscribe'
+    _title: 'Unsubscribe from Demo Updates'
+  requirements:
+    _permission: 'access content'
+    token: '[A-Za-z0-9_-]+'
+  options:
+    no_cache: TRUE
+
+nusry_forms.donor_services:
+  path: '/donor-services'
+  defaults:
+    _controller: '\Drupal\nusry_forms\Controller\DonorServicesController::dashboard'
+    _title: 'Donor Services Lookup (Demo)'
+  requirements:
+    _permission: 'access nusry donor services'
+  options:
+    no_cache: TRUE
+
+nusry_forms.donor_services_export:
+  path: '/donor-services/export'
+  defaults:
+    _controller: '\Drupal\nusry_forms\Controller\DonorServicesController::exportCsv'
+  requirements:
+    _permission: 'access nusry donor services'
+  options:
+    no_cache: TRUE

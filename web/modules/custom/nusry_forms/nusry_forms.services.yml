@@ -1,0 +1,7 @@
+services:
+  logger.channel.nusry_forms:
+    parent: logger.channel_base
+    arguments: ['nusry_forms']
+  nusry_forms.newsletter_gateway:
+    class: Drupal\nusry_forms\Service\MockNewsletterGateway
+    arguments: ['@database', '@datetime.time', '@flood', '@file_system', '@logger.channel.nusry_forms']

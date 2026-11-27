@@ -209,7 +209,7 @@ foreach (array_keys($model['nodes']) as $bundle) {
   $form->save();
 }
 $basic = ['access content', 'access content overview', 'access administration pages', 'view the administration theme', 'view own unpublished content', 'view latest version', 'use text format restricted_html', 'view media', 'view own unpublished media', 'access media overview'];
-$roles = ['administrator' => [], 'editor' => $basic, 'contributor' => $basic, 'donor_services' => ['access content'], 'demo_donor' => ['access content']];
+$roles = ['administrator' => [], 'editor' => $basic, 'contributor' => $basic, 'donor_services' => ['access content', 'access nusry donor services'], 'demo_donor' => ['access content', 'access nusry portal']];
 foreach (array_keys($model['nodes']) as $bundle) {
   $roles['contributor'] = array_merge($roles['contributor'], ["create $bundle content", "edit own $bundle content"]);
   $roles['editor'] = array_merge($roles['editor'], ["create $bundle content", "edit any $bundle content", "delete any $bundle content", "view $bundle revisions", "revert $bundle revisions"]);

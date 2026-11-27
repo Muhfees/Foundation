@@ -1,0 +1,9 @@
+name: Nusry Donations
+type: module
+description: 'Mock donation gateway, idempotent demo gifts and sample receipts.'
+package: Nusry
+core_version_requirement: ^11
+dependencies:
+  - drupal:system
+  - drupal:user
+  - nusry_core:nusry_core

@@ -4,7 +4,6 @@ namespace Drupal\nusry_core\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Extension\ThemeExtensionList;
-use Drupal\Core\Url;
 use Drupal\nusry_core\Service\EditorialSettings;
 use Drupal\nusry_core\Service\StorySelector;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -145,51 +144,6 @@ final class HomepageController extends ControllerBase {
           'node_list:campaign',
         ],
       ],
-    ];
-  }
-
-  /**
-   * Renders a validated Phase 4 demo donation landing route.
-   */
-  public function donatePreview(Request $request): array {
-    $amountMinor = max(100, min(100000000, (int) $request->query->get('amount', 7500)));
-    $frequency = $request->query->get('frequency') === 'once' ? 'One-time (simulated)' : 'Monthly (simulated)';
-    $campaign = preg_replace('/[^A-Za-z0-9_-]/', '', (string) $request->query->get('campaign', 'DEMO-MAT-2025'));
-
-    return [
-      '#type' => 'container',
-      '#attributes' => ['class' => ['site-main--inner']],
-      'eyebrow' => [
-        '#type' => 'html_tag',
-        '#tag' => 'span',
-        '#attributes' => ['class' => ['demo-pill']],
-        '#value' => $this->t('Demo only — no payment collected'),
-      ],
-      'panel' => [
-        '#type' => 'container',
-        '#attributes' => ['class' => ['preview-panel']],
-        'summary' => [
-          '#type' => 'html_tag',
-          '#tag' => 'p',
-          '#value' => $this->t('Selected demo amount: @amount (@frequency) for campaign @campaign. Interactive mock checkout, receipts and donor portal arrive in Phase 6.', [
-            '@amount' => '$' . number_format($amountMinor / 100, 2),
-            '@frequency' => $frequency,
-            '@campaign' => $campaign ?: 'DEMO-MAT-2025',
-          ]),
-        ],
-        'back' => [
-          '#type' => 'html_tag',
-          '#tag' => 'p',
-          '#attributes' => ['style' => 'margin-top: 20px;'],
-          'link' => [
-            '#type' => 'link',
-            '#title' => $this->t('Return to homepage'),
-            '#url' => Url::fromRoute('nusry_core.homepage'),
-            '#attributes' => ['class' => ['btn', 'btn--outline-dark']],
-          ],
-        ],
-      ],
-      '#cache' => ['contexts' => ['url.query_args']],
     ];
   }
 

@@ -1,0 +1,45 @@
+nusry_portal.dashboard:
+  path: '/portal'
+  defaults:
+    _controller: '\Drupal\nusry_portal\Controller\PortalController::dashboard'
+    _title: 'Demo Donor Portal'
+  requirements:
+    _permission: 'access nusry portal'
+    _user_is_logged_in: 'TRUE'
+  options:
+    no_cache: TRUE
+
+nusry_portal.receipt:
+  path: '/portal/gifts/{reference}/receipt'
+  defaults:
+    _controller: '\Drupal\nusry_portal\Controller\PortalController::receipt'
+    _title: 'Sample Portal Receipt'
+  requirements:
+    _permission: 'access nusry portal'
+    _user_is_logged_in: 'TRUE'
+    reference: '[A-Za-z0-9-]+'
+  options:
+    no_cache: TRUE
+
+nusry_portal.recurring_edit:
+  path: '/portal/recurring/{reference}/edit'
+  defaults:
+    _form: '\Drupal\nusry_portal\Form\RecurringUpdateForm'
+    _title: 'Manage Simulated Recurring Gift'
+  requirements:
+    _permission: 'access nusry portal'
+    _user_is_logged_in: 'TRUE'
+    reference: '[A-Za-z0-9-]+'
+  options:
+    no_cache: TRUE
+
+nusry_portal.payment_method:
+  path: '/portal/payment-method'
+  defaults:
+    _form: '\Drupal\nusry_portal\Form\PaymentMethodForm'
+    _title: 'Simulated Payment Method'
+  requirements:
+    _permission: 'access nusry portal'
+    _user_is_logged_in: 'TRUE'
+  options:
+    no_cache: TRUE

@@ -27,6 +27,9 @@ module:
   mysql: 0
   node: 0
   nusry_core: 0
+  nusry_donations: 0
+  nusry_forms: 0
+  nusry_portal: 0
   options: 0
   page_cache: 0
   path: 0

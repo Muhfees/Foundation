@@ -510,3 +510,183 @@
   color: var(--color-page);
   padding: 32px;
 }
+
+/* Phase 6 Donations, Forms, Portal & Consent Banner */
+.demo-notice-banner {
+  background: var(--color-surface);
+  border-left: 5px solid var(--color-action);
+  padding: 18px 22px;
+  margin-bottom: 24px;
+}
+
+.demo-notice-banner p {
+  margin-top: 8px;
+}
+
+.nusry-form-card {
+  border: 1px solid var(--color-border);
+  background: var(--color-page);
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.nusry-form-card h2 {
+  font-size: 1.35rem;
+  margin-bottom: 14px;
+}
+
+.nusry-donate-form .form-item,
+.nusry-contact-form .form-item,
+.nusry-portal-form .form-item {
+  margin-bottom: 16px;
+}
+
+.nusry-donate-form label,
+.nusry-contact-form label,
+.nusry-newsletter-form label {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.nusry-donate-form .option,
+.nusry-newsletter-form .nusry-field--checkbox label {
+  display: inline-block;
+  font-weight: 600;
+  margin-bottom: 0;
+}
+
+.nusry-donate-form input[type="text"],
+.nusry-donate-form input[type="email"],
+.nusry-donate-form input[type="number"],
+.nusry-donate-form select,
+.nusry-contact-form input[type="text"],
+.nusry-contact-form input[type="email"],
+.nusry-contact-form select,
+.nusry-contact-form textarea,
+.nusry-newsletter-form input[type="email"],
+.nusry-newsletter-form input[type="tel"],
+.nusry-donor-search input[type="search"] {
+  width: 100%;
+  max-width: 520px;
+  min-height: 44px;
+  padding: 10px 12px;
+  border: 1px solid var(--color-ink-muted);
+  font: inherit;
+  background: var(--color-page);
+  color: var(--color-ink);
+}
+
+.nusry-donate-actions,
+.nusry-receipt-actions,
+.nusry-donor-search__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 20px;
+  align-items: center;
+}
+
+.nusry-alert {
+  padding: 14px 18px;
+  margin-bottom: 20px;
+  border-left: 5px solid var(--color-ink);
+  background: var(--color-surface);
+}
+
+.nusry-alert--warning {
+  border-left-color: var(--color-warning);
+  background: #fff8e6;
+}
+
+.nusry-alert--info {
+  border-left-color: var(--color-success);
+  background: #eef8f2;
+}
+
+.nusry-definition-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin: 18px 0;
+}
+
+.nusry-definition-list dt {
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-ink-muted);
+}
+
+.nusry-definition-list dd {
+  margin-top: 4px;
+}
+
+.nusry-field {
+  margin-bottom: 16px;
+}
+
+.nusry-field--checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nusry-field--checkbox input {
+  width: 20px;
+  height: 20px;
+}
+
+.footer-legal__pref-btn {
+  background: transparent;
+  border: 1px solid var(--color-border);
+  color: var(--color-ink);
+  padding: 6px 12px;
+  min-height: 44px;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.consent-banner {
+  position: fixed;
+  inset-inline: 0;
+  bottom: 0;
+  z-index: 90;
+  background: var(--color-page);
+  color: var(--color-ink);
+  border-top: 3px solid var(--color-ink);
+  box-shadow: 0 -8px 24px rgba(35, 31, 32, 0.14);
+  padding: 16px 0;
+}
+
+.consent-banner__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.consent-banner__copy {
+  max-width: 72ch;
+}
+
+.consent-banner__copy p {
+  margin-top: 4px;
+  font-size: 0.9375rem;
+}
+
+.table-scroll {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.consent-banner__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}

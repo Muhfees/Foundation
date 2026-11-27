@@ -1,0 +1,4 @@
+access nusry donor services:
+  title: 'Access Nusry Donor Services'
+  description: 'Search simulated donor records and download formula-safe CSV exports.'
+  restrict access: true

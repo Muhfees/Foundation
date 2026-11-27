@@ -7,6 +7,113 @@ import './styles/pages.css';
 import './styles/print.css';
 
 const ALERT_STORAGE_KEY = 'nusry_dismissed_alert';
+const CONSENT_STORAGE_KEY = 'nusry_consent';
+
+function getConsentState() {
+  try {
+    return window.localStorage.getItem(CONSENT_STORAGE_KEY);
+  } catch {
+    return null;
+  }
+}
+
+function trackDemoEvent(eventName, meta = {}) {
+  if (getConsentState() !== 'granted') {
+    return false;
+  }
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    event: eventName,
+    demo: true,
+    ...meta,
+  });
+  return true;
+}
+
+function initConsentManager() {
+  const banner = document.querySelector('[data-consent-banner]');
+  if (!banner) {
+    return;
+  }
+  const statusEl = banner.querySelector('[data-consent-status]');
+  const acceptBtn = banner.querySelector('[data-consent-accept]');
+  const declineBtn = banner.querySelector('[data-consent-decline]');
+
+  const setConsent = (state, message) => {
+    try {
+      window.localStorage.setItem(CONSENT_STORAGE_KEY, state);
+    } catch {
+      // Ignore storage failures.
+    }
+    if (statusEl) {
+      statusEl.textContent = message;
+    }
+    banner.hidden = true;
+  };
+
+  if (!getConsentState()) {
+    banner.hidden = false;
+  }
+
+  acceptBtn?.addEventListener('click', () => {
+    setConsent('granted', 'Demo analytics consent granted.');
+    trackDemoEvent('consent_granted');
+  });
+
+  declineBtn?.addEventListener('click', () => {
+    setConsent('denied', 'Demo analytics declined or withdrawn.');
+  });
+
+  for (const openBtn of document.querySelectorAll('[data-consent-open]')) {
+    openBtn.addEventListener('click', () => {
+      banner.hidden = false;
+      if (statusEl) {
+        const current = getConsentState();
+        statusEl.textContent = current === 'granted'
+          ? 'Current status: accepted (demo events enabled).'
+          : 'Current status: declined (no analytics events sent).';
+      }
+      acceptBtn?.focus();
+    });
+  }
+}
+
+function initDemoAnalyticsHooks() {
+  if (document.querySelector('[data-analytics-form="donation"]')) {
+    trackDemoEvent('donate_start');
+  }
+  if (document.querySelector('[data-analytics-event="donate_complete"]')) {
+    trackDemoEvent('donate_complete');
+  }
+
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest('a[href]');
+    if (!link) {
+      return;
+    }
+    const href = link.getAttribute('href') || '';
+    if (href.startsWith('/donate')) {
+      trackDemoEvent('donate_click');
+      return;
+    }
+    if (href.startsWith('http://') || href.startsWith('https://')) {
+      try {
+        const parsed = new URL(href);
+        if (parsed.host && parsed.host !== window.location.host) {
+          trackDemoEvent('outbound_click');
+        }
+      } catch {
+        // Ignore malformed links.
+      }
+    }
+  });
+
+  for (const searchForm of document.querySelectorAll('form[action="/search"]')) {
+    searchForm.addEventListener('submit', () => {
+      trackDemoEvent('search');
+    });
+  }
+}
 
 function getFocusable(container) {
   return [...container.querySelectorAll('a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])')].filter((el) => el.offsetParent !== null);
@@ -276,35 +383,88 @@ function initHeroDonatePanel() {
 
 function initNewsletterForms() {
   for (const form of document.querySelectorAll('[data-newsletter-form]')) {
-    const status = form.querySelector('[data-newsletter-status]');
-    form.addEventListener('submit', (event) => {
+    const status = form.querySelector('[data-newsletter-status], .nl-form__msg');
+    const smsBox = form.querySelector('input[name="sms_opt_in"]');
+    const phoneWrap = form.querySelector('[data-sms-phone-wrap]');
+    if (smsBox && phoneWrap) {
+      smsBox.addEventListener('change', () => {
+        phoneWrap.hidden = !smsBox.checked;
+      });
+    }
+
+    form.addEventListener('submit', async (event) => {
       event.preventDefault();
       const first = form.querySelector('input[name="first_name"]');
       const last = form.querySelector('input[name="last_name"]');
       const email = form.querySelector('input[name="email"]');
       const consent = form.querySelector('input[name="consent"]');
+      const phone = form.querySelector('input[name="phone"]');
+      const website = form.querySelector('input[name="website"]');
+
       const emailVal = (email?.value || '').trim();
-      const missing = !first?.value.trim() || !last?.value.trim() || !emailVal.includes('@');
-      if (missing) {
+      const missingName = (first && !first.value.trim()) || (last && !last.value.trim());
+      if (missingName || !emailVal.includes('@')) {
         if (status) {
-          status.textContent = 'Please enter your first name, last name and a valid email address.';
+          status.textContent = 'Please enter the required fields and a valid email address.';
           status.className = 'sr-status sr-status--error';
         }
         return;
       }
-      if (!consent?.checked) {
+      if (consent && !consent.checked) {
         if (status) {
           status.textContent = 'Please check the consent box to try the demo newsletter signup.';
           status.className = 'sr-status sr-status--error';
         }
-        consent?.focus();
+        consent.focus();
         return;
       }
-      if (status) {
-        status.textContent = 'Demo subscription recorded locally (no email sent).';
-        status.className = 'sr-status sr-status--success';
+
+      try {
+        const res = await fetch('/newsletter/subscribe', {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            email: emailVal,
+            sms_opt_in: Boolean(smsBox?.checked),
+            phone: (phone?.value || '').trim(),
+            website: (website?.value || '').trim(),
+          }),
+        });
+        const data = await res.json();
+        if (!res.ok) {
+          if (status) {
+            status.textContent = data.message || 'Could not submit demo subscription.';
+            status.className = 'sr-status sr-status--error';
+          }
+          return;
+        }
+
+        if (status) {
+          status.textContent = `${data.message} `;
+          status.classList.remove('sr-status--error');
+          status.classList.add('sr-status', 'sr-status--success');
+          if (data.demo_confirm_url) {
+            const link = document.createElement('a');
+            link.href = data.demo_confirm_url;
+            link.textContent = 'Confirm demo subscription now';
+            link.className = 'link-chevron';
+            status.appendChild(link);
+          }
+        }
+        trackDemoEvent('newsletter_signup');
+        form.reset();
+        if (phoneWrap) {
+          phoneWrap.hidden = true;
+        }
+      } catch {
+        if (status) {
+          status.textContent = 'Network error submitting demo subscription.';
+          status.className = 'sr-status sr-status--error';
+        }
       }
-      form.reset();
     });
   }
 }
@@ -415,3 +575,5 @@ initSensitiveReveals();
 initVideoPlaceholders();
 initCountryDirectoryFilter();
 initCopyShareLinks();
+initConsentManager();
+initDemoAnalyticsHooks();

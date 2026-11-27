@@ -29,7 +29,7 @@ content:
     third_party_settings: {  }
   field_accessible_text:
     type: string_textarea
-    weight: 14
+    weight: 15
     region: content
     settings:
       rows: 5
@@ -44,7 +44,7 @@ content:
     third_party_settings: {  }
   field_credit:
     type: string_textarea
-    weight: 14
+    weight: 15
     region: content
     settings:
       rows: 5
@@ -52,7 +52,7 @@ content:
     third_party_settings: {  }
   field_license:
     type: string_textarea
-    weight: 14
+    weight: 15
     region: content
     settings:
       rows: 5
@@ -60,7 +60,7 @@ content:
     third_party_settings: {  }
   field_media_remote_video:
     type: string_textfield
-    weight: 14
+    weight: 15
     region: content
     settings:
       size: 60
@@ -68,7 +68,7 @@ content:
     third_party_settings: {  }
   field_provenance:
     type: string_textarea
-    weight: 14
+    weight: 15
     region: content
     settings:
       rows: 5
@@ -76,7 +76,7 @@ content:
     third_party_settings: {  }
   field_source_url:
     type: link_default
-    weight: 14
+    weight: 15
     region: content
     settings:
       placeholder_url: ''

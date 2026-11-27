@@ -1,0 +1,52 @@
+<div class="site-main--inner">
+  <div class="demo-notice-banner" role="status">
+    <span class="demo-pill">Demo complete—no charge made.</span>
+    <p>Sample receipt—not valid for tax purposes. All figures, programmes, and payment workflows on this site are fictional demonstrations.</p>
+  </div>
+
+  <div class="preview-panel nusry-receipt-card" data-analytics-event="donate_complete">
+    <h2>Receipt summary ({{ receipt.reference }})</h2>
+    <dl class="nusry-definition-list">
+      <div>
+        <dt>Demo Reference</dt>
+        <dd><code>{{ receipt.reference }}</code></dd>
+      </div>
+      <div>
+        <dt>Simulated Amount</dt>
+        <dd><strong>{{ receipt.amount_formatted }}</strong></dd>
+      </div>
+      <div>
+        <dt>Frequency</dt>
+        <dd>{{ receipt.frequency }}</dd>
+      </div>
+      <div>
+        <dt>Programme</dt>
+        <dd>{{ receipt.campaign_id }}</dd>
+      </div>
+      <div>
+        <dt>Method</dt>
+        <dd>{{ receipt.payment_method }}</dd>
+      </div>
+      {% if receipt.tribute_type != 'none' and receipt.tribute_name %}
+        <div>
+          <dt>Dedication ({{ receipt.tribute_type }})</dt>
+          <dd>{{ receipt.tribute_name }}</dd>
+        </div>
+      {% endif %}
+      <div>
+        <dt>Employer Match</dt>
+        <dd>{{ receipt.employer_match ? 'Simulated match requested' : 'Not requested' }}</dd>
+      </div>
+      <div>
+        <dt>Recorded</dt>
+        <dd>{{ receipt.created }}</dd>
+      </div>
+    </dl>
+
+    <div class="nusry-receipt-actions">
+      <a class="btn btn--primary" href="{{ receipt.download_url }}">Download sample receipt (.txt)</a>
+      <a class="btn btn--outline-dark" href="/portal">View Demo Donor Portal</a>
+      <a class="btn btn--outline-dark" href="/donate">Start another demo donation</a>
+    </div>
+  </div>
+</div>

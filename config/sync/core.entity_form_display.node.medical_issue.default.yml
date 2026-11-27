@@ -39,7 +39,7 @@ content:
     third_party_settings: {  }
   field_body:
     type: text_textarea
-    weight: 23
+    weight: 25
     region: content
     settings:
       rows: 5
@@ -47,7 +47,7 @@ content:
     third_party_settings: {  }
   field_categories:
     type: entity_reference_autocomplete
-    weight: 23
+    weight: 25
     region: content
     settings:
       match_operator: CONTAINS
@@ -57,7 +57,7 @@ content:
     third_party_settings: {  }
   field_components:
     type: paragraphs
-    weight: 23
+    weight: 25
     region: content
     settings:
       title: Paragraph
@@ -75,7 +75,7 @@ content:
     third_party_settings: {  }
   field_countries:
     type: entity_reference_autocomplete
-    weight: 23
+    weight: 25
     region: content
     settings:
       match_operator: CONTAINS
@@ -85,21 +85,21 @@ content:
     third_party_settings: {  }
   field_demo:
     type: boolean_checkbox
-    weight: 22
+    weight: 25
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   field_hero:
     type: media_library_widget
-    weight: 23
+    weight: 25
     region: content
     settings:
       media_types: {  }
     third_party_settings: {  }
   field_metatags:
     type: metatag_firehose
-    weight: 22
+    weight: 25
     region: content
     settings:
       sidebar: true
@@ -107,27 +107,27 @@ content:
     third_party_settings: {  }
   field_reading_time:
     type: number
-    weight: 24
+    weight: 25
     region: content
     settings:
       placeholder: ''
     third_party_settings: {  }
   field_reviewed:
     type: datetime_default
-    weight: 23
+    weight: 25
     region: content
     settings: {  }
     third_party_settings: {  }
   field_social_image:
     type: media_library_widget
-    weight: 22
+    weight: 25
     region: content
     settings:
       media_types: {  }
     third_party_settings: {  }
   field_summary:
     type: string_textarea
-    weight: 22
+    weight: 25
     region: content
     settings:
       rows: 5

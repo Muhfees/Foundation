@@ -46,6 +46,13 @@
     </section>
   {% endif %}
 
+  {% if contact_form %}
+    <section class="p-block nusry-contact-section" aria-labelledby="contact-form-heading">
+      <h2 id="contact-form-heading" class="p-block__heading">{{ 'Send a demo message'|t }}</h2>
+      {{ contact_form }}
+    </section>
+  {% endif %}
+
   <aside class="donate-prompt">
     <div>
       <h2 class="donate-prompt__title">{{ 'Support demo humanitarian concepts'|t }}</h2>

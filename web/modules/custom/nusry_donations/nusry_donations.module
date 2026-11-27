@@ -1,0 +1,20 @@
+<?php
+
+/**
+ * @file
+ * Hook implementations for the Nusry Donations module.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function nusry_donations_theme(): array {
+  return [
+    'nusry_donation_receipt' => [
+      'variables' => [
+        'receipt' => [],
+      ],
+      'template' => 'nusry-donation-receipt',
+    ],
+  ];
+}

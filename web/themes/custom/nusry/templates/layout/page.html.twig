@@ -177,6 +177,8 @@
       <h2 class="footer-col__heading">{{ 'For Donors'|t }}</h2>
       <ul class="footer-col__list">
         <li><a href="/donate">{{ 'Try a Demo Donation'|t }}</a></li>
+        <li><a href="/portal">{{ 'Demo Donor Portal'|t }}</a></li>
+        <li><a href="/donor-services">{{ 'Donor Services (Staff Demo)'|t }}</a></li>
         <li><a href="/finances-and-accountability">{{ 'Finances & Accountability'|t }}</a></li>
         <li><a href="/ways-to-give">{{ 'Ways to Give'|t }}</a></li>
         <li><a href="/ways-to-give/monthly">{{ 'Monthly Giving (Demo)'|t }}</a></li>
@@ -204,7 +206,7 @@
 
     <div>
       <h2 class="footer-newsletter__title">{{ 'We speak out. Get updates.'|t }}</h2>
-      <form data-newsletter-form novalidate>
+      <form method="post" action="/newsletter/subscribe" data-newsletter-form novalidate>
         <div class="footer-newsletter__fields">
           <div class="footer-newsletter__field">
             <label for="footer-nl-first">{{ 'First name *'|t }}</label>
@@ -219,9 +221,13 @@
           <label for="footer-nl-email">{{ 'Email *'|t }}</label>
           <input id="footer-nl-email" name="email" type="email" required autocomplete="email">
         </div>
+        <div class="visually-hidden" aria-hidden="true">
+          <label for="footer-nl-website">{{ 'Leave blank'|t }}</label>
+          <input id="footer-nl-website" name="website" type="text" tabindex="-1" autocomplete="off">
+        </div>
         <label class="footer-newsletter__consent">
           <input type="checkbox" name="consent" required>
-          <span>{{ 'I understand this is a fictional newsletter preview; no emails are sent.'|t }}</span>
+          <span>{{ 'I understand this is a fictional double opt-in newsletter demo; no emails are sent.'|t }}</span>
         </label>
         <button type="submit" class="btn btn--primary footer-newsletter__submit">{{ 'Sign Up'|t }}</button>
         <div class="sr-status" data-newsletter-status role="status" aria-live="polite"></div>
@@ -272,11 +278,27 @@
     <div class="container footer-legal__inner">
       <span>{{ 'Care, dignity and solidarity. A fictional nonprofit website demonstration.'|t }}</span>
       <div class="footer-legal__links">
+        <a href="/newsletter">{{ 'Newsletter'|t }}</a>
         <a href="/privacy">{{ 'Privacy Policy (Demo)'|t }}</a>
         <a href="/terms">{{ 'Terms of Use (Demo)'|t }}</a>
         <a href="/accessibility">{{ 'Accessibility Statement'|t }}</a>
         <a href="/faq">{{ 'FAQ & Scam Warning'|t }}</a>
+        <button type="button" class="footer-legal__pref-btn" data-consent-open>{{ 'Cookie & Analytics Preferences'|t }}</button>
       </div>
     </div>
   </div>
 </footer>
+
+<aside id="nusry-consent-banner" class="consent-banner" role="region" aria-label="{{ 'Analytics and cookie consent preferences'|t }}" data-consent-banner hidden>
+  <div class="container consent-banner__inner">
+    <div class="consent-banner__copy">
+      <strong>{{ 'Demo Analytics Preferences'|t }}</strong>
+      <p>{{ 'Optional simulated analytics events run only if accepted (`demo: true`, zero personal data collected). You may withdraw consent anytime via Cookie & Analytics Preferences in the footer.'|t }}</p>
+      <span class="sr-status" data-consent-status role="status" aria-live="polite"></span>
+    </div>
+    <div class="consent-banner__actions">
+      <button type="button" class="btn btn--primary" data-consent-accept>{{ 'Accept demo analytics'|t }}</button>
+      <button type="button" class="btn btn--outline-dark" data-consent-decline>{{ 'Decline / Withdraw'|t }}</button>
+    </div>
+  </div>
+</aside>

@@ -53,7 +53,7 @@ content:
     third_party_settings: {  }
   field_demo:
     type: boolean_checkbox
-    weight: 22
+    weight: 23
     region: content
     settings:
       display_label: true
@@ -83,7 +83,7 @@ content:
     third_party_settings: {  }
   field_metatags:
     type: metatag_firehose
-    weight: 22
+    weight: 23
     region: content
     settings:
       sidebar: true
@@ -101,14 +101,14 @@ content:
     third_party_settings: {  }
   field_social_image:
     type: media_library_widget
-    weight: 22
+    weight: 23
     region: content
     settings:
       media_types: {  }
     third_party_settings: {  }
   field_summary:
     type: string_textarea
-    weight: 22
+    weight: 23
     region: content
     settings:
       rows: 5

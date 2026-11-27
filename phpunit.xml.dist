@@ -16,6 +16,8 @@
   <testsuites>
     <testsuite name="unit">
       <directory>web/modules/custom/nusry_core/tests/src/Unit</directory>
+      <directory>web/modules/custom/nusry_donations/tests/src/Unit</directory>
+      <directory>web/modules/custom/nusry_forms/tests/src/Unit</directory>
     </testsuite>
     <testsuite name="integration">
       <directory>tests/php/Integration</directory>

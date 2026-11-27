@@ -1,0 +1,7 @@
+name: 'Nusry Forms'
+type: module
+description: 'Double opt-in demo newsletter, protected contact form, and donor services CSV export.'
+package: Nusry
+core_version_requirement: ^11
+dependencies:
+  - nusry_donations:nusry_donations

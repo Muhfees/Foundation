@@ -50,7 +50,7 @@ content:
     label: above
     settings: {  }
     third_party_settings: {  }
-    weight: 10
+    weight: 11
     region: content
   field_captions_confirmed:
     type: boolean
@@ -67,14 +67,14 @@ content:
     label: above
     settings: {  }
     third_party_settings: {  }
-    weight: 10
+    weight: 11
     region: content
   field_license:
     type: basic_string
     label: above
     settings: {  }
     third_party_settings: {  }
-    weight: 10
+    weight: 11
     region: content
   field_media_remote_video:
     type: string
@@ -83,14 +83,14 @@ content:
       link_to_entity: false
       link_rel: canonical
     third_party_settings: {  }
-    weight: 10
+    weight: 11
     region: content
   field_provenance:
     type: basic_string
     label: above
     settings: {  }
     third_party_settings: {  }
-    weight: 10
+    weight: 11
     region: content
   field_source_url:
     type: link
@@ -102,7 +102,7 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    weight: 10
+    weight: 11
     region: content
   thumbnail:
     type: image
@@ -125,3 +125,4 @@ content:
 hidden:
   langcode: true
   name: true
+  search_api_excerpt: true

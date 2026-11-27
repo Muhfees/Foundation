@@ -41,14 +41,14 @@ content:
     third_party_settings: {  }
   field_amounts:
     type: number
-    weight: 27
+    weight: 28
     region: content
     settings:
       placeholder: ''
     third_party_settings: {  }
   field_campaign_id:
     type: string_textfield
-    weight: 27
+    weight: 28
     region: content
     settings:
       size: 60
@@ -56,13 +56,13 @@ content:
     third_party_settings: {  }
   field_campaign_status:
     type: options_select
-    weight: 27
+    weight: 28
     region: content
     settings: {  }
     third_party_settings: {  }
   field_components:
     type: paragraphs
-    weight: 27
+    weight: 28
     region: content
     settings:
       title: Paragraph
@@ -80,33 +80,33 @@ content:
     third_party_settings: {  }
   field_demo:
     type: boolean_checkbox
-    weight: 26
+    weight: 28
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   field_end:
     type: datetime_default
-    weight: 27
+    weight: 28
     region: content
     settings: {  }
     third_party_settings: {  }
   field_frequency:
     type: options_select
-    weight: 27
+    weight: 28
     region: content
     settings: {  }
     third_party_settings: {  }
   field_hero:
     type: media_library_widget
-    weight: 27
+    weight: 28
     region: content
     settings:
       media_types: {  }
     third_party_settings: {  }
   field_matching:
     type: string_textarea
-    weight: 27
+    weight: 28
     region: content
     settings:
       rows: 5
@@ -114,7 +114,7 @@ content:
     third_party_settings: {  }
   field_metatags:
     type: metatag_firehose
-    weight: 26
+    weight: 28
     region: content
     settings:
       sidebar: true
@@ -122,20 +122,20 @@ content:
     third_party_settings: {  }
   field_social_image:
     type: media_library_widget
-    weight: 26
+    weight: 28
     region: content
     settings:
       media_types: {  }
     third_party_settings: {  }
   field_start:
     type: datetime_default
-    weight: 27
+    weight: 28
     region: content
     settings: {  }
     third_party_settings: {  }
   field_summary:
     type: string_textarea
-    weight: 26
+    weight: 28
     region: content
     settings:
       rows: 5
@@ -143,7 +143,7 @@ content:
     third_party_settings: {  }
   field_themes:
     type: entity_reference_autocomplete
-    weight: 27
+    weight: 28
     region: content
     settings:
       match_operator: CONTAINS

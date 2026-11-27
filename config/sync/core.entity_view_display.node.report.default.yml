@@ -96,3 +96,4 @@ hidden:
   field_metatags: true
   field_social_image: true
   langcode: true
+  search_api_excerpt: true

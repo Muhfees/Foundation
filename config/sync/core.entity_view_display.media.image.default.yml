@@ -52,14 +52,14 @@ content:
     label: above
     settings: {  }
     third_party_settings: {  }
-    weight: 12
+    weight: 13
     region: content
   field_credit:
     type: basic_string
     label: above
     settings: {  }
     third_party_settings: {  }
-    weight: 12
+    weight: 13
     region: content
   field_decorative:
     type: boolean
@@ -69,14 +69,14 @@ content:
       format_custom_false: ''
       format_custom_true: ''
     third_party_settings: {  }
-    weight: 9
+    weight: 13
     region: content
   field_license:
     type: basic_string
     label: above
     settings: {  }
     third_party_settings: {  }
-    weight: 12
+    weight: 13
     region: content
   field_media_image:
     type: image
@@ -87,7 +87,7 @@ content:
       image_loading:
         attribute: lazy
     third_party_settings: {  }
-    weight: 9
+    weight: 13
     region: content
   field_mobile_image:
     type: entity_reference_label
@@ -95,14 +95,14 @@ content:
     settings:
       link: true
     third_party_settings: {  }
-    weight: 12
+    weight: 13
     region: content
   field_provenance:
     type: basic_string
     label: above
     settings: {  }
     third_party_settings: {  }
-    weight: 12
+    weight: 13
     region: content
   field_sensitive:
     type: boolean
@@ -112,7 +112,7 @@ content:
       format_custom_false: ''
       format_custom_true: ''
     third_party_settings: {  }
-    weight: 12
+    weight: 13
     region: content
   field_source_url:
     type: link
@@ -124,7 +124,7 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    weight: 12
+    weight: 13
     region: content
   thumbnail:
     type: image
@@ -147,3 +147,4 @@ content:
 hidden:
   langcode: true
   name: true
+  search_api_excerpt: true

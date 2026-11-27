@@ -106,19 +106,19 @@ test('Interactive header, mega-menu, drawer, search, tabs, hero donate and newsl
   await page.fill('#hero-custom-dollars', '50');
   await page.locator('[data-other-form] button[type="submit"]').click();
   await expect(page).toHaveURL(/\/donate\?.*amount=5000/);
-  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Simulated Donation Preview');
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Try a Demo Donation');
 
   // Newsletter inline validation & demo confirmation.
   await page.goto('/');
   const mainNewsletter = page.locator('.newsletter-band [data-newsletter-form]');
   await mainNewsletter.locator('button[type="submit"]').click();
-  await expect(mainNewsletter.locator('[data-newsletter-status]')).toContainText('Please enter your first name');
+  await expect(mainNewsletter.locator('[data-newsletter-status]')).toContainText('Please enter the required fields');
   await mainNewsletter.locator('input[name="first_name"]').fill('Amira');
   await mainNewsletter.locator('input[name="last_name"]').fill('Nasser');
   await mainNewsletter.locator('input[name="email"]').fill('amira@example.test');
   await mainNewsletter.locator('input[name="consent"]').check();
   await mainNewsletter.locator('button[type="submit"]').click();
-  await expect(mainNewsletter.locator('[data-newsletter-status]')).toContainText('Demo subscription recorded locally');
+  await expect(mainNewsletter.locator('[data-newsletter-status]')).toContainText('Pending confirmation (demo)');
 
   // Mobile drawer + persistent visible Donate CTA at 375px.
   await page.setViewportSize({ width: 375, height: 812 });

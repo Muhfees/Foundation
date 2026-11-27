@@ -259,7 +259,7 @@
       <h2 id="newsletter-heading" class="newsletter-box__title">{{ 'We speak out. Get updates.'|t }}</h2>
       <p class="newsletter-box__lead">{{ 'Try the simulated Nusry Foundation dispatch signup (demo only — no real messages are sent).'|t }}</p>
 
-      <form class="newsletter-form" data-newsletter-form novalidate>
+      <form class="newsletter-form" method="post" action="/newsletter/subscribe" data-newsletter-form novalidate>
         <div class="newsletter-form__row">
           <div class="newsletter-form__field">
             <label for="main-nl-first">{{ 'First name *'|t }}</label>
@@ -275,15 +275,25 @@
           </div>
         </div>
 
+        <div class="visually-hidden" aria-hidden="true">
+          <label for="main-nl-website">{{ 'Leave blank'|t }}</label>
+          <input id="main-nl-website" name="website" type="text" tabindex="-1" autocomplete="off">
+        </div>
+
         <div class="newsletter-form__consents">
           <label class="newsletter-form__check">
             <input type="checkbox" name="consent" required>
-            <span>{{ 'I agree to test the fictional newsletter flow and have read the'|t }} <a href="/privacy">{{ 'demo privacy notice'|t }}</a>.</span>
+            <span>{{ 'I agree to test the fictional double opt-in newsletter flow and have read the'|t }} <a href="/privacy">{{ 'demo privacy notice'|t }}</a>.</span>
           </label>
           <label class="newsletter-form__check">
-            <input type="checkbox" name="sms_consent">
-            <span>{{ 'Optional: simulate SMS dispatch alerts (no text messages sent).'|t }}</span>
+            <input type="checkbox" name="sms_opt_in" value="1">
+            <span>{{ 'Optional: simulate SMS dispatch alerts (separate consent, no texts sent).'|t }}</span>
           </label>
+        </div>
+
+        <div class="newsletter-form__field" data-sms-phone-wrap hidden>
+          <label for="main-nl-phone">{{ 'Demo mobile number (required if SMS selected)'|t }}</label>
+          <input id="main-nl-phone" name="phone" type="tel" placeholder="+1-555-0100" autocomplete="tel">
         </div>
 
         <div class="newsletter-form__actions">

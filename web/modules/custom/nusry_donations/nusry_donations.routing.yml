@@ -1,0 +1,18 @@
+nusry_donations.donate:
+  path: '/donate'
+  defaults:
+    _form: '\Drupal\nusry_donations\Form\DonationForm'
+    _title: 'Try a Demo Donation'
+  requirements:
+    _permission: 'access content'
+
+nusry_donations.receipt:
+  path: '/donate/receipt/{reference}'
+  defaults:
+    _controller: '\Drupal\nusry_donations\Controller\ReceiptController::view'
+    _title: 'Sample Demo Receipt'
+  requirements:
+    _permission: 'access content'
+    reference: '[A-Za-z0-9-]+'
+  options:
+    no_cache: TRUE

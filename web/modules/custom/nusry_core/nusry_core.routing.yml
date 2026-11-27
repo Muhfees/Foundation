@@ -46,14 +46,6 @@ nusry_core.search:
   requirements:
     _permission: 'access content'
 
-nusry_core.donate_preview:
-  path: '/donate'
-  defaults:
-    _controller: '\Drupal\nusry_core\Controller\HomepageController::donatePreview'
-    _title: 'Simulated Donation Preview'
-  requirements:
-    _permission: 'access content'
-
 nusry_core.not_found:
   path: '/not-found'
   defaults:

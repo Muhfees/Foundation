@@ -35,7 +35,7 @@ content:
     label: above
     settings: {  }
     third_party_settings: {  }
-    weight: 11
+    weight: 13
     region: content
   field_categories:
     type: entity_reference_label
@@ -43,7 +43,7 @@ content:
     settings:
       link: true
     third_party_settings: {  }
-    weight: 11
+    weight: 13
     region: content
   field_components:
     type: entity_reference_revisions_entity_view
@@ -52,7 +52,7 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
-    weight: 11
+    weight: 13
     region: content
   field_countries:
     type: entity_reference_label
@@ -60,7 +60,7 @@ content:
     settings:
       link: true
     third_party_settings: {  }
-    weight: 11
+    weight: 13
     region: content
   field_hero:
     type: entity_reference_entity_view
@@ -69,7 +69,7 @@ content:
       view_mode: default
       link: false
     third_party_settings: {  }
-    weight: 11
+    weight: 13
     region: content
   field_reading_time:
     type: number_integer
@@ -78,7 +78,7 @@ content:
       thousand_separator: ''
       prefix_suffix: true
     third_party_settings: {  }
-    weight: 12
+    weight: 13
     region: content
   field_reviewed:
     type: datetime_default
@@ -87,14 +87,14 @@ content:
       timezone_override: ''
       format_type: medium
     third_party_settings: {  }
-    weight: 11
+    weight: 13
     region: content
   field_summary:
     type: basic_string
     label: above
     settings: {  }
     third_party_settings: {  }
-    weight: 11
+    weight: 13
     region: content
   links:
     settings: {  }
@@ -106,3 +106,4 @@ hidden:
   field_metatags: true
   field_social_image: true
   langcode: true
+  search_api_excerpt: true

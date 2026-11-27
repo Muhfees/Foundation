@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   module:
+    - nusry_forms
     - system
 id: donor_services
 label: 'Donor Services'
@@ -10,3 +11,4 @@ weight: 5
 is_admin: false
 permissions:
   - 'access content'
+  - 'access nusry donor services'

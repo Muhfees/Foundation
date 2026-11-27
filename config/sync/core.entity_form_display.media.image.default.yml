@@ -33,7 +33,7 @@ content:
     third_party_settings: {  }
   field_caption:
     type: string_textarea
-    weight: 16
+    weight: 17
     region: content
     settings:
       rows: 5
@@ -41,7 +41,7 @@ content:
     third_party_settings: {  }
   field_credit:
     type: string_textarea
-    weight: 16
+    weight: 17
     region: content
     settings:
       rows: 5
@@ -49,14 +49,14 @@ content:
     third_party_settings: {  }
   field_decorative:
     type: boolean_checkbox
-    weight: 13
+    weight: 17
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   field_license:
     type: string_textarea
-    weight: 16
+    weight: 17
     region: content
     settings:
       rows: 5
@@ -64,7 +64,7 @@ content:
     third_party_settings: {  }
   field_media_image:
     type: image_focal_point
-    weight: 13
+    weight: 17
     region: content
     settings:
       progress_indicator: throbber
@@ -74,7 +74,7 @@ content:
     third_party_settings: {  }
   field_mobile_image:
     type: entity_reference_autocomplete
-    weight: 16
+    weight: 17
     region: content
     settings:
       match_operator: CONTAINS
@@ -84,7 +84,7 @@ content:
     third_party_settings: {  }
   field_provenance:
     type: string_textarea
-    weight: 16
+    weight: 17
     region: content
     settings:
       rows: 5
@@ -92,14 +92,14 @@ content:
     third_party_settings: {  }
   field_sensitive:
     type: boolean_checkbox
-    weight: 16
+    weight: 17
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   field_source_url:
     type: link_default
-    weight: 16
+    weight: 17
     region: content
     settings:
       placeholder_url: ''

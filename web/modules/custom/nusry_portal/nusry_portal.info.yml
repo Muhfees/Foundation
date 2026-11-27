@@ -1,0 +1,7 @@
+name: 'Nusry Donor Portal'
+type: module
+description: 'Authenticated simulated donor portal with strict ownership enforcement.'
+package: Nusry
+core_version_requirement: ^11
+dependencies:
+  - nusry_donations:nusry_donations
