@@ -15,9 +15,18 @@ test('asset gate rejects broken builds, traversal, and excessive payloads', () =
     assert.throws(() => checkAssets(root), /ENOENT/);
     writeFileSync(join(root, 'main.js'), 'console.log("demo");');
     writeFileSync(join(root, 'main.css'), 'body{color:red}');
-    assert.ok(checkAssets(root)['.js'] > 0);
-    assert.throws(() => checkAssets(root, { '.js': 1, '.css': 1 }), /exceeds gzip budget/);
+    writeFileSync(join(root, 'font.woff2'), '0123456789');
+    const heroFile = join(root, 'hero-mobile.webp');
+    writeFileSync(heroFile, 'webp-bytes');
+    const result = checkAssets(root, undefined, heroFile);
+    assert.ok(result['.js'] > 0);
+    assert.equal(result['.woff2'], 10);
+    assert.equal(result.mobileHero, 10);
+    assert.throws(() => checkAssets(root, { '.js': 1, '.css': 1, '.woff2': 1 }), /exceeds budget/);
+    assert.throws(() => checkAssets(root, undefined, heroFile, 5), /Mobile hero exceeds budget/);
     manifest['src/main.js'].file = '../outside.js'; save();
     assert.throws(() => checkAssets(root), /escapes build directory/);
-  } finally { rmSync(root, { recursive: true, force: true }); }
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
 });

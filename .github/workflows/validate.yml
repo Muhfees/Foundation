@@ -66,7 +66,9 @@ jobs:
           php -l scripts/verify-editorial-schema.php
           php -l scripts/seed-demo.php
           php -l scripts/verify-demo-seed.php
+          php -l scripts/rehearse-backup-restore.php
           php -l web/sites/default/settings.php
+          find web/modules/custom -type f \( -name '*.php' -o -name '*.module' -o -name '*.install' \) -exec php -l {} +
       - name: Install from exported configuration and check safe rerun
         run: |
           php scripts/install.php
@@ -98,6 +100,8 @@ jobs:
             sleep 1
           done
           npm run test:e2e
+          node scripts/monitor-check.mjs
+          node scripts/load-baseline.mjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:

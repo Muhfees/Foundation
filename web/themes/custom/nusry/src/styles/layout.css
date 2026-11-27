@@ -105,9 +105,10 @@
 
 .site-header__bar {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
+  gap: 16px 24px;
 }
 
 .wordmark {
@@ -115,7 +116,9 @@
   align-items: center;
   gap: 12px;
   text-decoration: none;
-  flex-shrink: 0;
+  flex-shrink: 1;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .wordmark:hover {
@@ -161,7 +164,9 @@
   flex-direction: column;
   align-items: flex-end;
   gap: 10px;
-  flex: 1;
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .site-header__utility {
@@ -198,12 +203,16 @@
 
 .site-header__main-row {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
   align-items: center;
-  gap: 24px;
+  gap: 12px 24px;
+  max-width: 100%;
 }
 
 .primary-nav {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 6px;
 }
@@ -746,6 +755,46 @@
   .funds-strip__grid,
   .footer-newsletter__fields {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 374px) {
+  .site-header {
+    padding-inline: 12px;
+  }
+
+  .site-header__bar {
+    gap: 8px;
+  }
+
+  .wordmark {
+    flex-shrink: 1;
+    min-width: 0;
+    gap: 8px;
+  }
+
+  .wordmark__mark {
+    width: 32px;
+    height: 32px;
+  }
+
+  .wordmark__name {
+    font-size: 0.95rem;
+  }
+
+  .wordmark__sub {
+    display: none;
+  }
+
+  .site-header__actions-mobile {
+    gap: 6px;
+    flex-shrink: 0;
+  }
+
+  .site-header__donate--mobile,
+  .site-header__menu-toggle {
+    padding-inline: 10px;
+    font-size: 0.875rem;
   }
 }
 
