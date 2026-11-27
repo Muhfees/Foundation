@@ -1,0 +1,24 @@
+uuid: 9541a61c-89ac-4af7-9757-7aa5e39e7849
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_mobile_media
+    - media.type.image
+    - paragraphs.paragraphs_type.hero
+id: paragraph.hero.field_mobile_media
+field_name: field_mobile_media
+entity_type: paragraph
+bundle: hero
+label: 'Mobile image'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+field_type: entity_reference

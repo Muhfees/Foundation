@@ -1,0 +1,21 @@
+uuid: e543ac82-0b81-460c-9802-f60e8e27ec14
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_campaign_status
+    - node.type.campaign
+  module:
+    - options
+id: node.campaign.field_campaign_status
+field_name: field_campaign_status
+entity_type: node
+bundle: campaign
+label: 'Campaign status'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

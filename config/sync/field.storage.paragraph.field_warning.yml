@@ -1,0 +1,19 @@
+uuid: 1770ddfb-2b6b-4f54-ae73-8d6a60d3a8bb
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_warning
+field_name: field_warning
+entity_type: paragraph
+type: string_long
+settings:
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

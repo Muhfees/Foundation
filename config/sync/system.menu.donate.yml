@@ -1,0 +1,8 @@
+uuid: 812ae010-99e1-4b48-91a9-90e2dedc412e
+langcode: en
+status: true
+dependencies: {  }
+id: donate
+label: 'Donate menu'
+description: 'Giving options and demo donation entry points.'
+locked: false

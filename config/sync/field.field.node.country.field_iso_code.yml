@@ -1,0 +1,19 @@
+uuid: cd58792d-dcfb-4538-a894-f81c73d67752
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_iso_code
+    - node.type.country
+id: node.country.field_iso_code
+field_name: field_iso_code
+entity_type: node
+bundle: country
+label: 'ISO country code'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

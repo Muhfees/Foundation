@@ -1,0 +1,18 @@
+uuid: 6aef04ed-3400-47b6-9b59-51397e74aee9
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.field_captions_confirmed
+field_name: field_captions_confirmed
+entity_type: media
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,29 @@
+uuid: abab13d8-8091-4c97-bc67-86f66086e3bb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.sensitive_image.field_media
+    - field.field.paragraph.sensitive_image.field_warning
+    - paragraphs.paragraphs_type.sensitive_image
+id: paragraph.sensitive_image.default
+targetEntityType: paragraph
+bundle: sensitive_image
+mode: default
+content:
+  field_media:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_warning:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden: {  }

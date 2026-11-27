@@ -1,0 +1,18 @@
+uuid: 60830b18-9837-4621-b5aa-3ad425c3556a
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.field_decorative
+field_name: field_decorative
+entity_type: media
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,77 @@
+{
+  "name": "nusry/foundation",
+  "description": "Fictional medical humanitarian nonprofit demo",
+  "type": "project",
+  "license": "GPL-2.0-or-later",
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://packages.drupal.org/8"
+    }
+  ],
+  "require": {
+    "php": "~8.3.0",
+    "composer/installers": "^2.3",
+    "drupal/core-composer-scaffold": "^11",
+    "drupal/core-recommended": "^11",
+    "drupal/focal_point": "^2.1",
+    "drupal/metatag": "^2.2",
+    "drupal/paragraphs": "^1.23",
+    "drupal/pathauto": "^1.16",
+    "drupal/redirect": "^1.13",
+    "drupal/redis": "^1.10",
+    "drupal/scheduler": "^2.3",
+    "drupal/scheduler_content_moderation_integration": "^3.0",
+    "drupal/search_api": "^1.38",
+    "drush/drush": "^13"
+  },
+  "require-dev": {
+    "drupal/coder": "^8.3",
+    "phpunit/phpunit": "^11.5"
+  },
+  "conflict": {
+    "drupal/drupal": "*"
+  },
+  "minimum-stability": "stable",
+  "prefer-stable": true,
+  "config": {
+    "platform": {
+      "php": "8.3.0"
+    },
+    "sort-packages": true,
+    "allow-plugins": {
+      "composer/installers": true,
+      "drupal/core-composer-scaffold": true,
+      "dealerdirect/phpcodesniffer-composer-installer": true,
+      "symfony/runtime": true
+    }
+  },
+  "extra": {
+    "drupal-scaffold": {
+      "locations": {
+        "web-root": "web/"
+      },
+      "file-mapping": {
+        "[web-root]/sites/default/settings.php": false,
+        "[project-root]/.gitattributes": false
+      }
+    },
+    "installer-paths": {
+      "web/core": [
+        "type:drupal-core"
+      ],
+      "web/libraries/{$name}": [
+        "type:drupal-library"
+      ],
+      "web/modules/contrib/{$name}": [
+        "type:drupal-module"
+      ],
+      "web/themes/contrib/{$name}": [
+        "type:drupal-theme"
+      ],
+      "web/profiles/contrib/{$name}": [
+        "type:drupal-profile"
+      ]
+    }
+  }
+}

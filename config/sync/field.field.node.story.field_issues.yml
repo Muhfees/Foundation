@@ -1,0 +1,24 @@
+uuid: adc6ea9d-2ba9-4baa-a1a8-469e48a3f45b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_issues
+    - node.type.medical_issue
+    - node.type.story
+id: node.story.field_issues
+field_name: field_issues
+entity_type: node
+bundle: story
+label: 'Medical issues'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      medical_issue: medical_issue
+field_type: entity_reference

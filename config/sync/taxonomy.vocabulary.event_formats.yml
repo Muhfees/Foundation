@@ -1,0 +1,9 @@
+uuid: 39352caf-68b5-4955-8ae6-cc7adaee3e61
+langcode: en
+status: true
+dependencies: {  }
+name: 'Event Formats'
+vid: event_formats
+description: null
+weight: 0
+new_revision: false

@@ -1,0 +1,24 @@
+uuid: 7a483564-46c4-4d9d-b39f-5db9e2010ddb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_categories
+    - node.type.medical_issue
+    - taxonomy.vocabulary.story_categories
+id: node.medical_issue.field_categories
+field_name: field_categories
+entity_type: node
+bundle: medical_issue
+label: 'Story categories'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      story_categories: story_categories
+field_type: entity_reference

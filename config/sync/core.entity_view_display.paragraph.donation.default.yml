@@ -1,0 +1,61 @@
+uuid: 394737da-62bd-4bb4-8243-3a94a03a3e74
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.donation.field_amounts
+    - field.field.paragraph.donation.field_campaign
+    - field.field.paragraph.donation.field_currency
+    - field.field.paragraph.donation.field_frequencies
+    - field.field.paragraph.donation.field_heading
+    - paragraphs.paragraphs_type.donation
+  module:
+    - options
+id: paragraph.donation.default
+targetEntityType: paragraph
+bundle: donation
+mode: default
+content:
+  field_amounts:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_campaign:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_currency:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_frequencies:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_heading:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 5
+    region: content
+hidden: {  }

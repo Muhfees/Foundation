@@ -1,0 +1,23 @@
+uuid: 39145933-576a-42e1-ad3f-791fe793e766
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_demo
+    - node.type.campaign
+id: node.campaign.field_demo
+field_name: field_demo
+entity_type: node
+bundle: campaign
+label: 'Fictional demo content'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,49 @@
+<article{{ attributes }}>
+  <header class="page-hero">
+    <div class="page-hero__meta">
+      <span class="demo-pill">{{ 'Demo Event'|t }}</span>
+      <span>{{ event_meta.format }}</span>
+      {% if event_meta.start %}<span>| {{ event_meta.start }}–{{ event_meta.end }} {{ event_meta.timezone }}</span>{% endif %}
+    </div>
+    <h1 class="page-hero__title">{{ label }}</h1>
+    {% if summary_text %}<p class="page-hero__lead prose-serif">{{ summary_text }}</p>{% endif %}
+  </header>
+
+  <div class="info-grid">
+    <div class="info-card info-card--accent">
+      <div class="info-card__label">{{ 'Date & Timezone'|t }}</div>
+      <div class="info-card__value">{{ event_meta.start }}–{{ event_meta.end }} ({{ event_meta.timezone }})</div>
+    </div>
+    <div class="info-card">
+      <div class="info-card__label">{{ 'Location / Format'|t }}</div>
+      <div class="info-card__value">
+        {% if event_meta.virtual_url %}
+          <a href="{{ event_meta.virtual_url }}">{{ event_meta.virtual_title }}</a>
+        {% else %}
+          {{ event_meta.venue }}
+        {% endif %}
+      </div>
+    </div>
+    <div class="info-card">
+      <div class="info-card__label">{{ 'Accessibility'|t }}</div>
+      <div class="info-card__value">{{ event_meta.accessibility }}</div>
+    </div>
+  </div>
+
+  {% if event_meta.booking_url %}
+    <p style="margin-bottom:28px;">
+      <a class="btn btn--primary" href="{{ event_meta.booking_url }}">{{ event_meta.booking_title }}</a>
+    </p>
+  {% endif %}
+
+  {{ content.field_components }}
+
+  {% if event_meta.campaign_url %}
+    <aside class="donate-prompt">
+      <div>
+        <h2 class="donate-prompt__title">{{ 'Associated demo campaign:'|t }} {{ event_meta.campaign_title }}</h2>
+      </div>
+      <a class="btn btn--outline-dark" href="{{ event_meta.campaign_url }}">{{ 'View campaign'|t }}</a>
+    </aside>
+  {% endif %}
+</article>

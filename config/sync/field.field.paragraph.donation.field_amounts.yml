@@ -1,0 +1,23 @@
+uuid: cf22788b-e8a0-4643-a2a2-3216892149d3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_amounts
+    - paragraphs.paragraphs_type.donation
+id: paragraph.donation.field_amounts
+field_name: field_amounts
+entity_type: paragraph
+bundle: donation
+label: 'Preset amounts (minor units)'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 100
+  max: 100000000
+  prefix: ''
+  suffix: ''
+field_type: integer

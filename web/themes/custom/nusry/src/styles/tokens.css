@@ -1,0 +1,88 @@
+@font-face {
+  font-family: 'Source Sans 3';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../../assets/fonts/source-sans-3-latin-400-normal.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Source Sans 3';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('../../assets/fonts/source-sans-3-latin-600-normal.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Source Sans 3';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../../assets/fonts/source-sans-3-latin-700-normal.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Source Sans 3';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url('../../assets/fonts/source-sans-3-latin-800-normal.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Source Serif 4';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../../assets/fonts/source-serif-4-latin-400-normal.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Source Serif 4';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../../assets/fonts/source-serif-4-latin-400-italic.woff2') format('woff2');
+}
+
+:root {
+  --color-action: #ee0000;
+  --color-action-hover: #c60000;
+  --color-ink: #231f20;
+  --color-ink-muted: #524d4e;
+  --color-page: #ffffff;
+  --color-surface: #f3f4f0;
+  --color-footer: #eff0eb;
+  --color-urgent: #ffe75a;
+  --color-focus: #005fcc;
+  --color-success: #176b43;
+  --color-warning: #805800;
+  --color-error: #b42318;
+  --color-border: #d5d6d0;
+  --font-sans: 'Source Sans 3', Arial, sans-serif;
+  --font-serif: 'Source Serif 4', Georgia, serif;
+  --container-main: min(74vw, 1400px);
+  --container-narrow: min(60vw, 1120px);
+  --header-gutter: 3.2vw;
+  --section-space: 96px;
+  --motion-ms: 180ms;
+  --shadow-strip: 0 12px 36px rgba(35, 31, 32, 0.08);
+}
+
+@media (max-width: 1279px) {
+  :root {
+    --container-main: calc(100% - 48px);
+    --container-narrow: calc(100% - 48px);
+    --header-gutter: 24px;
+  }
+}
+
+@media (max-width: 767px) {
+  :root {
+    --container-main: calc(100% - 40px);
+    --container-narrow: calc(100% - 40px);
+    --header-gutter: 20px;
+    --section-space: 56px;
+  }
+}

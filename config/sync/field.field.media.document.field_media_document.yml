@@ -1,0 +1,27 @@
+uuid: 9e50b386-3527-4c07-8d99-7128c93557f1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_media_document
+    - media.type.document
+  module:
+    - file
+id: media.document.field_media_document
+field_name: field_media_document
+entity_type: media
+bundle: document
+label: 'Document file or URL'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: 'editorial/[date:custom:Y-m]'
+  file_extensions: 'pdf txt'
+  max_filesize: '10 MB'
+  description_field: false
+field_type: file

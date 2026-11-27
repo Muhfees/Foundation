@@ -1,0 +1,118 @@
+nusry_core.settings:
+  type: config_object
+  label: 'Nusry editorial and demo settings'
+  mapping:
+    urgent_alert:
+      type: mapping
+      label: 'Urgent alert'
+      mapping:
+        enabled:
+          type: boolean
+          label: 'Enabled'
+        text:
+          type: label
+          label: 'Alert text'
+        link_label:
+          type: label
+          label: 'Link label'
+        link_url:
+          type: string
+          label: 'Link URL'
+        starts:
+          type: string
+          label: 'Start timestamp (UTC ISO-8601)'
+        ends:
+          type: string
+          label: 'End timestamp (UTC ISO-8601)'
+        version:
+          type: string
+          label: 'Dismissal revision version'
+    organization_facts:
+      type: mapping
+      label: 'Organization facts'
+      mapping:
+        regions_count:
+          type: integer
+          label: 'Regions count'
+        consultations_count:
+          type: integer
+          label: 'Consultations count'
+        admissions_count:
+          type: integer
+          label: 'Admissions count'
+        period:
+          type: label
+          label: 'Reporting period'
+        source_label:
+          type: label
+          label: 'Source label'
+        source_url:
+          type: string
+          label: 'Source URL'
+        demo_notice:
+          type: label
+          label: 'Demo notice'
+    fund_allocation:
+      type: mapping
+      label: 'Fund allocation'
+      mapping:
+        period:
+          type: label
+          label: 'Reporting period'
+        source_label:
+          type: label
+          label: 'Source label'
+        programmes_percent:
+          type: integer
+          label: 'Programmes percentage'
+        fundraising_percent:
+          type: integer
+          label: 'Fundraising percentage'
+        administration_percent:
+          type: integer
+          label: 'Administration percentage'
+    social_links:
+      type: sequence
+      label: 'Social links'
+      sequence:
+        type: mapping
+        label: 'Social link'
+        mapping:
+          label:
+            type: label
+            label: 'Platform label'
+          url:
+            type: string
+            label: 'Profile URL'
+          handle:
+            type: string
+            label: 'Handle'
+    giving_destinations:
+      type: sequence
+      label: 'Giving destinations'
+      sequence:
+        type: mapping
+        label: 'Giving destination'
+        mapping:
+          id:
+            type: string
+            label: 'Machine ID'
+          label:
+            type: label
+            label: 'Label'
+          path:
+            type: string
+            label: 'Route path'
+          description:
+            type: label
+            label: 'Description'
+    provider_refs:
+      type: mapping
+      label: 'Provider mode references'
+      mapping:
+        donation_mode:
+          type: string
+          label: 'Donation gateway mode'
+        newsletter_mode:
+          type: string
+          label: 'Newsletter gateway mode'

@@ -1,0 +1,32 @@
+uuid: 44995c3d-5e6b-46f9-9cc2-9c433c7f9cdd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_content
+    - node.type.campaign
+    - node.type.event
+    - node.type.flexible_page
+    - node.type.report
+    - node.type.story
+    - paragraphs.paragraphs_type.card_grid
+id: paragraph.card_grid.field_content
+field_name: field_content
+entity_type: paragraph
+bundle: card_grid
+label: 'Curated content'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      story: story
+      campaign: campaign
+      event: event
+      report: report
+      flexible_page: flexible_page
+field_type: entity_reference

@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+## Description: Install dependencies and safely initialize the local demo.
+## Usage: setup
+set -euo pipefail
+ddev start
+ddev composer install --no-interaction --prefer-dist
+ddev exec npm ci
+ddev exec npm run build
+ddev exec php scripts/install.php
+ddev exec touch .local/redis-enabled
+ddev drush cache:rebuild
+echo "Ready: https://nusry-foundation.ddev.site"

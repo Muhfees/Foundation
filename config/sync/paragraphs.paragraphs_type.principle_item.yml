@@ -1,0 +1,10 @@
+uuid: 8c2c12c1-8ab0-4115-84fa-7af0f0cf76c7
+langcode: en
+status: true
+dependencies: {  }
+id: principle_item
+label: 'Principle Item'
+icon_uuid: null
+icon_default: null
+description: null
+behavior_plugins: {  }

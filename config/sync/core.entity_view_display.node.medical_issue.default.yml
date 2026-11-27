@@ -1,0 +1,108 @@
+uuid: fd09cb22-fddb-44d9-b74a-73bd732a8789
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.medical_issue.field_body
+    - field.field.node.medical_issue.field_categories
+    - field.field.node.medical_issue.field_components
+    - field.field.node.medical_issue.field_countries
+    - field.field.node.medical_issue.field_demo
+    - field.field.node.medical_issue.field_hero
+    - field.field.node.medical_issue.field_metatags
+    - field.field.node.medical_issue.field_reading_time
+    - field.field.node.medical_issue.field_reviewed
+    - field.field.node.medical_issue.field_social_image
+    - field.field.node.medical_issue.field_summary
+    - node.type.medical_issue
+  module:
+    - datetime
+    - entity_reference_revisions
+    - text
+    - user
+id: node.medical_issue.default
+targetEntityType: node
+bundle: medical_issue
+mode: default
+content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
+  field_body:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 11
+    region: content
+  field_categories:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 11
+    region: content
+  field_components:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 11
+    region: content
+  field_countries:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 11
+    region: content
+  field_hero:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 11
+    region: content
+  field_reading_time:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 12
+    region: content
+  field_reviewed:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 11
+    region: content
+  field_summary:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 11
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_demo: true
+  field_metatags: true
+  field_social_image: true
+  langcode: true

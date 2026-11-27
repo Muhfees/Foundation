@@ -1,0 +1,23 @@
+uuid: 979050d2-0a71-4407-8fd1-b5f3fabd6602
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_demo
+    - node.type.story
+id: node.story.field_demo
+field_name: field_demo
+entity_type: node
+bundle: story
+label: 'Fictional demo content'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

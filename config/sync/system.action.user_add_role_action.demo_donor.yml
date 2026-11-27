@@ -1,0 +1,14 @@
+uuid: f29cff8d-29e1-4b3f-ab7a-6ec03a963b8b
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.demo_donor
+  module:
+    - user
+id: user_add_role_action.demo_donor
+label: 'Add the Demo Donor role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: demo_donor

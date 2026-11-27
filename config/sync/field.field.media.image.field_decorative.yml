@@ -1,0 +1,23 @@
+uuid: f08c2539-5ea2-46cc-95e5-d8744c745d45
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_decorative
+    - media.type.image
+id: media.image.field_decorative
+field_name: field_decorative
+entity_type: media
+bundle: image
+label: 'Decorative image (alt text omitted)'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

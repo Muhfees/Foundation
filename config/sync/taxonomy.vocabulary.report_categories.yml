@@ -1,0 +1,9 @@
+uuid: 3783acd6-43fc-459d-98fb-c67a4c884761
+langcode: en
+status: true
+dependencies: {  }
+name: 'Report Categories'
+vid: report_categories
+description: null
+weight: 0
+new_revision: false

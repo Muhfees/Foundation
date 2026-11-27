@@ -1,0 +1,19 @@
+uuid: 83cb7c09-c168-4784-91ee-3e40bd741f7b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_value
+    - paragraphs.paragraphs_type.statistic_item
+id: paragraph.statistic_item.field_value
+field_name: field_value
+entity_type: paragraph
+bundle: statistic_item
+label: 'Illustrative value'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

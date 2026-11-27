@@ -1,0 +1,64 @@
+uuid: 13818483-edb8-4d39-9e78-5f241871e5cc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.image_text.field_alignment
+    - field.field.paragraph.image_text.field_body
+    - field.field.paragraph.image_text.field_heading
+    - field.field.paragraph.image_text.field_link
+    - field.field.paragraph.image_text.field_media
+    - paragraphs.paragraphs_type.image_text
+  module:
+    - link
+    - options
+    - text
+id: paragraph.image_text.default
+targetEntityType: paragraph
+bundle: image_text
+mode: default
+content:
+  field_alignment:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_body:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_heading:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_link:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_media:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 5
+    region: content
+hidden: {  }

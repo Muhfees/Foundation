@@ -1,0 +1,70 @@
+urgent_alert:
+  enabled: true
+  text: 'Fictional emergency alert: Demo mobile clinics expanding seasonal preparedness.'
+  link_label: 'Learn More'
+  link_url: /stories/mobile-clinics-expand-maternal-care-across-valeria-republic
+  starts: '2025-01-01T00:00:00Z'
+  ends: '2028-01-01T00:00:00Z'
+  version: demo-alert-v1
+organization_facts:
+  regions_count: 6
+  consultations_count: 24800
+  admissions_count: 3600
+  period: '2025 Demo Annual Period'
+  source_label: 'Demo annual report'
+  source_url: /reports/demo-annual-report-2025
+  demo_notice: 'Illustrative demo figures only. No actual operations or patients are represented.'
+fund_allocation:
+  period: '2025 Demo Annual Period'
+  source_label: 'Demo annual report'
+  programmes_percent: 82
+  fundraising_percent: 12
+  administration_percent: 6
+social_links:
+  -
+    label: 'Demo Community Feed'
+    url: 'https://example.test/social/community'
+    handle: '@nusrydemo'
+  -
+    label: 'Demo Media Channel'
+    url: 'https://example.test/social/media'
+    handle: '@nusrymedia-demo'
+giving_destinations:
+  -
+    id: monthly
+    label: 'Give Monthly (Demo)'
+    path: /ways-to-give/monthly
+    description: 'Simulated recurring monthly support options.'
+  -
+    id: tribute
+    label: 'Honor & Tribute Gifts (Demo)'
+    path: /ways-to-give/tribute
+    description: 'Demonstrative tribute and memorial giving flows.'
+  -
+    id: legacy
+    label: 'Legacy & Planned Giving (Demo)'
+    path: /ways-to-give/legacy
+    description: 'Illustrative planned giving guide, not legal or tax advice.'
+  -
+    id: daf
+    label: 'Donor-Advised Funds (Demo)'
+    path: /ways-to-give/donor-advised-fund
+    description: 'Fictional donor-advised fund recommendation overview.'
+  -
+    id: workplace
+    label: 'Workplace Giving (Demo)'
+    path: /ways-to-give/workplace
+    description: 'Illustrative employer matching and payroll concepts.'
+  -
+    id: corporate
+    label: 'Corporate Partnerships (Demo)'
+    path: /ways-to-give/corporate
+    description: 'Fictional corporate grant inquiry overview.'
+  -
+    id: vehicle
+    label: 'Vehicle Donations (Demo)'
+    path: /ways-to-give/vehicle
+    description: 'Demonstrative non-cash gift overview.'
+provider_refs:
+  donation_mode: mock
+  newsletter_mode: mock

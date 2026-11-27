@@ -1,0 +1,21 @@
+uuid: 8eee7f2a-73ab-4f34-996e-2a432ad97001
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_end
+    - node.type.campaign
+  module:
+    - datetime
+id: node.campaign.field_end
+field_name: field_end
+entity_type: node
+bundle: campaign
+label: Ends
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

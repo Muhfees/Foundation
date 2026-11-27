@@ -1,0 +1,23 @@
+uuid: 80cca092-e9e6-4067-bbaf-dfbedb833b91
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_count
+    - paragraphs.paragraphs_type.card_grid
+id: paragraph.card_grid.field_count
+field_name: field_count
+entity_type: paragraph
+bundle: card_grid
+label: 'Maximum cards'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 1
+  max: 12
+  prefix: ''
+  suffix: ''
+field_type: integer

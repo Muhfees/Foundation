@@ -1,0 +1,19 @@
+uuid: c054de83-2a2e-418a-aaaa-316994767973
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_period
+    - paragraphs.paragraphs_type.statistic_item
+id: paragraph.statistic_item.field_period
+field_name: field_period
+entity_type: paragraph
+bundle: statistic_item
+label: 'Reporting period'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

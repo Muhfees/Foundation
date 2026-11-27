@@ -1,0 +1,155 @@
+<p class="prose-serif">{{ intro }}</p>
+
+{% if mode in ['news', 'events', 'campaigns'] %}
+  <form class="filter-bar" method="get" action="{{ route_path }}" role="search" aria-label="{{ 'Filter items'|t }}">
+    <div class="filter-bar__grid">
+      {% if mode == 'news' %}
+        <div class="filter-bar__field">
+          <label for="filter-q">{{ 'Keyword'|t }}</label>
+          <input id="filter-q" type="search" name="q" value="{{ filters.q }}" placeholder="{{ 'Search stories...'|t }}">
+        </div>
+        <div class="filter-bar__field">
+          <label for="filter-kind">{{ 'Type'|t }}</label>
+          <select id="filter-kind" name="kind">
+            <option value="">{{ 'All types'|t }}</option>
+            <option value="news" {{ filters.kind == 'news' ? 'selected' }}>{{ 'News'|t }}</option>
+            <option value="story" {{ filters.kind == 'story' ? 'selected' }}>{{ 'Story'|t }}</option>
+          </select>
+        </div>
+        <div class="filter-bar__field">
+          <label for="filter-country">{{ 'Country (Illustrative)'|t }}</label>
+          <select id="filter-country" name="country">
+            <option value="">{{ 'All countries'|t }}</option>
+            {% for id, name in options.countries %}
+              <option value="{{ id }}" {{ filters.country == (id ~ '') ? 'selected' }}>{{ name }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="filter-bar__field">
+          <label for="filter-issue">{{ 'Medical issue'|t }}</label>
+          <select id="filter-issue" name="issue">
+            <option value="">{{ 'All issues'|t }}</option>
+            {% for id, name in options.issues %}
+              <option value="{{ id }}" {{ filters.issue == (id ~ '') ? 'selected' }}>{{ name }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="filter-bar__field">
+          <label for="filter-sort">{{ 'Sort'|t }}</label>
+          <select id="filter-sort" name="sort">
+            <option value="recent" {{ filters.sort == 'recent' ? 'selected' }}>{{ 'Newest first'|t }}</option>
+            <option value="oldest" {{ filters.sort == 'oldest' ? 'selected' }}>{{ 'Oldest first'|t }}</option>
+          </select>
+        </div>
+      {% elseif mode == 'events' %}
+        <div class="filter-bar__field">
+          <label for="filter-format">{{ 'Event format'|t }}</label>
+          <select id="filter-format" name="format">
+            <option value="">{{ 'All formats'|t }}</option>
+            {% for id, name in options.formats %}
+              <option value="{{ id }}" {{ filters.format == (id ~ '') ? 'selected' }}>{{ name }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="filter-bar__field">
+          <label for="filter-mode">{{ 'Attendance'|t }}</label>
+          <select id="filter-mode" name="mode">
+            <option value="">{{ 'Virtual & in-person'|t }}</option>
+            <option value="virtual" {{ filters.mode == 'virtual' ? 'selected' }}>{{ 'Virtual only'|t }}</option>
+            <option value="in-person" {{ filters.mode == 'in-person' ? 'selected' }}>{{ 'In-person only'|t }}</option>
+          </select>
+        </div>
+        <div class="filter-bar__field">
+          <label for="filter-timeframe">{{ 'Timeframe'|t }}</label>
+          <select id="filter-timeframe" name="timeframe">
+            <option value="all" {{ filters.timeframe == 'all' ? 'selected' }}>{{ 'All scheduled events'|t }}</option>
+            <option value="upcoming" {{ filters.timeframe == 'upcoming' ? 'selected' }}>{{ 'Upcoming'|t }}</option>
+            <option value="past" {{ filters.timeframe == 'past' ? 'selected' }}>{{ 'Past'|t }}</option>
+          </select>
+        </div>
+      {% elseif mode == 'campaigns' %}
+        <div class="filter-bar__field">
+          <label for="filter-status">{{ 'Campaign status'|t }}</label>
+          <select id="filter-status" name="status">
+            <option value="">{{ 'All statuses'|t }}</option>
+            <option value="active" {{ filters.status == 'active' ? 'selected' }}>{{ 'Active'|t }}</option>
+            <option value="planned" {{ filters.status == 'planned' ? 'selected' }}>{{ 'Planned'|t }}</option>
+            <option value="closed" {{ filters.status == 'closed' ? 'selected' }}>{{ 'Closed'|t }}</option>
+          </select>
+        </div>
+      {% endif %}
+
+      <div class="filter-bar__actions">
+        <button type="submit" class="btn btn--primary">{{ 'Apply'|t }}</button>
+        <a class="btn btn--outline-dark" href="{{ route_path }}">{{ 'Clear'|t }}</a>
+      </div>
+    </div>
+  </form>
+{% endif %}
+
+{% if active_filters %}
+  <div class="active-filters" aria-label="{{ 'Active filters'|t }}">
+    {% for chip in active_filters %}
+      <span class="filter-chip">{{ chip }}</span>
+    {% endfor %}
+    <a class="link-chevron" href="{{ route_path }}">{{ 'Reset all'|t }}</a>
+  </div>
+{% endif %}
+
+<p class="results-summary" role="status" aria-live="polite">
+  {{ 'Showing @count published items.'|t({'@count': total}) }}
+</p>
+
+{% if items is empty %}
+  <div class="state-banner">
+    <p>{{ empty_message }}</p>
+    <p style="margin-top: 12px;"><a class="btn btn--outline-dark" href="{{ route_path }}">{{ 'Clear filters'|t }}</a></p>
+  </div>
+{% elseif mode == 'events' %}
+  <div class="search-results">
+    {% for item in items %}
+      <article class="search-result">
+        <div class="listing-card__meta">{{ item.meta }}</div>
+        <h2 class="listing-card__title"><a href="{{ item.url }}">{{ item.title }}</a></h2>
+        <p class="listing-card__body">{{ item.summary }}</p>
+        <p><strong>{{ 'Location:'|t }}</strong> {{ item.location }} &middot; <strong>{{ 'Accessibility:'|t }}</strong> {{ item.accessibility }}</p>
+      </article>
+    {% endfor %}
+  </div>
+{% else %}
+  <div class="listing-grid">
+    {% for item in items %}
+      <article class="listing-card">
+        {% if item.image %}
+          <div class="listing-card__media">
+            <img src="{{ item.image }}" alt="" width="360" height="300" loading="lazy" decoding="async">
+          </div>
+        {% endif %}
+        <div class="listing-card__meta">
+          {{ item.meta }}{% if item.reading_time %} &middot; {{ item.reading_time }} {{ 'min read'|t }}{% endif %}
+        </div>
+        <h2 class="listing-card__title"><a href="{{ item.url }}">{{ item.title }}</a></h2>
+        <p class="listing-card__body">{{ item.summary }}</p>
+        <div style="display:flex; flex-wrap:wrap; gap:14px; align-items:center;">
+          <a class="link-chevron" href="{{ item.url }}">{{ 'Read more'|t }}</a>
+          {% if item.donate_url %}
+            <a class="btn btn--primary" href="{{ item.donate_url }}">{{ 'Support demo campaign'|t }}</a>
+          {% endif %}
+        </div>
+      </article>
+    {% endfor %}
+  </div>
+{% endif %}
+
+{% if pages > 1 %}
+  <nav class="pagination" aria-label="{{ 'Pagination'|t }}">
+    {% for p in 0..(pages - 1) %}
+      {% set qs = filters|merge({'page': p}) %}
+      <a class="pagination__link"
+         href="{{ route_path }}?{{ qs|url_encode }}"
+         {% if p == page %}aria-current="page"{% endif %}>
+        {{ p + 1 }}
+      </a>
+    {% endfor %}
+  </nav>
+{% endif %}

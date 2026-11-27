@@ -1,0 +1,9 @@
+uuid: 36a13156-b96c-4edf-a999-d5e69a4d6b02
+langcode: en
+status: true
+dependencies: {  }
+name: Regions
+vid: regions
+description: null
+weight: 0
+new_revision: false

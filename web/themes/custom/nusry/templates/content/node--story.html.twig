@@ -1,0 +1,59 @@
+<article{{ attributes }}>
+  <header class="page-hero">
+    <div class="page-hero__meta">
+      <span class="demo-pill">{{ 'Fictional Demo'|t }}</span>
+      <span>{{ story_meta.kind }}</span>
+      {% if story_meta.date %}<span>| {{ story_meta.date }}</span>{% endif %}
+      <span>| {{ story_meta.reading_time }} {{ 'min read'|t }}</span>
+    </div>
+    <h1 class="page-hero__title">{{ label }}</h1>
+    {% if summary_text %}<p class="page-hero__lead prose-serif">{{ summary_text }}</p>{% endif %}
+    {% if story_meta.author %}<p class="page-hero__byline">{{ 'By'|t }} {{ story_meta.author }}</p>{% endif %}
+  </header>
+
+  {% if hero_media %}
+    <figure class="editorial-figure">
+      <img src="{{ hero_media.url }}" alt="{{ hero_media.alt }}" loading="eager">
+      <figcaption class="editorial-figure__caption">
+        {{ hero_media.caption ?: 'Illustrative photograph (synthetic demo placeholder).'|t }}
+        {% if hero_media.credit %} &middot; {{ hero_media.credit }}{% endif %}
+      </figcaption>
+    </figure>
+  {% endif %}
+
+  <div class="prose-column prose-serif">
+    {{ content.field_body }}
+  </div>
+
+  {{ content.field_components }}
+
+  <div class="share-bar" aria-label="{{ 'Share options'|t }}">
+    <span class="share-bar__label">{{ 'Share (no tracking):'|t }}</span>
+    <button type="button" class="btn btn--outline-dark" data-copy-link>{{ 'Copy article link'|t }}</button>
+    <a class="btn btn--outline-dark" href="mailto:?subject={{ label|render|striptags|url_encode }}">{{ 'Email link'|t }}</a>
+    <span class="sr-status" data-copy-status role="status" aria-live="polite"></span>
+  </div>
+
+  {% if related_stories %}
+    <section class="p-block" aria-labelledby="related-heading">
+      <h2 id="related-heading" class="p-block__heading">{{ 'Related published stories'|t }}</h2>
+      <div class="listing-grid">
+        {% for rel in related_stories %}
+          <article class="listing-card">
+            <h3 class="listing-card__title"><a href="{{ rel.url }}">{{ rel.title }}</a></h3>
+            <p class="listing-card__body">{{ rel.summary }}</p>
+            <a class="link-chevron" href="{{ rel.url }}">{{ 'Read story'|t }}</a>
+          </article>
+        {% endfor %}
+      </div>
+    </section>
+  {% endif %}
+
+  <aside class="donate-prompt">
+    <div>
+      <h2 class="donate-prompt__title">{{ 'Explore our simulated donation flow'|t }}</h2>
+      <p>{{ 'Fictional demonstration only — no real donations are collected.'|t }}</p>
+    </div>
+    <a class="btn btn--primary" href="/donate">{{ 'Try a demo donation'|t }}</a>
+  </aside>
+</article>

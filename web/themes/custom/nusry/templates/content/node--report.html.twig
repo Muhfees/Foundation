@@ -1,0 +1,34 @@
+<article{{ attributes }}>
+  <header class="page-hero">
+    <div class="page-hero__meta">
+      <span class="demo-pill">{{ 'Sample Report'|t }}</span>
+      <span>{{ report_meta.category }}</span>
+      <span>| {{ report_meta.period }}</span>
+      {% if report_meta.date %}<span>| {{ report_meta.date }}</span>{% endif %}
+    </div>
+    <h1 class="page-hero__title">{{ label }}</h1>
+    {% if summary_text %}<p class="page-hero__lead prose-serif">{{ summary_text }}</p>{% endif %}
+  </header>
+
+  <section class="p-block" aria-labelledby="report-summary-heading">
+    <h2 id="report-summary-heading" class="p-block__heading">{{ 'Accessible HTML summary'|t }}</h2>
+    <div class="prose-column prose-serif">
+      {{ content.field_accessible_text }}
+    </div>
+  </section>
+
+  {% if report_meta.document %}
+    <section class="p-block" aria-labelledby="report-download-heading">
+      <h2 id="report-download-heading" class="p-block__heading">{{ 'Document download'|t }}</h2>
+      <div class="download-item">
+        <div>
+          <strong>{{ report_meta.document.name }}</strong>
+          <div style="font-size:0.875rem; color:var(--color-ink-muted);">{{ report_meta.document.size }} &middot; {{ report_meta.document.accessible_text }}</div>
+        </div>
+        <a class="btn btn--primary" href="{{ report_meta.document.url }}" download>{{ 'Download PDF'|t }}</a>
+      </div>
+    </section>
+  {% endif %}
+
+  {{ content.field_components }}
+</article>

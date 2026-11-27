@@ -1,0 +1,22 @@
+uuid: c78f53b8-9706-4db0-9b2d-85a1f9a2682b
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - nusry
+_core:
+  default_config_hash: RykxrDRLZ3J3sHbwZTwcTubrQN5a-VwKbQbNjLfeDx4
+id: nusry_messages
+theme: nusry
+region: highlighted
+weight: 0
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: Messages
+  label_display: '0'
+  provider: system
+visibility: {  }

@@ -1,0 +1,10 @@
+uuid: 4717daf4-d2db-4818-9ca4-9f74c668c6df
+langcode: en
+status: true
+dependencies: {  }
+id: donation
+label: Donation
+icon_uuid: null
+icon_default: null
+description: null
+behavior_plugins: {  }

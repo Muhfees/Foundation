@@ -1,0 +1,26 @@
+uuid: bac4458a-c56a-4223-9d41-f28f36618637
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_items
+    - paragraphs.paragraphs_type.timeline
+    - paragraphs.paragraphs_type.timeline_item
+  module:
+    - entity_reference_revisions
+id: paragraph.timeline.field_items
+field_name: field_items
+entity_type: paragraph
+bundle: timeline
+label: Items
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      timeline_item: timeline_item
+field_type: entity_reference_revisions

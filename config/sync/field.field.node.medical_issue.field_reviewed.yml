@@ -1,0 +1,21 @@
+uuid: 6b23adf2-fb7b-42d3-b8b8-4ea4b570a074
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_reviewed
+    - node.type.medical_issue
+  module:
+    - datetime
+id: node.medical_issue.field_reviewed
+field_name: field_reviewed
+entity_type: node
+bundle: medical_issue
+label: 'Information reviewed'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

@@ -1,0 +1,24 @@
+uuid: e810bdb0-a54c-4831-8649-885dea1870ac
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_hero
+    - media.type.image
+    - node.type.medical_issue
+id: node.medical_issue.field_hero
+field_name: field_hero
+entity_type: node
+bundle: medical_issue
+label: 'Hero image'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+field_type: entity_reference

@@ -1,0 +1,19 @@
+uuid: 02257e2e-a3d0-47cb-bc7f-93c09fb3f799
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_summary
+    - node.type.report
+id: node.report.field_summary
+field_name: field_summary
+entity_type: node
+bundle: report
+label: Summary
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

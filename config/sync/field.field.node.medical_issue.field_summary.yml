@@ -1,0 +1,19 @@
+uuid: e25b03ad-efe7-4621-8a2b-118eed434f02
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_summary
+    - node.type.medical_issue
+id: node.medical_issue.field_summary
+field_name: field_summary
+entity_type: node
+bundle: medical_issue
+label: Summary
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

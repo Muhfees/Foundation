@@ -1,0 +1,129 @@
+name: Validate Drupal demo
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    services:
+      database:
+        image: mariadb:10.11
+        env:
+          MARIADB_ROOT_PASSWORD: ci-root-only
+          MARIADB_DATABASE: nusry
+          MARIADB_USER: nusry
+          MARIADB_PASSWORD: ci-database-only
+        ports: ['3306:3306']
+        options: >-
+          --health-cmd="healthcheck.sh --connect --innodb_initialized"
+          --health-interval=10s --health-timeout=5s --health-retries=10
+      redis:
+        image: redis:7.4-alpine
+        ports: ['6379:6379']
+        options: >-
+          --health-cmd="redis-cli ping"
+          --health-interval=5s --health-timeout=3s --health-retries=10
+    env:
+      NUSRY_ENV: ci
+      NUSRY_DB_HOST: 127.0.0.1
+      NUSRY_DB_NAME: nusry
+      NUSRY_DB_USER: nusry
+      NUSRY_DB_PASSWORD: ci-database-only
+      NUSRY_REDIS_HOST: 127.0.0.1
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: gd, intl, mbstring, pdo_mysql, pdo_sqlite, redis, zip
+          tools: composer:v2
+          coverage: none
+      - name: Install and audit PHP dependencies
+        run: |
+          composer validate --strict
+          composer install --no-interaction --prefer-dist --no-progress
+          composer audit
+      - name: Build and check theme
+        run: |
+          npm ci
+          npm audit --audit-level=high
+          npm run lint
+          npm test
+          npm run build
+          npm run check:assets
+          vendor/bin/phpcs
+          php -l scripts/install.php
+          php -l scripts/configure-editorial.php
+          php -l scripts/configure-search.php
+          php -l scripts/verify-editorial-schema.php
+          php -l scripts/seed-demo.php
+          php -l scripts/verify-demo-seed.php
+          php -l web/sites/default/settings.php
+      - name: Install from exported configuration and check safe rerun
+        run: |
+          php scripts/install.php
+          php scripts/install.php
+          vendor/bin/drush status --fields=drupal-version,bootstrap,db-status
+          vendor/bin/drush php:script scripts/verify-config.php
+          vendor/bin/drush php:script scripts/verify-editorial-schema.php
+      - name: Seed synthetic demo content, index search and run PHPUnit suite
+        run: |
+          vendor/bin/drush php:script scripts/seed-demo.php
+          vendor/bin/drush php:script scripts/seed-demo.php
+          vendor/bin/drush search-api:index
+          vendor/bin/drush php:script scripts/verify-demo-seed.php
+          vendor/bin/phpunit
+      - name: Enable and verify Redis
+        env:
+          NUSRY_REDIS_ENABLED: '1'
+        run: |
+          vendor/bin/drush cache:rebuild
+          vendor/bin/drush php:script scripts/verify-redis.php
+      - name: Browser and accessibility checks
+        env:
+          NUSRY_REDIS_ENABLED: '1'
+        run: |
+          npx playwright install --with-deps chromium
+          php -S 127.0.0.1:8765 -t "$PWD/web" "$PWD/web/.ht.router.php" > .local/server.log 2>&1 &
+          for attempt in $(seq 1 30); do
+            if curl --fail --silent http://127.0.0.1:8765/ > /dev/null; then break; fi
+            sleep 1
+          done
+          npm run test:e2e
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: browser-evidence
+          path: |
+            docs/screenshots/phase-*.png
+            playwright-report/
+            test-results/
+      - uses: actions/upload-artifact@v4
+        with:
+          name: built-theme
+          path: web/themes/custom/nusry/dist/
+          include-hidden-files: true
+
+  ddev-setup:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ddev/github-action-setup-ddev@v1
+        with:
+          autostart: false
+      - name: Exercise documented one-command setup
+        run: |
+          ddev setup
+          ddev exec php scripts/install.php
+          ddev drush php:script scripts/verify-redis.php
+          ddev drush php:script scripts/verify-config.php
+          curl --fail --silent https://nusry-foundation.ddev.site/ | grep 'Care begins with showing up'

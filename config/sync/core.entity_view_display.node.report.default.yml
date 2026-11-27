@@ -1,0 +1,98 @@
+uuid: ae9ca082-16b6-492f-be69-57697cf69c93
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.report.field_accessible_text
+    - field.field.node.report.field_category
+    - field.field.node.report.field_components
+    - field.field.node.report.field_date
+    - field.field.node.report.field_demo
+    - field.field.node.report.field_document
+    - field.field.node.report.field_metatags
+    - field.field.node.report.field_period
+    - field.field.node.report.field_social_image
+    - field.field.node.report.field_summary
+    - node.type.report
+  module:
+    - datetime
+    - entity_reference_revisions
+    - text
+    - user
+id: node.report.default
+targetEntityType: node
+bundle: report
+mode: default
+content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
+  field_accessible_text:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 12
+    region: content
+  field_category:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 12
+    region: content
+  field_components:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 12
+    region: content
+  field_date:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 12
+    region: content
+  field_document:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 12
+    region: content
+  field_period:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 12
+    region: content
+  field_summary:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 12
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_demo: true
+  field_metatags: true
+  field_social_image: true
+  langcode: true

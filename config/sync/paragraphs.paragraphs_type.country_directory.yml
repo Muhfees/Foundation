@@ -1,0 +1,10 @@
+uuid: 3f39e9c0-a546-4da5-abe7-ddb2208f72b2
+langcode: en
+status: true
+dependencies: {  }
+id: country_directory
+label: 'Country Directory'
+icon_uuid: null
+icon_default: null
+description: null
+behavior_plugins: {  }

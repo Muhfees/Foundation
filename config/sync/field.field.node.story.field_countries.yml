@@ -1,0 +1,24 @@
+uuid: 2ef777d1-8491-497b-b0bd-4469070bad57
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_countries
+    - node.type.country
+    - node.type.story
+id: node.story.field_countries
+field_name: field_countries
+entity_type: node
+bundle: story
+label: Countries
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      country: country
+field_type: entity_reference

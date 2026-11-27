@@ -1,0 +1,24 @@
+uuid: f187ddaf-22ee-4a63-982c-a35384781cf8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_documents
+    - media.type.document
+    - paragraphs.paragraphs_type.downloads
+id: paragraph.downloads.field_documents
+field_name: field_documents
+entity_type: paragraph
+bundle: downloads
+label: Documents
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      document: document
+field_type: entity_reference

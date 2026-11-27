@@ -1,0 +1,34 @@
+<article{{ attributes }}>
+  <header class="page-hero">
+    <div class="page-hero__meta">
+      <span class="demo-pill">{{ 'Demo Campaign'|t }}</span>
+      <span>{{ campaign_meta.status }}</span>
+      <span>| {{ campaign_meta.id }}</span>
+    </div>
+    <h1 class="page-hero__title">{{ label }}</h1>
+    {% if summary_text %}<p class="page-hero__lead prose-serif">{{ summary_text }}</p>{% endif %}
+  </header>
+
+  {% if hero_media %}
+    <figure class="editorial-figure">
+      <img src="{{ hero_media.url }}" alt="{{ hero_media.alt }}" loading="eager">
+      <figcaption class="editorial-figure__caption">{{ hero_media.caption ?: 'Illustrative graphic (demo).'|t }}{% if hero_media.credit %} &middot; {{ hero_media.credit }}{% endif %}</figcaption>
+    </figure>
+  {% endif %}
+
+  {% if campaign_meta.presets %}
+    <section class="donate-panel" style="border:1px solid var(--color-border); max-width:520px; margin-bottom:36px;" aria-labelledby="camp-donate-title">
+      <h2 id="camp-donate-title" class="donate-panel__title">{{ 'Choose a simulated amount'|t }}</h2>
+      <div class="donate-panel__presets">
+        {% for preset in campaign_meta.presets %}
+          <a class="btn btn--primary donate-panel__preset" href="/donate?campaign={{ campaign_meta.id|url_encode }}&amp;amount={{ preset.minor }}&amp;frequency={{ campaign_meta.frequency|url_encode }}">{{ preset.label }}</a>
+        {% endfor %}
+      </div>
+      {% if campaign_meta.matching %}
+        <p class="donate-panel__disclaimer">{{ campaign_meta.matching }}</p>
+      {% endif %}
+    </section>
+  {% endif %}
+
+  {{ content.field_components }}
+</article>

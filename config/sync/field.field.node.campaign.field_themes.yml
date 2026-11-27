@@ -1,0 +1,24 @@
+uuid: 327c3594-8fa3-4d3b-a8ae-d9f6c08782b9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_themes
+    - node.type.campaign
+    - taxonomy.vocabulary.campaign_themes
+id: node.campaign.field_themes
+field_name: field_themes
+entity_type: node
+bundle: campaign
+label: 'Campaign themes'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      campaign_themes: campaign_themes
+field_type: entity_reference

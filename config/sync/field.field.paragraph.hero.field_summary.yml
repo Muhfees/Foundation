@@ -1,0 +1,19 @@
+uuid: 97d4cfe7-70f9-430d-bb00-59471e851e02
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_summary
+    - paragraphs.paragraphs_type.hero
+id: paragraph.hero.field_summary
+field_name: field_summary
+entity_type: paragraph
+bundle: hero
+label: Summary
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

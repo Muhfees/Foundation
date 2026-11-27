@@ -1,0 +1,14 @@
+name: Nusry Foundation
+type: theme
+description: 'Original theme for the fictional Nusry Foundation demo.'
+core_version_requirement: ^11
+base theme: false
+libraries:
+  - nusry/global
+regions:
+  header: Header
+  primary_menu: Primary navigation
+  breadcrumb: Breadcrumbs
+  highlighted: Status messages
+  content: Content
+  footer: Footer

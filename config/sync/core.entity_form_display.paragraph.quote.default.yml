@@ -1,0 +1,41 @@
+uuid: 9c060c02-178b-4a59-b147-9e28747e0d19
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.quote.field_attribution
+    - field.field.paragraph.quote.field_quote
+    - field.field.paragraph.quote.field_source
+    - paragraphs.paragraphs_type.quote
+id: paragraph.quote.default
+targetEntityType: paragraph
+bundle: quote
+mode: default
+content:
+  field_attribution:
+    type: string_textfield
+    weight: 3
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_quote:
+    type: string_textarea
+    weight: 3
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_source:
+    type: string_textarea
+    weight: 3
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

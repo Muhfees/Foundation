@@ -1,0 +1,24 @@
+uuid: afb89765-3c73-444b-ad17-afa81912cb90
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_categories
+    - node.type.story
+    - taxonomy.vocabulary.story_categories
+id: node.story.field_categories
+field_name: field_categories
+entity_type: node
+bundle: story
+label: 'Story categories'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      story_categories: story_categories
+field_type: entity_reference

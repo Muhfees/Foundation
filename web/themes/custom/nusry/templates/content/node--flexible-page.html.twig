@@ -1,0 +1,56 @@
+<article{{ attributes }}>
+  {% if not has_hero_component %}
+    <header class="page-hero">
+      <div class="page-hero__meta">
+        <span class="demo-pill">{{ 'Fictional Demo'|t }}</span>
+        <span>{{ 'Nusry Foundation Demonstration'|t }}</span>
+      </div>
+      <h1 class="page-hero__title">{{ label }}</h1>
+      {% if summary_text %}<p class="page-hero__lead prose-serif">{{ summary_text }}</p>{% endif %}
+    </header>
+  {% endif %}
+
+  {{ content.field_components }}
+
+  {% if fund_allocation %}
+    <section class="p-block" aria-labelledby="allocation-heading">
+      <h2 id="allocation-heading" class="p-block__heading">{{ 'Illustrative fund allocation (@period)'|t({'@period': fund_allocation.period}) }}</h2>
+      <p class="prose-serif">{{ 'Source:'|t }} {{ fund_allocation.source_label }}. {{ 'Percentages sum to 100% and represent synthetic demonstration data only.'|t }}</p>
+      <table class="data-table">
+        <caption class="visually-hidden">{{ 'Illustrative demo fund allocation breakdown'|t }}</caption>
+        <thead>
+          <tr>
+            <th scope="col">{{ 'Category'|t }}</th>
+            <th scope="col">{{ 'Share (%)'|t }}</th>
+            <th scope="col">{{ 'Visual bar'|t }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{ 'Programmes (Demo)'|t }}</td>
+            <td>{{ fund_allocation.programmes_percent }}%</td>
+            <td><div class="funds-metric__bar" style="max-width:240px;" aria-hidden="true"><div class="funds-metric__fill" style="width:{{ fund_allocation.programmes_percent }}%;"></div></div></td>
+          </tr>
+          <tr>
+            <td>{{ 'Fundraising (Demo)'|t }}</td>
+            <td>{{ fund_allocation.fundraising_percent }}%</td>
+            <td><div class="funds-metric__bar" style="max-width:240px;" aria-hidden="true"><div class="funds-metric__fill" style="width:{{ fund_allocation.fundraising_percent }}%;"></div></div></td>
+          </tr>
+          <tr>
+            <td>{{ 'Management & Administration (Demo)'|t }}</td>
+            <td>{{ fund_allocation.administration_percent }}%</td>
+            <td><div class="funds-metric__bar" style="max-width:240px;" aria-hidden="true"><div class="funds-metric__fill" style="width:{{ fund_allocation.administration_percent }}%;"></div></div></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  {% endif %}
+
+  <aside class="donate-prompt">
+    <div>
+      <h2 class="donate-prompt__title">{{ 'Support demo humanitarian concepts'|t }}</h2>
+      <p>{{ 'This demonstration is not a registered charity and does not collect real funds.'|t }}</p>
+    </div>
+    <a class="btn btn--primary" href="/donate">{{ 'Try a demo donation'|t }}</a>
+  </aside>
+</article>

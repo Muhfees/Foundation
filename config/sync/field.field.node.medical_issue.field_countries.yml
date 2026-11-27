@@ -1,0 +1,24 @@
+uuid: e48d6259-4b8b-4e1b-b514-a62568d8feb4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_countries
+    - node.type.country
+    - node.type.medical_issue
+id: node.medical_issue.field_countries
+field_name: field_countries
+entity_type: node
+bundle: medical_issue
+label: Countries
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      country: country
+field_type: entity_reference

@@ -1,0 +1,336 @@
+<?php
+
+/**
+ * @file
+ * Asset integration and layout preprocessing for the Nusry Foundation theme.
+ */
+
+use Drupal\Core\Menu\MenuTreeParameters;
+use Drupal\file\FileInterface;
+use Drupal\media\MediaInterface;
+use Drupal\node\NodeInterface;
+
+/**
+ * Implements hook_library_info_alter().
+ */
+function nusry_library_info_alter(array &$libraries, string $extension): void {
+  if ($extension !== 'nusry') {
+    return;
+  }
+  $manifest_path = __DIR__ . '/dist/.vite/manifest.json';
+  if (!is_file($manifest_path)) {
+    throw new \RuntimeException('Theme assets are missing. Run npm run build.');
+  }
+  $manifest = json_decode(file_get_contents($manifest_path), TRUE, 512, JSON_THROW_ON_ERROR);
+  $entry = $manifest['src/main.js'];
+  $library = ['version' => hash_file('sha256', $manifest_path)];
+  $library['js']['dist/' . $entry['file']] = [
+    'attributes' => ['type' => 'module'],
+    'preprocess' => FALSE,
+  ];
+  foreach ($entry['css'] ?? [] as $css) {
+    $library['css']['theme']['dist/' . $css] = ['preprocess' => FALSE];
+  }
+  $libraries['global'] = $library;
+}
+
+/**
+ * Implements hook_preprocess_page().
+ */
+function nusry_preprocess_page(array &$variables): void {
+  /** @var \Drupal\nusry_core\Service\EditorialSettings $settings */
+  $settings = \Drupal::service('nusry_core.editorial_settings');
+  $variables['urgent_alert'] = $settings->getActiveUrgentAlert();
+  $variables['fund_allocation'] = $settings->getFundAllocation();
+  $variables['social_links'] = $settings->getSocialLinks();
+  $variables['theme_base'] = '/' . \Drupal::service('extension.list.theme')->getPath('nusry');
+
+  $menuTree = \Drupal::menuTree();
+  $params = (new MenuTreeParameters())->setMaxDepth(2)->onlyEnabledLinks();
+  $tree = $menuTree->load('main', $params);
+  $manipulators = [
+    ['callable' => 'menu.default_tree_manipulators:checkAccess'],
+    ['callable' => 'menu.default_tree_manipulators:generateIndexAndSort'],
+  ];
+  $tree = $menuTree->transform($tree, $manipulators);
+
+  $mainNav = [];
+  foreach ($tree as $element) {
+    $link = $element->link;
+    $children = [];
+    foreach ($element->subtree as $subElement) {
+      $subLink = $subElement->link;
+      $children[] = [
+        'title' => $subLink->getTitle(),
+        'description' => $subLink->getDescription(),
+        'url' => $subLink->getUrlObject()->toString(),
+      ];
+    }
+    $mainNav[] = [
+      'id' => preg_replace('/[^a-z0-9]+/', '-', strtolower($link->getTitle())),
+      'title' => $link->getTitle(),
+      'url' => $link->getUrlObject()->toString(),
+      'children' => $children,
+    ];
+  }
+  $variables['main_nav'] = $mainNav;
+  $variables['#cache']['tags'][] = 'config:system.menu.main';
+  $variables['#cache']['tags'][] = 'config:nusry_core.settings';
+}
+
+/**
+ * Implements hook_preprocess_block().
+ */
+function nusry_preprocess_block(array &$variables): void {
+  if (($variables['plugin_id'] ?? '') === 'page_title_block') {
+    $routeMatch = \Drupal::routeMatch();
+    if ($routeMatch->getRouteName() === 'entity.node.canonical') {
+      $variables['content'] = [];
+    }
+  }
+}
+
+/**
+ * Resolves a media image entity into URL, alt, credit and caption.
+ */
+function _nusry_extract_image_data(?MediaInterface $media): ?array {
+  if ($media === NULL || $media->bundle() !== 'image' || !$media->hasField('field_media_image') || $media->get('field_media_image')->isEmpty()) {
+    return NULL;
+  }
+  $item = $media->get('field_media_image')->first();
+  $file = $item?->entity;
+  if (!$file instanceof FileInterface) {
+    return NULL;
+  }
+  $url = \Drupal::service('file_url_generator')->generateString($file->getFileUri());
+  $decorative = $media->hasField('field_decorative') && (bool) $media->get('field_decorative')->value;
+  return [
+    'url' => $url,
+    'alt' => $decorative ? '' : (string) ($item->alt ?? ''),
+    'credit' => (string) ($media->get('field_credit')->value ?? ''),
+    'caption' => $media->hasField('field_caption') ? (string) ($media->get('field_caption')->value ?? '') : '',
+    'sensitive' => $media->hasField('field_sensitive') && (bool) $media->get('field_sensitive')->value,
+  ];
+}
+
+/**
+ * Resolves a media document entity into URL, size and accessible text.
+ */
+function _nusry_extract_document_data(?MediaInterface $media): ?array {
+  if ($media === NULL || $media->bundle() !== 'document' || !$media->hasField('field_media_document') || $media->get('field_media_document')->isEmpty()) {
+    return NULL;
+  }
+  $file = $media->get('field_media_document')->entity;
+  if (!$file instanceof FileInterface) {
+    return NULL;
+  }
+  $sizeKb = max(1, (int) ceil((int) $file->getSize() / 1024));
+  return [
+    'name' => $media->label(),
+    'url' => \Drupal::service('file_url_generator')->generateString($file->getFileUri()),
+    'size' => $sizeKb . ' KB PDF',
+    'accessible_text' => (string) ($media->get('field_accessible_text')->value ?? ''),
+  ];
+}
+
+/**
+ * Implements hook_preprocess_node().
+ */
+function nusry_preprocess_node(array &$variables): void {
+  $node = $variables['node'] ?? NULL;
+  if (!$node instanceof NodeInterface) {
+    return;
+  }
+  $bundle = $node->bundle();
+  $variables['summary_text'] = $node->hasField('field_summary') ? (string) $node->get('field_summary')->value : '';
+  $variables['hero_media'] = $node->hasField('field_hero') ? _nusry_extract_image_data($node->get('field_hero')->entity) : NULL;
+
+  if ($bundle === 'story') {
+    $ts = strtotime((string) ($node->get('field_date')->value ?? ''));
+    $variables['story_meta'] = [
+      'kind' => strtoupper((string) ($node->get('field_story_kind')->value ?: 'story')),
+      'date' => $ts !== FALSE ? strtoupper(date('M j, Y', $ts)) : '',
+      'author' => (string) ($node->get('field_author')->value ?? ''),
+      'reading_time' => max(1, (int) ($node->get('field_reading_time')->value ?: 1)),
+    ];
+    $related = [];
+    if ($node->hasField('field_related') && !$node->get('field_related')->isEmpty()) {
+      foreach ($node->get('field_related')->referencedEntities() as $rel) {
+        if ($rel instanceof NodeInterface && $rel->isPublished() && $rel->access('view')) {
+          $related[(int) $rel->id()] = [
+            'title' => $rel->label(),
+            'url' => $rel->toUrl()->toString(),
+            'summary' => (string) ($rel->get('field_summary')->value ?? ''),
+          ];
+        }
+      }
+    }
+    if (count($related) < 3) {
+      $exclude = array_merge([(int) $node->id()], array_keys($related));
+      foreach (\Drupal::service('nusry_core.story_selector')->getPublishedStories(3 - count($related), $exclude) as $extra) {
+        $related[(int) $extra->id()] = [
+          'title' => $extra->label(),
+          'url' => $extra->toUrl()->toString(),
+          'summary' => (string) ($extra->get('field_summary')->value ?? ''),
+        ];
+      }
+    }
+    $variables['related_stories'] = array_slice(array_values($related), 0, 3);
+  }
+  elseif ($bundle === 'country') {
+    $region = $node->get('field_region')->entity;
+    $variables['country_meta'] = [
+      'iso' => (string) ($node->get('field_iso_code')->value ?? ''),
+      'region' => $region ? $region->label() : '',
+      'facts' => (string) ($node->get('field_facts')->value ?? ''),
+    ];
+    $storage = \Drupal::entityTypeManager()->getStorage('node');
+    $nids = $storage->getQuery()
+      ->accessCheck(TRUE)
+      ->condition('type', 'story')
+      ->condition('status', NodeInterface::PUBLISHED)
+      ->condition('field_countries', $node->id())
+      ->sort('field_date', 'DESC')
+      ->range(0, 3)
+      ->execute();
+    $variables['country_stories'] = array_map(
+      static fn(NodeInterface $s) => ['title' => $s->label(), 'url' => $s->toUrl()->toString()],
+      $storage->loadMultiple($nids)
+    );
+  }
+  elseif ($bundle === 'medical_issue') {
+    $ts = strtotime((string) ($node->get('field_reviewed')->value ?? ''));
+    $variables['reviewed_date'] = $ts !== FALSE ? date('M j, Y', $ts) : '';
+    $countries = [];
+    foreach ($node->get('field_countries')->referencedEntities() as $country) {
+      if ($country instanceof NodeInterface && $country->isPublished() && $country->access('view')) {
+        $countries[] = ['title' => $country->label(), 'url' => $country->toUrl()->toString()];
+      }
+    }
+    $variables['issue_countries'] = $countries;
+  }
+  elseif ($bundle === 'event') {
+    $startTs = strtotime((string) ($node->get('field_start')->value ?? ''));
+    $endTs = strtotime((string) ($node->get('field_end')->value ?? ''));
+    $format = $node->get('field_format')->entity;
+    $virtual = $node->get('field_virtual_url')->first();
+    $booking = $node->get('field_booking')->first();
+    $campaign = $node->get('field_campaign')->entity;
+    $variables['event_meta'] = [
+      'format' => $format ? $format->label() : 'Event',
+      'start' => $startTs !== FALSE ? date('M j, Y H:i', $startTs) : '',
+      'end' => $endTs !== FALSE ? date('H:i', $endTs) : '',
+      'timezone' => (string) ($node->get('field_timezone')->value ?: 'UTC'),
+      'venue' => (string) ($node->get('field_venue')->value ?? ''),
+      'virtual_url' => $virtual ? $virtual->uri : '',
+      'virtual_title' => $virtual ? ($virtual->title ?: 'Join virtual stream') : '',
+      'accessibility' => (string) ($node->get('field_accessibility')->value ?? ''),
+      'booking_url' => $booking ? $booking->uri : '',
+      'booking_title' => $booking ? ($booking->title ?: 'Register (demo)') : '',
+      'campaign_title' => $campaign instanceof NodeInterface ? $campaign->label() : '',
+      'campaign_url' => $campaign instanceof NodeInterface ? $campaign->toUrl()->toString() : '',
+    ];
+  }
+  elseif ($bundle === 'campaign') {
+    $presets = [];
+    foreach ($node->get('field_amounts')->getValue() as $item) {
+      $minor = (int) $item['value'];
+      $presets[] = ['minor' => $minor, 'label' => '$' . number_format($minor / 100)];
+    }
+    $variables['campaign_meta'] = [
+      'id' => (string) ($node->get('field_campaign_id')->value ?? ''),
+      'status' => strtoupper((string) ($node->get('field_campaign_status')->value ?: 'active')),
+      'frequency' => (string) ($node->get('field_frequency')->value ?: 'monthly'),
+      'matching' => (string) ($node->get('field_matching')->value ?? ''),
+      'presets' => $presets,
+    ];
+  }
+  elseif ($bundle === 'report') {
+    $ts = strtotime((string) ($node->get('field_date')->value ?? ''));
+    $category = $node->get('field_category')->entity;
+    $variables['report_meta'] = [
+      'period' => (string) ($node->get('field_period')->value ?? ''),
+      'category' => $category ? $category->label() : 'Report',
+      'date' => $ts !== FALSE ? date('M j, Y', $ts) : '',
+      'document' => _nusry_extract_document_data($node->get('field_document')->entity),
+    ];
+  }
+  elseif ($bundle === 'flexible_page') {
+    $hasHero = FALSE;
+    foreach ($node->get('field_components')->referencedEntities() as $paragraph) {
+      if ($paragraph->bundle() === 'hero') {
+        $hasHero = TRUE;
+        break;
+      }
+    }
+    $variables['has_hero_component'] = $hasHero;
+    $alias = \Drupal::service('path_alias.manager')->getAliasByPath('/node/' . $node->id());
+    if ($alias === '/finances-and-accountability') {
+      $variables['fund_allocation'] = \Drupal::service('nusry_core.editorial_settings')->getFundAllocation();
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_paragraph().
+ */
+function nusry_preprocess_paragraph(array &$variables): void {
+  $paragraph = $variables['paragraph'] ?? NULL;
+  if (!$paragraph) {
+    return;
+  }
+  $bundle = $paragraph->bundle();
+  $variables['p_bundle'] = $bundle;
+
+  if ($paragraph->hasField('field_media') && !$paragraph->get('field_media')->isEmpty()) {
+    $variables['p_image'] = _nusry_extract_image_data($paragraph->get('field_media')->entity);
+  }
+  if ($bundle === 'downloads' && $paragraph->hasField('field_documents')) {
+    $docs = [];
+    foreach ($paragraph->get('field_documents')->referencedEntities() as $docMedia) {
+      if ($doc = _nusry_extract_document_data($docMedia)) {
+        $docs[] = $doc;
+      }
+    }
+    $variables['p_documents'] = $docs;
+  }
+  elseif ($bundle === 'country_directory') {
+    $storage = \Drupal::entityTypeManager()->getStorage('node');
+    $nids = $storage->getQuery()
+      ->accessCheck(TRUE)
+      ->condition('type', 'country')
+      ->condition('status', NodeInterface::PUBLISHED)
+      ->sort('title', 'ASC')
+      ->execute();
+    $countries = [];
+    $regions = [];
+    foreach ($storage->loadMultiple($nids) as $country) {
+      $region = $country->get('field_region')->entity;
+      $regionName = $region ? $region->label() : 'Other';
+      $regions[$regionName] = $regionName;
+      $countries[] = [
+        'title' => $country->label(),
+        'url' => $country->toUrl()->toString(),
+        'iso' => (string) ($country->get('field_iso_code')->value ?? ''),
+        'region' => $regionName,
+        'summary' => (string) ($country->get('field_summary')->value ?? ''),
+      ];
+    }
+    asort($regions);
+    $variables['p_countries'] = $countries;
+    $variables['p_regions'] = $regions;
+  }
+  elseif ($bundle === 'card_grid' && $paragraph->hasField('field_content')) {
+    $cards = [];
+    foreach ($paragraph->get('field_content')->referencedEntities() as $item) {
+      if ($item instanceof NodeInterface && $item->isPublished() && $item->access('view')) {
+        $cards[] = [
+          'title' => $item->label(),
+          'url' => $item->toUrl()->toString(),
+          'summary' => (string) ($item->get('field_summary')->value ?? ''),
+        ];
+      }
+    }
+    $variables['p_cards'] = $cards;
+  }
+}

@@ -1,0 +1,63 @@
+uuid: 3b929ff3-db0e-4bd9-b641-245a615c036e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.newsletter.field_consent_text
+    - field.field.paragraph.newsletter.field_consent_version
+    - field.field.paragraph.newsletter.field_heading
+    - field.field.paragraph.newsletter.field_link
+    - field.field.paragraph.newsletter.field_summary
+    - paragraphs.paragraphs_type.newsletter
+  module:
+    - link
+id: paragraph.newsletter.default
+targetEntityType: paragraph
+bundle: newsletter
+mode: default
+content:
+  field_consent_text:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_consent_version:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_heading:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_link:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_summary:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+hidden: {  }

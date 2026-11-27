@@ -1,0 +1,104 @@
+<?php
+
+/**
+ * @file
+ * Demo identity, editorial validation, theme hooks and reading time.
+ */
+
+use Drupal\node\NodeInterface;
+
+/**
+ * Implements hook_theme().
+ */
+function nusry_core_theme(): array {
+  return [
+    'nusry_homepage' => [
+      'variables' => [
+        'theme_base' => '',
+        'hero' => [],
+        'campaign' => [],
+        'facts' => [],
+        'allocation' => [],
+        'featured_story' => [],
+        'supporting_stories' => [],
+        'social_links' => [],
+        'principles' => [],
+      ],
+    ],
+    'nusry_listing' => [
+      'variables' => [
+        'intro' => '',
+        'route_path' => '',
+        'mode' => '',
+        'filters' => [],
+        'options' => [],
+        'active_filters' => [],
+        'total' => 0,
+        'items' => [],
+        'page' => 0,
+        'pages' => 0,
+        'empty_message' => '',
+      ],
+    ],
+    'nusry_search' => [
+      'variables' => [
+        'query' => '',
+        'filters' => [],
+        'options' => [],
+        'active_filters' => [],
+        'status' => 'ok',
+        'error' => '',
+        'total' => 0,
+        'items' => [],
+        'page' => 0,
+        'pages' => 0,
+      ],
+    ],
+    'nusry_not_found' => [
+      'variables' => [],
+    ],
+    'nusry_styleguide' => [
+      'variables' => [
+        'theme_base' => '',
+        'facts' => [],
+        'allocation' => [],
+      ],
+    ],
+  ];
+}
+
+/**
+ * Implements hook_page_attachments().
+ */
+function nusry_core_page_attachments(array &$attachments): void {
+  $attachments['#attached']['html_head'][] = [
+    ['#tag' => 'meta', '#attributes' => ['name' => 'robots', 'content' => 'noindex, nofollow']],
+    'nusry_demo_robots',
+  ];
+  $attachments['#attached']['http_header'][] = ['X-Robots-Tag', 'noindex, nofollow', TRUE];
+  $attachments['#cache']['tags'][] = 'config:nusry_core.settings';
+}
+
+/**
+ * Implements hook_entity_type_alter().
+ */
+function nusry_core_entity_type_alter(array &$entity_types): void {
+  foreach (['node', 'media', 'paragraph'] as $type) {
+    if (isset($entity_types[$type])) {
+      $entity_types[$type]->addConstraint('NusryEditorial');
+    }
+  }
+  if (isset($entity_types['media'])) {
+    $entity_types['media']->addConstraint('NusryMediaAltOrDecorative');
+  }
+}
+
+/**
+ * Implements hook_node_presave().
+ */
+function nusry_core_node_presave(NodeInterface $node): void {
+  if ($node->bundle() === 'story' && $node->hasField('field_reading_time')) {
+    $minutes = \Drupal::service('nusry_core.reading_time')->calculateForNode($node);
+    $node->set('field_reading_time', $minutes);
+  }
+}

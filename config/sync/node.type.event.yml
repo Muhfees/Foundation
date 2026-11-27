@@ -1,0 +1,21 @@
+uuid: b60a0582-8eb5-4fa3-a59a-c5b0db901fdc
+langcode: en
+status: true
+dependencies:
+  module:
+    - scheduler
+third_party_settings:
+  scheduler:
+    publish_enable: true
+    publish_past_date: error
+    publish_revision: true
+    publish_touch: false
+    unpublish_enable: true
+    unpublish_revision: true
+name: Event
+type: event
+description: null
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: false

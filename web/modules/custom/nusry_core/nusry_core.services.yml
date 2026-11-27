@@ -1,0 +1,16 @@
+services:
+  nusry_core.reading_time:
+    class: Drupal\nusry_core\Service\ReadingTimeCalculator
+  nusry_core.story_selector:
+    class: Drupal\nusry_core\Service\StorySelector
+    arguments: ['@entity_type.manager']
+  nusry_core.editorial_settings:
+    class: Drupal\nusry_core\Service\EditorialSettings
+    arguments: ['@config.factory', '@datetime.time']
+  nusry_core.content_search:
+    class: Drupal\nusry_core\Service\ContentSearchService
+    arguments: ['@entity_type.manager']
+  nusry_core.noindex_subscriber:
+    class: Drupal\nusry_core\EventSubscriber\NoindexResponseSubscriber
+    tags:
+      - { name: event_subscriber }

@@ -1,0 +1,23 @@
+uuid: c4be1e3c-cf4a-41d6-97fb-66b7b9878acc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_amounts
+    - node.type.campaign
+id: node.campaign.field_amounts
+field_name: field_amounts
+entity_type: node
+bundle: campaign
+label: 'Preset amounts (minor units)'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 100
+  max: 100000000
+  prefix: ''
+  suffix: ''
+field_type: integer

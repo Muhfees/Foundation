@@ -1,0 +1,412 @@
+{#
+/**
+ * @file
+ * Reference-aligned Phase 4 fictional homepage template.
+ */
+#}
+
+{# Section 1: Full-Bleed Hero + Integrated Campaign Donation Panel #}
+<section class="hero" aria-labelledby="hero-heading">
+  <div class="hero__media">
+    <picture>
+      <source media="(max-width: 1023px)" srcset="{{ theme_base }}/assets/images/hero-clinic-mobile.webp">
+      <img src="{{ theme_base }}/assets/images/hero-clinic.webp"
+           alt="Illustrative portrait of a medical clinician wearing protective gear inside a softly lit demo clinic tent."
+           width="1600"
+           height="900"
+           fetchpriority="high"
+           decoding="async">
+    </picture>
+    <div class="hero__scrim" aria-hidden="true"></div>
+  </div>
+
+  <div class="hero__inner">
+    <div class="hero__content">
+      <h1 id="hero-heading" class="hero__title">{{ hero.title }}</h1>
+      <p class="hero__summary">{{ hero.summary }}</p>
+      <div class="hero__actions">
+        <a class="link-chevron hero__learn" href="{{ hero.learn_url }}">{{ hero.learn_label }}</a>
+        <a class="btn btn--outline-light" href="{{ hero.cta_url }}">{{ hero.cta_label }}</a>
+      </div>
+    </div>
+
+    <aside class="donate-panel" aria-labelledby="hero-donate-title">
+      <div class="donate-panel__eyebrow">
+        <span class="demo-pill">{{ 'Demo Campaign'|t }}</span>
+      </div>
+      <h2 id="hero-donate-title" class="donate-panel__title">{{ campaign.title }}</h2>
+      <p class="donate-panel__subtitle">{{ campaign.subtitle }}</p>
+
+      <div class="donate-panel__presets">
+        {% for preset in campaign.presets %}
+          <a class="btn btn--primary donate-panel__preset"
+             href="/donate?campaign={{ campaign.id|url_encode }}&amp;amount={{ preset.minor }}&amp;frequency={{ campaign.frequency|url_encode }}">
+            {{ preset.label }}
+          </a>
+        {% endfor %}
+      </div>
+
+      <button type="button"
+              class="btn btn--primary donate-panel__other-btn"
+              data-other-toggle
+              aria-expanded="false"
+              aria-controls="hero-other-panel">
+        {{ '$ Other'|t }}
+      </button>
+
+      <div id="hero-other-panel" class="donate-panel__custom" data-other-panel hidden>
+        <form data-other-form data-campaign="{{ campaign.id }}" data-frequency="{{ campaign.frequency }}" novalidate>
+          <label for="hero-custom-dollars">{{ 'Custom simulated amount (USD)'|t }}</label>
+          <div class="donate-panel__custom-row">
+            <input id="hero-custom-dollars" name="dollars" type="number" min="1" max="100000" step="1" placeholder="50">
+            <button type="submit" class="btn btn--primary">{{ 'Continue'|t }}</button>
+          </div>
+          <div class="sr-status" data-other-status role="alert" aria-live="assertive"></div>
+        </form>
+      </div>
+
+      <p class="donate-panel__disclaimer">{{ campaign.disclaimer }}</p>
+    </aside>
+  </div>
+
+  <p class="hero__credit">{{ hero.credit }}</p>
+</section>
+
+{# Section 2: Mission & Tabbed Impact Statistics #}
+<section class="mission-stats" aria-labelledby="mission-heading">
+  <div class="container mission-stats__grid">
+    <div>
+      <h2 id="mission-heading" class="mission-stats__title">
+        {{ 'We provide independent, impartial medical humanitarian assistance to the people who need it most.'|t }}
+      </h2>
+      <p class="mission-stats__body prose-serif">
+        {{ 'In this fictional demonstration, Nusry Foundation models rapid medical relief for communities affected by conflict, outbreaks, natural disasters and barriers to health care across illustrative regions.'|t }}
+      </p>
+      <a class="btn btn--outline-dark" href="/what-we-do">{{ 'Learn more about what we do'|t }}</a>
+    </div>
+
+    <div class="stats-panel">
+      <div class="stats-tabs" role="tablist" aria-label="{{ 'Illustrative impact and allocation metrics'|t }}">
+        <button type="button"
+                id="tab-reach"
+                class="stats-tab"
+                role="tab"
+                aria-selected="true"
+                aria-controls="panel-reach"
+                tabindex="0">
+          {{ 'Our reach'|t }}
+        </button>
+        <button type="button"
+                id="tab-funds"
+                class="stats-tab"
+                role="tab"
+                aria-selected="false"
+                aria-controls="panel-funds"
+                tabindex="-1">
+          {{ 'How we use funds'|t }}
+        </button>
+      </div>
+
+      <div id="panel-reach" class="stats-tabpanel" role="tabpanel" aria-labelledby="tab-reach">
+        <ul class="stats-list">
+          <li class="stats-item">
+            <svg class="stats-item__icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s-6-5.4-6-10a6 6 0 1112 0c0 4.6-6 10-6 10z"/><circle cx="12" cy="11" r="2.2"/></svg>
+            <div>
+              <div class="stats-item__value">{{ facts.regions_count|number_format }}</div>
+              <p class="stats-item__desc"><strong>{{ 'Illustrative regions'|t }}</strong> {{ 'modeled for fictional demo humanitarian clinic coverage'|t }}</p>
+            </div>
+          </li>
+          <li class="stats-item">
+            <svg class="stats-item__icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 4v6a6 6 0 0012 0V4"/><path d="M12 16v4m0 0h4"/></svg>
+            <div>
+              <div class="stats-item__value">{{ facts.consultations_count|number_format }}</div>
+              <p class="stats-item__desc"><strong>{{ 'Demo consultations'|t }}</strong> {{ 'simulated across mobile outreach units in the 2025 demo cycle'|t }}</p>
+            </div>
+          </li>
+          <li class="stats-item">
+            <svg class="stats-item__icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="4" y="4" width="16" height="16"/><path d="M9 12h6M12 9v6"/></svg>
+            <div>
+              <div class="stats-item__value">{{ facts.admissions_count|number_format }}</div>
+              <p class="stats-item__desc"><strong>{{ 'Demo admissions'|t }}</strong> {{ 'for illustrative maternal and emergency stabilization care'|t }}</p>
+            </div>
+          </li>
+        </ul>
+        <p class="stats-panel__source">
+          *{{ facts.demo_notice }} <a href="{{ facts.source_url }}">{{ facts.source_label }}</a>.
+        </p>
+        <div class="stats-panel__cta">
+          <a class="btn btn--primary" href="/donate">{{ 'Donate Now'|t }}</a>
+        </div>
+      </div>
+
+      <div id="panel-funds" class="stats-tabpanel" role="tabpanel" aria-labelledby="tab-funds" hidden>
+        <ul class="stats-list">
+          <li class="stats-item">
+            <svg class="stats-item__icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 12h16M12 4v16"/></svg>
+            <div>
+              <div class="stats-item__value">{{ allocation.programmes_percent }}%</div>
+              <p class="stats-item__desc"><strong>{{ 'Programmes (Demo)'|t }}</strong> {{ 'directed to illustrative clinical operations and emergency supplies'|t }}</p>
+              <div class="stats-allocation-bar" aria-hidden="true"><div class="stats-allocation-fill" style="width: {{ allocation.programmes_percent }}%;"></div></div>
+            </div>
+          </li>
+          <li class="stats-item">
+            <svg class="stats-item__icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="8"/></svg>
+            <div>
+              <div class="stats-item__value">{{ allocation.fundraising_percent }}%</div>
+              <p class="stats-item__desc"><strong>{{ 'Fundraising (Demo)'|t }}</strong> {{ 'supporting fictional supporter outreach and campaign testing'|t }}</p>
+              <div class="stats-allocation-bar" aria-hidden="true"><div class="stats-allocation-fill" style="width: {{ allocation.fundraising_percent }}%;"></div></div>
+            </div>
+          </li>
+          <li class="stats-item">
+            <svg class="stats-item__icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="4" y="6" width="16" height="12"/></svg>
+            <div>
+              <div class="stats-item__value">{{ allocation.administration_percent }}%</div>
+              <p class="stats-item__desc"><strong>{{ 'Administration (Demo)'|t }}</strong> {{ 'covering governance, reporting and compliance simulation'|t }}</p>
+              <div class="stats-allocation-bar" aria-hidden="true"><div class="stats-allocation-fill" style="width: {{ allocation.administration_percent }}%;"></div></div>
+            </div>
+          </li>
+        </ul>
+        <p class="stats-panel__source">
+          *{{ 'Illustrative demo dataset summing to 100% from'|t }} <a href="/finances-and-accountability">{{ allocation.source_label }}</a>.
+        </p>
+        <div class="stats-panel__cta">
+          <a class="btn btn--primary" href="/donate">{{ 'Donate Now'|t }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# Section 3: Panorama + Dark Featured News & Stories #}
+<section class="news-section" aria-labelledby="news-heading">
+  <div class="panorama-wrap">
+    <img src="{{ theme_base }}/assets/images/panorama-relief.webp"
+         alt="Illustrative panoramic image of a humanitarian coastal support craft on calm water."
+         width="1600"
+         height="420"
+         loading="lazy"
+         decoding="async">
+  </div>
+
+  <div class="container">
+    <div class="news-section__header">
+      <h2 id="news-heading" class="news-section__title">{{ 'Latest news & stories'|t }}</h2>
+      <a class="link-chevron news-section__more" href="/search?q=story">{{ 'See more'|t }}</a>
+    </div>
+
+    <div class="news-grid">
+      <a class="news-featured" href="{{ featured_story.url }}">
+        <div class="news-featured__media">
+          <img src="{{ featured_story.image }}"
+               alt="Illustrative interior of a rural demonstration clinic room."
+               width="960"
+               height="768"
+               loading="lazy"
+               decoding="async">
+        </div>
+        <div class="news-featured__overlay">
+          <h3 class="news-featured__title">{{ featured_story.title }}</h3>
+          <div class="news-featured__meta">{{ featured_story.kind }} | {{ featured_story.date }}</div>
+        </div>
+      </a>
+
+      <div class="news-list">
+        {% for item in supporting_stories %}
+          <a class="news-compact" href="{{ item.url }}">
+            <div>
+              <div class="news-compact__meta">{{ item.kind }} | {{ item.date }}</div>
+              <h3 class="news-compact__title">{{ item.title }}</h3>
+            </div>
+            <div class="news-compact__thumb">
+              <img src="{{ item.image }}"
+                   alt="Illustrative editorial thumbnail for {{ item.title }}."
+                   width="360"
+                   height="300"
+                   loading="lazy"
+                   decoding="async">
+              <span class="news-compact__badge" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="4" y="4" width="16" height="16"/><path d="M8 9h8M8 13h8M8 17h5"/></svg>
+              </span>
+            </div>
+          </a>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{# Section 4: Overlapping Social Strip + Centered Newsletter #}
+<div class="social-strip-wrap">
+  <div class="social-strip">
+    <span class="social-strip__label">{{ 'Get the latest stories'|t }}</span>
+    <div class="social-strip__links">
+      {% for social in social_links %}
+        <a class="social-circle" href="{{ social.url }}" aria-label="{{ social.label }} ({{ social.handle }})">
+          {% if loop.first %}
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3.6 9h16.8M3.6 15h16.8M12 3a14 14 0 010 18M12 3a14 14 0 000 18"/></svg>
+          {% else %}
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 6v12l10-6z"/></svg>
+          {% endif %}
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<section class="newsletter-band" aria-labelledby="newsletter-heading">
+  <div class="container">
+    <div class="newsletter-box">
+      <h2 id="newsletter-heading" class="newsletter-box__title">{{ 'We speak out. Get updates.'|t }}</h2>
+      <p class="newsletter-box__lead">{{ 'Try the simulated Nusry Foundation dispatch signup (demo only — no real messages are sent).'|t }}</p>
+
+      <form class="newsletter-form" data-newsletter-form novalidate>
+        <div class="newsletter-form__row">
+          <div class="newsletter-form__field">
+            <label for="main-nl-first">{{ 'First name *'|t }}</label>
+            <input id="main-nl-first" name="first_name" type="text" required autocomplete="given-name">
+          </div>
+          <div class="newsletter-form__field">
+            <label for="main-nl-last">{{ 'Last name *'|t }}</label>
+            <input id="main-nl-last" name="last_name" type="text" required autocomplete="family-name">
+          </div>
+          <div class="newsletter-form__field">
+            <label for="main-nl-email">{{ 'Email *'|t }}</label>
+            <input id="main-nl-email" name="email" type="email" required autocomplete="email">
+          </div>
+        </div>
+
+        <div class="newsletter-form__consents">
+          <label class="newsletter-form__check">
+            <input type="checkbox" name="consent" required>
+            <span>{{ 'I agree to test the fictional newsletter flow and have read the'|t }} <a href="/privacy">{{ 'demo privacy notice'|t }}</a>.</span>
+          </label>
+          <label class="newsletter-form__check">
+            <input type="checkbox" name="sms_consent">
+            <span>{{ 'Optional: simulate SMS dispatch alerts (no text messages sent).'|t }}</span>
+          </label>
+        </div>
+
+        <div class="newsletter-form__actions">
+          <button type="submit" class="btn btn--primary">{{ 'Join our newsletter'|t }}</button>
+          <div class="sr-status" data-newsletter-status role="status" aria-live="polite"></div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+{# Section 5: Centered Principles #}
+<section class="principles-section" aria-labelledby="principles-heading">
+  <div class="container">
+    <h2 id="principles-heading" class="principles-section__title">{{ 'The principles that drive us'|t }}</h2>
+    <span class="red-rule red-rule--center" aria-hidden="true"></span>
+    <ul class="principles-section__list">
+      {% for statement in principles %}
+        <li class="principles-section__statement">{{ statement }}</li>
+      {% endfor %}
+    </ul>
+    <a class="btn btn--outline-dark" href="/who-we-are">{{ 'Learn more about who we are'|t }}</a>
+  </div>
+</section>
+
+{# Section 6: Two Alternating Feature Rows #}
+<section class="container features-section" aria-label="{{ 'Editorial highlights'|t }}">
+  <article class="feature-row feature-row--media-left">
+    <div class="feature-row__media">
+      <img src="{{ theme_base }}/assets/images/feature-medical-care.webp"
+           alt="Illustrative clinic checkup showing a community health worker measuring a child's arm beside a parent."
+           width="960"
+           height="768"
+           loading="lazy"
+           decoding="async">
+      <span class="feature-row__credit">{{ 'ILLUSTRATIVE DEMO PHOTO · NUSRY STUDIO'|t }}</span>
+    </div>
+    <div>
+      <h2 class="feature-row__title">{{ 'Medical care where it’s needed most.'|t }}</h2>
+      <span class="red-rule" aria-hidden="true"></span>
+      <p class="feature-row__body prose-serif">
+        {{ 'Fictional Nusry Foundation teams model care across maternal health, malnutrition screening, clean water response and emergency surgery, pairing clinical standards with transparent reporting.'|t }}
+      </p>
+      <a class="link-chevron" href="/medical-issues">{{ 'Explore medical issues'|t }}</a>
+    </div>
+  </article>
+
+  <article class="feature-row feature-row--media-right">
+    <div class="feature-row__media">
+      <img src="{{ theme_base }}/assets/images/feature-work-focus.webp"
+           alt="Illustrative field pharmacy team in protective suits organizing sterile medical kits."
+           width="960"
+           height="768"
+           loading="lazy"
+           decoding="async">
+      <span class="feature-row__credit">{{ 'ILLUSTRATIVE DEMO PHOTO · NUSRY STUDIO'|t }}</span>
+    </div>
+    <div>
+      <h2 class="feature-row__title">{{ 'The work we do'|t }}</h2>
+      <span class="red-rule" aria-hidden="true"></span>
+      <p class="feature-row__body prose-serif">
+        {{ 'Explore how emergency logistics, solar cold-chain kits and community health partnerships are structured in this demonstration platform — from field dispatches to accountable annual reports.'|t }}
+      </p>
+      <a class="link-chevron" href="/our-work-in-focus">{{ 'Explore our focus issues'|t }}</a>
+    </div>
+  </article>
+</section>
+
+{# Section 7: How You Can Help (3 Unboxed Cards) #}
+<section class="help-section" aria-labelledby="help-heading">
+  <div class="container--narrow">
+    <h2 id="help-heading" class="help-section__title">{{ 'How you can help'|t }}</h2>
+    <span class="red-rule" aria-hidden="true"></span>
+    <p class="help-section__intro prose-serif">
+      {{ 'Explore fictional ways community supporters participate in this demo — from organizing events to trying a simulated monthly gift.'|t }}
+    </p>
+
+    <div class="help-grid">
+      <article class="help-card">
+        <div class="help-card__media">
+          <img src="{{ theme_base }}/assets/images/help-fundraise.webp"
+               alt="Illustrative community cyclists smiling together at a neighbourhood fundraising event."
+               width="720"
+               height="450"
+               loading="lazy"
+               decoding="async">
+        </div>
+        <h3 class="help-card__title">{{ 'Be a fundraiser'|t }}</h3>
+        <p class="help-card__body">{{ 'Explore how peer-to-peer rides, walks and student chapter drives are modeled in this demo.'|t }}</p>
+        <a class="link-chevron" href="/fundraise">{{ 'Read more'|t }}</a>
+      </article>
+
+      <article class="help-card">
+        <div class="help-card__media">
+          <img src="{{ theme_base }}/assets/images/help-event.webp"
+               alt="Illustrative community briefing session with attendees listening in a wooden hall."
+               width="720"
+               height="450"
+               loading="lazy"
+               decoding="async">
+        </div>
+        <h3 class="help-card__title">{{ 'Attend an event'|t }}</h3>
+        <p class="help-card__body">{{ 'Browse upcoming fictional briefings, transparency forums and accessible virtual workshops.'|t }}</p>
+        <a class="link-chevron" href="/events/maternal-clinics-virtual-briefing">{{ 'Read more'|t }}</a>
+      </article>
+
+      <article class="help-card">
+        <div class="help-card__media">
+          <img src="{{ theme_base }}/assets/images/help-donor.webp"
+               alt="Illustrative clinician listening to a child's heartbeat beside a parent in a field tent."
+               width="720"
+               height="450"
+               loading="lazy"
+               decoding="async">
+        </div>
+        <h3 class="help-card__title">{{ 'Becoming a sustaining donor'|t }}</h3>
+        <p class="help-card__body">{{ 'Try our simulated recurring monthly giving flow and sample donor portal.'|t }}</p>
+        <a class="link-chevron" href="/ways-to-give/monthly">{{ 'Read more'|t }}</a>
+      </article>
+    </div>
+
+    <div class="help-section__cta">
+      <a class="btn btn--outline-dark" href="/get-involved">{{ 'Get Involved'|t }}</a>
+    </div>
+  </div>
+</section>

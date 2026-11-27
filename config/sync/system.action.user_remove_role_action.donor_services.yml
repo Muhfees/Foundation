@@ -1,0 +1,14 @@
+uuid: e6b58af2-66ab-4c8d-8588-8906cc8278eb
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.donor_services
+  module:
+    - user
+id: user_remove_role_action.donor_services
+label: 'Remove the Donor Services role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: donor_services

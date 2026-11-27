@@ -1,0 +1,19 @@
+uuid: 6b193356-9b28-4148-940e-7e0dd8e484a5
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.field_accessible_text
+field_name: field_accessible_text
+entity_type: media
+type: string_long
+settings:
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
