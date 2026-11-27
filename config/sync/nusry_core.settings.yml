@@ -1,7 +1,7 @@
 urgent_alert:
-  enabled: false
-  text: 'Demo seasonal preparedness update: fictional simulation data only.'
-  link_label: 'Read demo update'
+  enabled: true
+  text: 'Fictional emergency alert: Demo mobile clinics expanding seasonal preparedness.'
+  link_label: 'Learn More'
   link_url: /stories/mobile-clinics-expand-maternal-care-across-valeria-republic
   starts: '2025-01-01T00:00:00Z'
   ends: '2028-01-01T00:00:00Z'

@@ -2,10 +2,31 @@
 
 /**
  * @file
- * Demo identity, editorial validation and story reading-time helpers.
+ * Demo identity, editorial validation, homepage theme hook and reading time.
  */
 
 use Drupal\node\NodeInterface;
+
+/**
+ * Implements hook_theme().
+ */
+function nusry_core_theme(): array {
+  return [
+    'nusry_homepage' => [
+      'variables' => [
+        'theme_base' => '',
+        'hero' => [],
+        'campaign' => [],
+        'facts' => [],
+        'allocation' => [],
+        'featured_story' => [],
+        'supporting_stories' => [],
+        'social_links' => [],
+        'principles' => [],
+      ],
+    ],
+  ];
+}
 
 /**
  * Implements hook_page_attachments().

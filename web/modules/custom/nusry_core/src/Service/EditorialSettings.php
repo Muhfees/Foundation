@@ -82,4 +82,11 @@ final class EditorialSettings {
     return (array) $this->configFactory->get('nusry_core.settings')->get('organization_facts');
   }
 
+  /**
+   * Returns configured social links.
+   */
+  public function getSocialLinks(): array {
+    return (array) $this->configFactory->get('nusry_core.settings')->get('social_links');
+  }
+
 }

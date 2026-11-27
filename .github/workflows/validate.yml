@@ -101,7 +101,7 @@ jobs:
         with:
           name: browser-evidence
           path: |
-            docs/screenshots/phase-2-*.png
+            docs/screenshots/phase-*.png
             playwright-report/
             test-results/
       - uses: actions/upload-artifact@v4
@@ -124,4 +124,4 @@ jobs:
           ddev exec php scripts/install.php
           ddev drush php:script scripts/verify-redis.php
           ddev drush php:script scripts/verify-config.php
-          curl --fail --silent https://nusry-foundation.ddev.site/ | grep 'Care, dignity and solidarity'
+          curl --fail --silent https://nusry-foundation.ddev.site/ | grep 'Care begins with showing up'

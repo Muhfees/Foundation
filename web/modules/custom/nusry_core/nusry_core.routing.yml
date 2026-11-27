@@ -1,3 +1,27 @@
+nusry_core.homepage:
+  path: '/home'
+  defaults:
+    _controller: '\Drupal\nusry_core\Controller\HomepageController::home'
+    _title: 'Care begins with showing up'
+  requirements:
+    _permission: 'access content'
+
+nusry_core.donate_preview:
+  path: '/donate'
+  defaults:
+    _controller: '\Drupal\nusry_core\Controller\HomepageController::donatePreview'
+    _title: 'Simulated Donation Preview'
+  requirements:
+    _permission: 'access content'
+
+nusry_core.search_preview:
+  path: '/search'
+  defaults:
+    _controller: '\Drupal\nusry_core\Controller\HomepageController::searchPreview'
+    _title: 'Search'
+  requirements:
+    _permission: 'access content'
+
 nusry_core.welcome:
   path: '/welcome'
   defaults:

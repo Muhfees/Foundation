@@ -1,12 +1,283 @@
-<div class="demo-notice">Fictional demonstration. No real donations are collected.</div>
-<header class="site-header">
-  <a class="wordmark" href="{{ path('<front>') }}">Nusry <span>Foundation</span></a>
-  {{ page.header }}
-  {% if page.primary_menu %}<nav aria-label="{{ 'Primary navigation'|t }}">{{ page.primary_menu }}</nav>{% endif %}
+<div class="demo-notice">
+  <span><strong class="demo-notice__tag">{{ 'Fictional Demo'|t }}</strong> {{ 'Fictional demonstration. No real donations are collected.'|t }}</span>
+  <span>{{ 'Independent concept site — no affiliation with MSF.'|t }}</span>
+</div>
+
+{% if urgent_alert %}
+  <div class="urgent-banner" role="region" aria-label="{{ 'Urgent notice'|t }}" data-urgent-banner data-alert-version="{{ urgent_alert.version|default('v1') }}">
+    <div class="urgent-banner__inner">
+      <span class="urgent-banner__badge">[{{ 'Urgent'|t }}]</span>
+      <span class="urgent-banner__text">{{ urgent_alert.text }}</span>
+      {% if urgent_alert.link_url %}
+        <a class="urgent-banner__link link-chevron" href="{{ urgent_alert.link_url }}">{{ urgent_alert.link_label|default('Learn More'|t) }}</a>
+      {% endif %}
+    </div>
+    <button type="button" class="urgent-banner__dismiss" data-alert-dismiss aria-label="{{ 'Dismiss urgent notice'|t }}">&times;</button>
+  </div>
+{% endif %}
+
+<div class="header-sentinel" data-header-sentinel aria-hidden="true"></div>
+
+<header class="site-header" data-site-header>
+  <div class="site-header__bar">
+    <a class="wordmark" href="{{ path('<front>') }}">
+      <svg class="wordmark__mark" viewBox="0 0 44 44" aria-hidden="true" focusable="false">
+        <rect x="0" y="0" width="44" height="44" fill="#EE0000"/>
+        <rect x="9" y="11" width="26" height="5" fill="#FFFFFF"/>
+        <rect x="9" y="19.5" width="18" height="5" fill="#FFFFFF"/>
+        <rect x="9" y="28" width="26" height="5" fill="#FFFFFF"/>
+      </svg>
+      <span class="wordmark__text">
+        <span class="wordmark__name">Nusry Foundation</span>
+        <span class="wordmark__sub">{{ 'Medical Humanitarian Demo'|t }}</span>
+      </span>
+    </a>
+
+    <div class="site-header__nav-wrap">
+      <div class="site-header__utility">
+        <a href="/work-with-us">{{ 'Work With Us'|t }}</a>
+        <button type="button" class="site-header__search-trigger" data-search-open aria-haspopup="dialog" aria-controls="nusry-search-modal">
+          <span>{{ 'Search'|t }}</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+        </button>
+      </div>
+
+      <div class="site-header__main-row">
+        <nav aria-label="{{ 'Primary navigation'|t }}">
+          <ul class="primary-nav">
+            {% for item in main_nav %}
+              {% if item.children is not empty %}
+                <li class="primary-nav__item">
+                  <button type="button"
+                          class="primary-nav__trigger"
+                          data-mega-trigger
+                          aria-expanded="false"
+                          aria-controls="mega-{{ item.id }}">
+                    <span>{{ item.title }}</span>
+                    <svg class="primary-nav__chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+                  </button>
+                </li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </nav>
+
+        <button type="button" class="site-header__compact-search" data-search-open aria-label="{{ 'Open search'|t }}" aria-haspopup="dialog" aria-controls="nusry-search-modal">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+        </button>
+
+        <a class="btn btn--primary site-header__donate" href="/donate">{{ 'Donate'|t }}</a>
+      </div>
+    </div>
+
+    <div class="site-header__actions-mobile">
+      <a class="btn btn--primary site-header__donate--mobile" href="/donate">{{ 'Donate'|t }}</a>
+      <button type="button" class="site-header__menu-toggle" data-drawer-open aria-expanded="false" aria-controls="nusry-mobile-drawer">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        <span>{{ 'Menu'|t }}</span>
+      </button>
+    </div>
+  </div>
+
+  {% for item in main_nav %}
+    {% if item.children is not empty %}
+      <div id="mega-{{ item.id }}" class="mega-menu" data-mega-panel hidden>
+        <div class="mega-menu__grid">
+          {% for child in item.children %}
+            <a class="mega-menu__link" href="{{ child.url }}">
+              <span class="mega-menu__title">{{ child.title }}</span>
+              {% if child.description %}
+                <span class="mega-menu__desc">{{ child.description }}</span>
+              {% endif %}
+            </a>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+  {% endfor %}
 </header>
+
+<div class="drawer-backdrop" data-drawer-backdrop hidden></div>
+
+<div id="nusry-mobile-drawer" class="mobile-drawer" role="dialog" aria-modal="true" aria-labelledby="nusry-drawer-title" data-mobile-drawer hidden>
+  <div class="mobile-drawer__head">
+    <h2 id="nusry-drawer-title">{{ 'Navigation'|t }}</h2>
+    <button type="button" class="dialog-close" data-drawer-close aria-label="{{ 'Close navigation menu'|t }}">&times;</button>
+  </div>
+  <button type="button" class="btn btn--outline-dark" data-search-open aria-haspopup="dialog" aria-controls="nusry-search-modal">{{ 'Search site'|t }}</button>
+  <nav aria-label="{{ 'Mobile navigation'|t }}">
+    {% for item in main_nav %}
+      {% if item.children is not empty %}
+        <details class="mobile-drawer__group">
+          <summary class="mobile-drawer__summary">{{ item.title }}</summary>
+          <div class="mobile-drawer__sublist">
+            {% for child in item.children %}
+              <a href="{{ child.url }}">{{ child.title }}</a>
+            {% endfor %}
+          </div>
+        </details>
+      {% else %}
+        <a class="mobile-drawer__direct" href="{{ item.url }}">{{ item.title }}</a>
+      {% endif %}
+    {% endfor %}
+  </nav>
+  <a class="btn btn--primary" href="/donate">{{ 'Try a demo donation'|t }}</a>
+</div>
+
+<div id="nusry-search-modal" class="search-modal" role="dialog" aria-modal="true" aria-labelledby="nusry-search-title" data-search-modal hidden>
+  <div class="search-modal__dialog">
+    <div class="search-modal__head">
+      <h2 id="nusry-search-title">{{ 'Search Nusry Foundation (Demo)'|t }}</h2>
+      <button type="button" class="dialog-close" data-search-close aria-label="{{ 'Close search dialog'|t }}">&times;</button>
+    </div>
+    <form class="search-modal__form" action="/search" method="get" role="search">
+      <label class="visually-hidden" for="nusry-search-input">{{ 'Search keywords'|t }}</label>
+      <input id="nusry-search-input" class="search-modal__input" type="search" name="q" placeholder="{{ 'Search stories, medical issues, reports...'|t }}">
+      <button type="submit" class="btn btn--primary">{{ 'Search'|t }}</button>
+    </form>
+    <div class="search-modal__suggestions" aria-label="{{ 'Suggested demo searches'|t }}">
+      <a class="search-modal__chip" href="/search?q=maternal">{{ 'Maternal care'|t }}</a>
+      <a class="search-modal__chip" href="/search?q=water">{{ 'Clean water'|t }}</a>
+      <a class="search-modal__chip" href="/search?q=report">{{ 'Demo annual report'|t }}</a>
+      <a class="search-modal__chip" href="/faq">{{ 'FAQ & Scam Warning'|t }}</a>
+    </div>
+  </div>
+</div>
+
 <main id="main-content" class="site-main" tabindex="-1">
   {{ page.breadcrumb }}
   {{ page.highlighted }}
+  {% if not is_front %}<div class="site-main--inner">{% endif %}
   {{ page.content }}
+  {% if not is_front %}</div>{% endif %}
 </main>
-<footer class="site-footer">{{ page.footer }}<p>Care, dignity and solidarity. A fictional nonprofit website demonstration.</p></footer>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <a class="wordmark" href="{{ path('<front>') }}">
+        <svg class="wordmark__mark" viewBox="0 0 44 44" aria-hidden="true" focusable="false">
+          <rect x="0" y="0" width="44" height="44" fill="#EE0000"/>
+          <rect x="9" y="11" width="26" height="5" fill="#FFFFFF"/>
+          <rect x="9" y="19.5" width="18" height="5" fill="#FFFFFF"/>
+          <rect x="9" y="28" width="26" height="5" fill="#FFFFFF"/>
+        </svg>
+        <span class="wordmark__text">
+          <span class="wordmark__name">Nusry Foundation</span>
+          <span class="wordmark__sub">{{ 'Medical Humanitarian Demo'|t }}</span>
+        </span>
+      </a>
+      <p class="footer-brand__copy">{{ '© Nusry Foundation (Fictional Demo) 2026'|t }}</p>
+      <p class="footer-brand__copy">{{ 'No real charity registration or tax-exempt ID.'|t }}</p>
+      <div class="footer-brand__box">
+        {{ 'Fictional demonstration site. No real donations are processed, no real patients or programmes are represented, and no real tax receipts are issued.'|t }}
+      </div>
+    </div>
+
+    <div>
+      <h2 class="footer-col__heading">{{ 'For Donors'|t }}</h2>
+      <ul class="footer-col__list">
+        <li><a href="/donate">{{ 'Try a Demo Donation'|t }}</a></li>
+        <li><a href="/finances-and-accountability">{{ 'Finances & Accountability'|t }}</a></li>
+        <li><a href="/ways-to-give">{{ 'Ways to Give'|t }}</a></li>
+        <li><a href="/ways-to-give/monthly">{{ 'Monthly Giving (Demo)'|t }}</a></li>
+        <li><a href="/ways-to-give/legacy">{{ 'Planned Giving (Demo)'|t }}</a></li>
+        <li><a href="/ways-to-give/corporate">{{ 'Corporate Partnerships'|t }}</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h2 class="footer-col__heading">{{ 'For Supporters'|t }}</h2>
+      <ul class="footer-col__list">
+        <li><a href="/campaigns/emergency-maternal-health-fund">{{ 'Latest Campaigns'|t }}</a></li>
+        <li><a href="/fundraise">{{ 'Fundraise'|t }}</a></li>
+        <li><a href="/events/maternal-clinics-virtual-briefing">{{ 'Attend an Event'|t }}</a></li>
+        <li><a href="/student-chapters">{{ 'Join a Chapter'|t }}</a></li>
+      </ul>
+      <h2 class="footer-col__heading">{{ 'For Recruits & Media'|t }}</h2>
+      <ul class="footer-col__list">
+        <li><a href="/work-with-us">{{ 'Work With Us'|t }}</a></li>
+        <li><a href="/us-office">{{ 'The US Office (Fictional)'|t }}</a></li>
+        <li><a href="/stories/mobile-clinics-expand-maternal-care-across-valeria-republic">{{ 'News & Stories'|t }}</a></li>
+        <li><a href="/contact">{{ 'Contact (Demo)'|t }}</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h2 class="footer-newsletter__title">{{ 'We speak out. Get updates.'|t }}</h2>
+      <form data-newsletter-form novalidate>
+        <div class="footer-newsletter__fields">
+          <div class="footer-newsletter__field">
+            <label for="footer-nl-first">{{ 'First name *'|t }}</label>
+            <input id="footer-nl-first" name="first_name" type="text" required autocomplete="given-name">
+          </div>
+          <div class="footer-newsletter__field">
+            <label for="footer-nl-last">{{ 'Last name *'|t }}</label>
+            <input id="footer-nl-last" name="last_name" type="text" required autocomplete="family-name">
+          </div>
+        </div>
+        <div class="footer-newsletter__field" style="margin-top:10px;">
+          <label for="footer-nl-email">{{ 'Email *'|t }}</label>
+          <input id="footer-nl-email" name="email" type="email" required autocomplete="email">
+        </div>
+        <label class="footer-newsletter__consent">
+          <input type="checkbox" name="consent" required>
+          <span>{{ 'I understand this is a fictional newsletter preview; no emails are sent.'|t }}</span>
+        </label>
+        <button type="submit" class="btn btn--primary footer-newsletter__submit">{{ 'Sign Up'|t }}</button>
+        <div class="sr-status" data-newsletter-status role="status" aria-live="polite"></div>
+      </form>
+
+      {% if social_links %}
+        <div class="footer-socials" aria-label="{{ 'Demo social links'|t }}">
+          {% for social in social_links %}
+            <a class="social-circle" href="{{ social.url }}" aria-label="{{ social.label }} ({{ social.handle }})">
+              {% if loop.first %}
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3.6 9h16.8M3.6 15h16.8M12 3a14 14 0 010 18M12 3a14 14 0 000 18"/></svg>
+              {% else %}
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 6v12l10-6z"/></svg>
+              {% endif %}
+            </a>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="funds-strip">
+    <div class="container funds-strip__grid">
+      <div>
+        <h2 class="funds-strip__title">{{ 'How we use funds'|t }}</h2>
+        <p class="funds-strip__copy">{{ 'Illustrative demo breakdown from'|t }} {{ fund_allocation.source_label }} ({{ fund_allocation.period }}).</p>
+        <a class="link-chevron" href="/finances-and-accountability">{{ 'Learn more'|t }}</a>
+      </div>
+      <div>
+        <div class="funds-metric__value">{{ fund_allocation.programmes_percent }}%</div>
+        <div class="funds-metric__bar" aria-hidden="true"><div class="funds-metric__fill" style="width: {{ fund_allocation.programmes_percent }}%;"></div></div>
+        <div class="funds-metric__label">{{ 'Programmes (Demo)'|t }}</div>
+      </div>
+      <div>
+        <div class="funds-metric__value">{{ fund_allocation.fundraising_percent }}%</div>
+        <div class="funds-metric__bar" aria-hidden="true"><div class="funds-metric__fill" style="width: {{ fund_allocation.fundraising_percent }}%;"></div></div>
+        <div class="funds-metric__label">{{ 'Fundraising (Demo)'|t }}</div>
+      </div>
+      <div>
+        <div class="funds-metric__value">{{ fund_allocation.administration_percent }}%</div>
+        <div class="funds-metric__bar" aria-hidden="true"><div class="funds-metric__fill" style="width: {{ fund_allocation.administration_percent }}%;"></div></div>
+        <div class="funds-metric__label">{{ 'Management & Admin (Demo)'|t }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-legal">
+    <div class="container footer-legal__inner">
+      <span>{{ 'Care, dignity and solidarity. A fictional nonprofit website demonstration.'|t }}</span>
+      <div class="footer-legal__links">
+        <a href="/privacy">{{ 'Privacy Policy (Demo)'|t }}</a>
+        <a href="/terms">{{ 'Terms of Use (Demo)'|t }}</a>
+        <a href="/accessibility">{{ 'Accessibility Statement'|t }}</a>
+        <a href="/faq">{{ 'FAQ & Scam Warning'|t }}</a>
+      </div>
+    </div>
+  </div>
+</footer>

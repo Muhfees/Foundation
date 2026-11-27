@@ -2,8 +2,10 @@
 
 /**
  * @file
- * Asset integration for the Nusry Foundation theme.
+ * Asset integration and layout preprocessing for the Nusry Foundation theme.
  */
+
+use Drupal\Core\Menu\MenuTreeParameters;
 
 /**
  * Implements hook_library_info_alter().
@@ -27,4 +29,48 @@ function nusry_library_info_alter(array &$libraries, string $extension): void {
     $library['css']['theme']['dist/' . $css] = ['preprocess' => FALSE];
   }
   $libraries['global'] = $library;
+}
+
+/**
+ * Implements hook_preprocess_page().
+ */
+function nusry_preprocess_page(array &$variables): void {
+  /** @var \Drupal\nusry_core\Service\EditorialSettings $settings */
+  $settings = \Drupal::service('nusry_core.editorial_settings');
+  $variables['urgent_alert'] = $settings->getActiveUrgentAlert();
+  $variables['fund_allocation'] = $settings->getFundAllocation();
+  $variables['social_links'] = $settings->getSocialLinks();
+  $variables['theme_base'] = '/' . \Drupal::service('extension.list.theme')->getPath('nusry');
+
+  $menuTree = \Drupal::menuTree();
+  $params = (new MenuTreeParameters())->setMaxDepth(2)->onlyEnabledLinks();
+  $tree = $menuTree->load('main', $params);
+  $manipulators = [
+    ['callable' => 'menu.default_tree_manipulators:checkAccess'],
+    ['callable' => 'menu.default_tree_manipulators:generateIndexAndSort'],
+  ];
+  $tree = $menuTree->transform($tree, $manipulators);
+
+  $mainNav = [];
+  foreach ($tree as $element) {
+    $link = $element->link;
+    $children = [];
+    foreach ($element->subtree as $subElement) {
+      $subLink = $subElement->link;
+      $children[] = [
+        'title' => $subLink->getTitle(),
+        'description' => $subLink->getDescription(),
+        'url' => $subLink->getUrlObject()->toString(),
+      ];
+    }
+    $mainNav[] = [
+      'id' => preg_replace('/[^a-z0-9]+/', '-', strtolower($link->getTitle())),
+      'title' => $link->getTitle(),
+      'url' => $link->getUrlObject()->toString(),
+      'children' => $children,
+    ];
+  }
+  $variables['main_nav'] = $mainNav;
+  $variables['#cache']['tags'][] = 'config:system.menu.main';
+  $variables['#cache']['tags'][] = 'config:nusry_core.settings';
 }

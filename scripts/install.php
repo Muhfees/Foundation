@@ -65,7 +65,7 @@ if (!$existing_config) {
   $drush(['pm:enable', 'block', 'mysql', 'sqlite', 'redis', 'nusry_core', '--yes']);
   $drush(['theme:enable', 'nusry', '--yes']);
   $drush(['config:set', 'system.theme', 'default', 'nusry', '--yes']);
-  $drush(['config:set', 'system.site', 'page.front', '/welcome', '--yes']);
+  $drush(['config:set', 'system.site', 'page.front', '/home', '--yes']);
   $drush(['role:perm:add', 'anonymous', 'access content']);
   $drush(['config:export', '--yes']);
 }
