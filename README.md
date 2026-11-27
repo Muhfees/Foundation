@@ -71,7 +71,8 @@ GitHub Actions installs from committed configuration against MariaDB, checks Red
 - [Design specification](docs/design-spec.md), [design tokens](docs/design-tokens.json), [design direction](DESIGN.md)
 - [Architecture](docs/architecture.md), [content model](docs/content-model.md), [wireframes](docs/wireframes.md)
 - [Design decisions](docs/design-contract.md), [handoff](docs/implementation-handoff.md), [delivery phases](docs/phase-plan.md)
-- [Phase 1 review](docs/phase-1-summary.md), [Phase 6 summary](docs/phase-6-summary.md), [Phase 7 summary](docs/phase-7-summary.md), [Security & ops runbook](docs/security-and-ops.md), [tooling guidance](docs/tooling.md)
+- [Phase 1 review](docs/phase-1-summary.md), [Phase 6 summary](docs/phase-6-summary.md), [Phase 7 summary](docs/phase-7-summary.md), [Phase 8 final handoff](docs/phase-8-summary.md)
+- [Editor guide](docs/editor-guide.md), [Security & ops runbook](docs/security-and-ops.md), [QA checklist & bug template](docs/qa-checklist-and-bug-template.md), [Launch checklist](docs/launch-checklist.md), [Tooling guidance](docs/tooling.md)
 
 Interactive Phase 6 demo flows are available on `/donate` (mock checkout & sample receipts), `/newsletter` (double opt-in + optional SMS consent), `/contact`, `/portal` (authenticated `demo-donor` portal), and `/donor-services` (authorized `demo-donor-services` lookup & formula-safe CSV export).
 

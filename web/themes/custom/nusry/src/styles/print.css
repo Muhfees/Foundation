@@ -1,4 +1,5 @@
 @media print {
+
   .demo-notice,
   .urgent-banner,
   .site-header,
@@ -9,7 +10,8 @@
   .share-bar,
   .donate-prompt,
   .filter-bar,
-  .pagination {
+  .pagination,
+  .consent-banner {
     display: none !important;
   }
 

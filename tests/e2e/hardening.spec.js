@@ -119,3 +119,29 @@ test('320px reflow, 200% text resize, reduced motion and heading order pass acro
     });
   }
 });
+
+test('printed article view hides site chrome cleanly and retains article body', async ({ page }) => {
+  await page.goto('/stories/mobile-clinics-expand-maternal-care-across-valeria-republic');
+  await page.emulateMedia({ media: 'print' });
+
+  const printCheck = await page.evaluate(() => {
+    const header = document.querySelector('.site-header');
+    const footer = document.querySelector('.site-footer');
+    const consent = document.querySelector('.consent-banner');
+    const h1 = document.querySelector('h1');
+    const prose = document.querySelector('.prose-column, article');
+    return {
+      headerDisplay: header ? getComputedStyle(header).display : 'none',
+      footerDisplay: footer ? getComputedStyle(footer).display : 'none',
+      consentDisplay: consent ? getComputedStyle(consent).display : 'none',
+      h1Display: h1 ? getComputedStyle(h1).display : 'none',
+      hasBodyText: Boolean(prose && prose.textContent.trim().length > 40),
+    };
+  });
+
+  expect(printCheck.headerDisplay).toBe('none');
+  expect(printCheck.footerDisplay).toBe('none');
+  expect(printCheck.consentDisplay).toBe('none');
+  expect(printCheck.h1Display).not.toBe('none');
+  expect(printCheck.hasBodyText).toBe(true);
+});
