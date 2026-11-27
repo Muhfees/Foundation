@@ -1,0 +1,48 @@
+<article{{ attributes }}>
+  <header class="page-hero">
+    <div class="page-hero__meta">
+      <span class="demo-pill">{{ 'Illustrative Country Profile'|t }}</span>
+      {% if country_meta.region %}<span>{{ country_meta.region }}</span>{% endif %}
+      {% if country_meta.iso %}<span>| ISO: {{ country_meta.iso }}</span>{% endif %}
+    </div>
+    <h1 class="page-hero__title">{{ label }}</h1>
+    {% if summary_text %}<p class="page-hero__lead prose-serif">{{ summary_text }}</p>{% endif %}
+  </header>
+
+  {% if hero_media %}
+    <figure class="editorial-figure">
+      <img src="{{ hero_media.url }}" alt="{{ hero_media.alt }}" loading="eager">
+      <figcaption class="editorial-figure__caption">{{ hero_media.caption ?: 'Illustrative graphic (demo).'|t }}{% if hero_media.credit %} &middot; {{ hero_media.credit }}{% endif %}</figcaption>
+    </figure>
+  {% endif %}
+
+  {% if country_meta.facts %}
+    <section class="info-card info-card--accent" style="margin-bottom:32px;" aria-labelledby="facts-heading">
+      <h2 id="facts-heading" class="info-card__label">{{ 'Sourced illustrative facts (Demo)'|t }}</h2>
+      <p class="prose-serif">{{ country_meta.facts }}</p>
+    </section>
+  {% endif %}
+
+  {{ content.field_components }}
+
+  {% if country_stories %}
+    <section class="p-block" aria-labelledby="country-stories-heading">
+      <h2 id="country-stories-heading" class="p-block__heading">{{ 'Related demo stories'|t }}</h2>
+      <ul class="download-list">
+        {% for story in country_stories %}
+          <li class="download-item">
+            <a class="link-chevron" href="{{ story.url }}">{{ story.title }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </section>
+  {% endif %}
+
+  <aside class="donate-prompt">
+    <div>
+      <h2 class="donate-prompt__title">{{ 'Support demo care initiatives'|t }}</h2>
+      <p>{{ 'Illustrative regional profile — no actual operations represented.'|t }}</p>
+    </div>
+    <a class="btn btn--primary" href="/donate">{{ 'Try a demo donation'|t }}</a>
+  </aside>
+</article>

@@ -549,6 +549,9 @@ $seedMenu = static function (string $menuName, array $items) use ($entityTypeMan
     $existing = $storage->loadByProperties(['menu_name' => $menuName, 'title' => $item['title']]);
     if ($existing) {
       $parent = reset($existing);
+      $parent->set('link', ['uri' => 'internal:' . $item['path']]);
+      $parent->set('weight', $weight);
+      $parent->save();
     }
     else {
       $parent = MenuLinkContent::create([
@@ -562,7 +565,14 @@ $seedMenu = static function (string $menuName, array $items) use ($entityTypeMan
     }
     foreach ($item['children'] ?? [] as $childWeight => $child) {
       $existingChild = $storage->loadByProperties(['menu_name' => $menuName, 'title' => $child['title']]);
-      if (!$existingChild) {
+      if ($existingChild) {
+        $childEntity = reset($existingChild);
+        $childEntity->set('link', ['uri' => 'internal:' . $child['path']]);
+        $childEntity->set('description', $child['desc'] ?? '');
+        $childEntity->set('weight', $childWeight);
+        $childEntity->save();
+      }
+      else {
         MenuLinkContent::create([
           'title' => $child['title'],
           'description' => $child['desc'] ?? '',
@@ -599,12 +609,12 @@ $seedMenu('main', [
   ],
   [
     'title' => 'Latest',
-    'path' => '/stories/mobile-clinics-expand-maternal-care-across-valeria-republic',
+    'path' => '/news',
     'children' => [
-      ['title' => 'News & Stories', 'path' => '/stories/mobile-clinics-expand-maternal-care-across-valeria-republic', 'desc' => 'Fictional field dispatches and medical updates.'],
-      ['title' => 'Magazine', 'path' => '/stories/magazine-designing-resilient-field-pharmacies', 'desc' => 'Long-form demonstration features.'],
-      ['title' => 'Events Calendar', 'path' => '/events/maternal-clinics-virtual-briefing', 'desc' => 'Upcoming demo webinars and student forums.'],
-      ['title' => 'Campaigns', 'path' => '/campaigns/emergency-maternal-health-fund', 'desc' => 'Illustrative fundraising campaigns.'],
+      ['title' => 'News & Stories', 'path' => '/news', 'desc' => 'Fictional field dispatches and medical updates.'],
+      ['title' => 'Magazine', 'path' => '/magazine', 'desc' => 'Long-form demonstration features.'],
+      ['title' => 'Events Calendar', 'path' => '/events', 'desc' => 'Upcoming demo webinars and student forums.'],
+      ['title' => 'Campaigns', 'path' => '/campaigns', 'desc' => 'Illustrative fundraising campaigns.'],
     ],
   ],
   [

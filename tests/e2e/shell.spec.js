@@ -10,7 +10,7 @@ for (const width of [375, 768, 1024, 1440]) {
     expect(response.headers()['x-robots-tag']).toContain('noindex');
     await expect(page.getByRole('heading', { level: 1 })).toHaveText('Care, dignity and solidarity');
     await expect(page.getByText('Fictional demonstration. No real donations are collected.')).toBeVisible();
-    await expect(page.locator('.wordmark__sub')).toHaveCSS('color', 'rgb(238, 0, 0)');
+    await expect(page.locator('header .wordmark__sub')).toHaveCSS('color', 'rgb(238, 0, 0)');
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
     await page.keyboard.press('Tab');
     await expect(page.getByRole('link', { name: 'Skip to main content' })).toBeFocused();

@@ -6,6 +6,46 @@ nusry_core.homepage:
   requirements:
     _permission: 'access content'
 
+nusry_core.news:
+  path: '/news'
+  defaults:
+    _controller: '\Drupal\nusry_core\Controller\ListingController::news'
+    _title: 'News & Stories'
+  requirements:
+    _permission: 'access content'
+
+nusry_core.magazine:
+  path: '/magazine'
+  defaults:
+    _controller: '\Drupal\nusry_core\Controller\ListingController::magazine'
+    _title: 'Magazine'
+  requirements:
+    _permission: 'access content'
+
+nusry_core.events:
+  path: '/events'
+  defaults:
+    _controller: '\Drupal\nusry_core\Controller\ListingController::events'
+    _title: 'Events Calendar'
+  requirements:
+    _permission: 'access content'
+
+nusry_core.campaigns:
+  path: '/campaigns'
+  defaults:
+    _controller: '\Drupal\nusry_core\Controller\ListingController::campaigns'
+    _title: 'Campaigns'
+  requirements:
+    _permission: 'access content'
+
+nusry_core.search:
+  path: '/search'
+  defaults:
+    _controller: '\Drupal\nusry_core\Controller\ListingController::search'
+    _title: 'Search'
+  requirements:
+    _permission: 'access content'
+
 nusry_core.donate_preview:
   path: '/donate'
   defaults:
@@ -14,11 +54,33 @@ nusry_core.donate_preview:
   requirements:
     _permission: 'access content'
 
-nusry_core.search_preview:
-  path: '/search'
+nusry_core.not_found:
+  path: '/not-found'
   defaults:
-    _controller: '\Drupal\nusry_core\Controller\HomepageController::searchPreview'
-    _title: 'Search'
+    _controller: '\Drupal\nusry_core\Controller\UtilityController::notFound'
+    _title: 'Page not found'
+  requirements:
+    _permission: 'access content'
+
+nusry_core.styleguide:
+  path: '/styleguide'
+  defaults:
+    _controller: '\Drupal\nusry_core\Controller\UtilityController::styleguide'
+    _title: 'Component Library & Styleguide'
+  requirements:
+    _permission: 'access content'
+
+nusry_core.rss:
+  path: '/rss.xml'
+  defaults:
+    _controller: '\Drupal\nusry_core\Controller\UtilityController::rss'
+  requirements:
+    _permission: 'access content'
+
+nusry_core.sitemap:
+  path: '/sitemap.xml'
+  defaults:
+    _controller: '\Drupal\nusry_core\Controller\UtilityController::sitemap'
   requirements:
     _permission: 'access content'
 

@@ -1,0 +1,183 @@
+{% if p_bundle == 'hero' %}
+  <section class="p-block page-hero">
+    <span class="demo-pill">{{ 'Fictional Demo'|t }}</span>
+    <h1 class="page-hero__title" style="margin-top:12px;">{{ paragraph.field_heading.value }}</h1>
+    {% if paragraph.field_summary.value %}
+      <p class="page-hero__lead prose-serif">{{ paragraph.field_summary.value }}</p>
+    {% endif %}
+    {% if p_image %}
+      <figure class="editorial-figure" style="margin-top:24px;">
+        <img src="{{ p_image.url }}" alt="{{ p_image.alt }}" loading="eager">
+        {% if p_image.credit %}<figcaption class="editorial-figure__caption">{{ p_image.credit }}</figcaption>{% endif %}
+      </figure>
+    {% endif %}
+    <div style="display:flex; flex-wrap:wrap; gap:14px;">
+      {% if paragraph.field_link.uri %}
+        <a class="btn btn--primary" href="{{ content.field_link[0]['#url']|default('#') }}">{{ paragraph.field_link.title }}</a>
+      {% endif %}
+    </div>
+  </section>
+
+{% elseif p_bundle == 'rich_text' %}
+  <section class="p-block prose-column">
+    {{ content.field_body }}
+  </section>
+
+{% elseif p_bundle == 'image_text' %}
+  <section class="p-block feature-row {{ paragraph.field_alignment.value == 'right' ? 'feature-row--media-right' : 'feature-row--media-left' }}">
+    {% if p_image %}
+      <div class="feature-row__media">
+        <img src="{{ p_image.url }}" alt="{{ p_image.alt }}" loading="lazy">
+        {% if p_image.credit %}<span class="feature-row__credit">{{ p_image.credit }}</span>{% endif %}
+      </div>
+    {% endif %}
+    <div>
+      {% if paragraph.field_heading.value %}<h2 class="feature-row__title">{{ paragraph.field_heading.value }}</h2><span class="red-rule" aria-hidden="true"></span>{% endif %}
+      <div class="prose-serif feature-row__body">{{ content.field_body }}</div>
+      {% if paragraph.field_link.uri %}
+        <a class="link-chevron" href="{{ content.field_link[0]['#url']|default('#') }}">{{ paragraph.field_link.title }}</a>
+      {% endif %}
+    </div>
+  </section>
+
+{% elseif p_bundle == 'quote' %}
+  <section class="p-block">
+    <blockquote class="p-quote">
+      <p class="p-quote__text">“{{ paragraph.field_quote.value }}”</p>
+      <footer class="p-quote__cite">
+        — {{ paragraph.field_attribution.value }}{% if paragraph.field_source.value %} · {{ paragraph.field_source.value }}{% endif %}
+      </footer>
+    </blockquote>
+  </section>
+
+{% elseif p_bundle == 'faq' %}
+  <section class="p-block">
+    {% if paragraph.field_heading.value %}<h2 class="p-block__heading">{{ paragraph.field_heading.value }}</h2>{% endif %}
+    <div>{{ content.field_items }}</div>
+  </section>
+
+{% elseif p_bundle == 'faq_item' %}
+  <details class="p-faq__item">
+    <summary class="p-faq__summary">{{ paragraph.field_question.value }}</summary>
+    <div class="p-faq__answer prose-serif">{{ content.field_answer }}</div>
+  </details>
+
+{% elseif p_bundle == 'timeline' %}
+  <section class="p-block">
+    {% if paragraph.field_heading.value %}<h2 class="p-block__heading">{{ paragraph.field_heading.value }}</h2>{% endif %}
+    <div class="p-timeline">{{ content.field_items }}</div>
+  </section>
+
+{% elseif p_bundle == 'timeline_item' %}
+  <article>
+    <div class="p-timeline__date">{{ paragraph.field_date.value }}</div>
+    {% if paragraph.field_heading.value %}<h3 class="p-timeline__title">{{ paragraph.field_heading.value }}</h3>{% endif %}
+    <div class="prose-column">{{ content.field_body }}</div>
+  </article>
+
+{% elseif p_bundle == 'downloads' %}
+  <section class="p-block">
+    {% if paragraph.field_heading.value %}<h2 class="p-block__heading">{{ paragraph.field_heading.value }}</h2>{% endif %}
+    <div class="download-list">
+      {% for doc in p_documents %}
+        <div class="download-item">
+          <div>
+            <strong>{{ doc.name }}</strong>
+            <div style="font-size:0.875rem; color:var(--color-ink-muted);">{{ doc.size }} &middot; {{ doc.accessible_text }}</div>
+          </div>
+          <a class="btn btn--outline-dark" href="{{ doc.url }}" download>{{ 'Download PDF'|t }}</a>
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+
+{% elseif p_bundle == 'video' %}
+  <section class="p-block p-video">
+    {% if paragraph.field_heading.value %}<h2 class="p-block__heading">{{ paragraph.field_heading.value }}</h2>{% endif %}
+    <p><span class="demo-pill">{{ 'Privacy-aware embed'|t }}</span> {{ 'External video scripts do not load until you choose to open the demo player.'|t }}</p>
+    <p style="margin-top:14px;">
+      <button type="button" class="btn btn--primary" data-video-load aria-expanded="false" aria-controls="video-player-{{ paragraph.id() }}">
+        {{ 'Load demo video player'|t }}
+      </button>
+    </p>
+    <div id="video-player-{{ paragraph.id() }}" class="p-video__player" hidden>
+      <p><strong>{{ 'Simulated Video Briefing (Captions Verified)'|t }}</strong></p>
+      <p style="margin-top:8px;">{{ paragraph.field_video.entity.field_accessible_text.value|default('Demo video transcript unavailable.'|t) }}</p>
+    </div>
+  </section>
+
+{% elseif p_bundle == 'sensitive_image' %}
+  <section class="p-block p-sensitive">
+    <span class="demo-pill">{{ 'Content Warning'|t }}</span>
+    <p style="margin-top:10px;">{{ paragraph.field_warning.value }}</p>
+    {% if p_image %}
+      <p style="margin-top:14px;">
+        <button type="button"
+                class="btn btn--outline-dark"
+                data-sensitive-toggle
+                aria-expanded="false"
+                aria-controls="sensitive-media-{{ paragraph.id() }}"
+                data-show-label="{{ 'Reveal illustrative image'|t }}"
+                data-hide-label="{{ 'Hide illustrative image'|t }}">
+          {{ 'Reveal illustrative image'|t }}
+        </button>
+      </p>
+      <div id="sensitive-media-{{ paragraph.id() }}" class="p-sensitive__media" hidden>
+        <figure class="editorial-figure" style="margin-bottom:0;">
+          <img src="{{ p_image.url }}" alt="{{ p_image.alt }}" loading="lazy">
+          {% if p_image.credit %}<figcaption class="editorial-figure__caption">{{ p_image.credit }}</figcaption>{% endif %}
+        </figure>
+      </div>
+    {% endif %}
+  </section>
+
+{% elseif p_bundle == 'country_directory' %}
+  <section class="p-block" data-country-directory>
+    {% if paragraph.field_heading.value %}<h2 class="p-block__heading">{{ paragraph.field_heading.value }}</h2>{% endif %}
+    <div class="filter-bar">
+      <div class="filter-bar__grid">
+        <div class="filter-bar__field">
+          <label for="dir-search-{{ paragraph.id() }}">{{ 'Filter country profiles'|t }}</label>
+          <input id="dir-search-{{ paragraph.id() }}" type="search" data-dir-search placeholder="{{ 'Type country or region...'|t }}">
+        </div>
+        <div class="filter-bar__field">
+          <label for="dir-region-{{ paragraph.id() }}">{{ 'Region'|t }}</label>
+          <select id="dir-region-{{ paragraph.id() }}" data-dir-region>
+            <option value="">{{ 'All illustrative regions'|t }}</option>
+            {% for region in p_regions %}
+              <option value="{{ region }}">{{ region }}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+    </div>
+    <p class="results-summary" data-dir-status role="status" aria-live="polite">{{ 'Showing @count illustrative country profiles.'|t({'@count': p_countries|length}) }}</p>
+    <div class="listing-grid">
+      {% for country in p_countries %}
+        <article class="listing-card" data-dir-item data-region="{{ country.region }}">
+          <div class="listing-card__meta">{{ country.region }} &middot; {{ country.iso }}</div>
+          <h3 class="listing-card__title"><a href="{{ country.url }}">{{ country.title }}</a></h3>
+          <p class="listing-card__body">{{ country.summary }}</p>
+          <a class="link-chevron" href="{{ country.url }}">{{ 'View profile'|t }}</a>
+        </article>
+      {% endfor %}
+    </div>
+  </section>
+
+{% elseif p_bundle == 'card_grid' %}
+  <section class="p-block">
+    {% if paragraph.field_heading.value %}<h2 class="p-block__heading">{{ paragraph.field_heading.value }}</h2>{% endif %}
+    <div class="listing-grid">
+      {% for card in p_cards %}
+        <article class="listing-card">
+          <h3 class="listing-card__title"><a href="{{ card.url }}">{{ card.title }}</a></h3>
+          <p class="listing-card__body">{{ card.summary }}</p>
+          <a class="link-chevron" href="{{ card.url }}">{{ 'Read more'|t }}</a>
+        </article>
+      {% endfor %}
+    </div>
+  </section>
+
+{% else %}
+  <div class="p-block">{{ content }}</div>
+{% endif %}

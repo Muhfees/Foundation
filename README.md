@@ -4,7 +4,7 @@ A fictional medical humanitarian nonprofit website demo. No affiliation with Doc
 
 ## Status
 
-Phase 4 (reference-structured homepage, responsive layout, self-hosted fonts, interactive header/mega-menu/drawer/search/tabs and 4-width Playwright/axe QA) is ready for review on branch `feat/phase-4-homepage`. Phase 3 is committed on `feat/phase-3-editorial`; Phase 2 is in [draft PR #2](https://github.com/Muhfees/Foundation/pull/2) with [CI passing](https://github.com/Muhfees/Foundation/actions/runs/45869936401); Phase 1 [planning PR #1](https://github.com/Muhfees/Foundation/pull/1) remains a draft. Inner listing/search routes and full donation/portal flows belong to Phases 5–6.
+Phase 5 (editorial node/Paragraph templates, `/news`, `/magazine`, `/events`, `/campaigns`, Search API `/search`, `/styleguide`, `/not-found`, `/rss.xml`, `/sitemap.xml`, and print styles) is ready for review on branch `feat/phase-5-templates-search`, stacked on `feat/phase-4-homepage` and `feat/phase-3-editorial`. Phase 2 is in [draft PR #2](https://github.com/Muhfees/Foundation/pull/2) with [CI passing](https://github.com/Muhfees/Foundation/actions/runs/45869936401); Phase 1 [planning PR #1](https://github.com/Muhfees/Foundation/pull/1) remains a draft. Full mock donation checkout, confirmed newsletter opt-in, contact protection and donor portal belong to Phase 6.
 
 ## Local setup
 

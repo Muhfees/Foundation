@@ -3,6 +3,8 @@ import './styles/tokens.css';
 import './styles/base.css';
 import './styles/layout.css';
 import './styles/homepage.css';
+import './styles/pages.css';
+import './styles/print.css';
 
 const ALERT_STORAGE_KEY = 'nusry_dismissed_alert';
 
@@ -326,3 +328,90 @@ initModalDialog({
 initTabs();
 initHeroDonatePanel();
 initNewsletterForms();
+
+function initSensitiveReveals() {
+  for (const btn of document.querySelectorAll('[data-sensitive-toggle]')) {
+    const targetId = btn.getAttribute('aria-controls');
+    const target = targetId ? document.getElementById(targetId) : null;
+    if (!target) {
+      continue;
+    }
+    btn.addEventListener('click', () => {
+      const hidden = target.hidden;
+      target.hidden = !hidden;
+      btn.setAttribute('aria-expanded', hidden ? 'true' : 'false');
+      btn.textContent = hidden
+        ? (btn.dataset.hideLabel || 'Hide illustrative image')
+        : (btn.dataset.showLabel || 'Reveal illustrative image');
+    });
+  }
+}
+
+function initVideoPlaceholders() {
+  for (const btn of document.querySelectorAll('[data-video-load]')) {
+    const targetId = btn.getAttribute('aria-controls');
+    const target = targetId ? document.getElementById(targetId) : null;
+    if (!target) {
+      continue;
+    }
+    btn.addEventListener('click', () => {
+      const opening = target.hidden;
+      target.hidden = !opening;
+      btn.setAttribute('aria-expanded', opening ? 'true' : 'false');
+    });
+  }
+}
+
+function initCountryDirectoryFilter() {
+  for (const root of document.querySelectorAll('[data-country-directory]')) {
+    const keyword = root.querySelector('[data-dir-search]');
+    const region = root.querySelector('[data-dir-region]');
+    const status = root.querySelector('[data-dir-status]');
+    const items = [...root.querySelectorAll('[data-dir-item]')];
+    if (items.length === 0) {
+      continue;
+    }
+    const update = () => {
+      const q = (keyword?.value || '').trim().toLowerCase();
+      const reg = region?.value || '';
+      let visible = 0;
+      for (const item of items) {
+        const text = (item.textContent || '').toLowerCase();
+        const itemReg = item.dataset.region || '';
+        const match = (!q || text.includes(q)) && (!reg || itemReg === reg);
+        item.hidden = !match;
+        if (match) {
+          visible += 1;
+        }
+      }
+      if (status) {
+        status.textContent = `Showing ${visible} illustrative country profiles.`;
+      }
+    };
+    keyword?.addEventListener('input', update);
+    region?.addEventListener('change', update);
+  }
+}
+
+function initCopyShareLinks() {
+  for (const btn of document.querySelectorAll('[data-copy-link]')) {
+    const status = btn.parentElement?.querySelector('[data-copy-status]');
+    btn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        if (status) {
+          status.textContent = 'Page URL copied.';
+        }
+      } catch {
+        if (status) {
+          status.textContent = window.location.href;
+        }
+      }
+    });
+  }
+}
+
+initSensitiveReveals();
+initVideoPlaceholders();
+initCountryDirectoryFilter();
+initCopyShareLinks();

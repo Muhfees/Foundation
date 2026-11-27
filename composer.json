@@ -22,6 +22,7 @@
     "drupal/redis": "^1.10",
     "drupal/scheduler": "^2.3",
     "drupal/scheduler_content_moderation_integration": "^3.0",
+    "drupal/search_api": "^1.38",
     "drush/drush": "^13"
   },
   "require-dev": {

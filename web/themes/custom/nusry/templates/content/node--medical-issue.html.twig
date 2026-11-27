@@ -1,0 +1,42 @@
+<article{{ attributes }}>
+  <header class="page-hero">
+    <div class="page-hero__meta">
+      <span class="demo-pill">{{ 'Medical Focus (Demo)'|t }}</span>
+      {% if reviewed_date %}<span>{{ 'Information reviewed:'|t }} {{ reviewed_date }}</span>{% endif %}
+    </div>
+    <h1 class="page-hero__title">{{ label }}</h1>
+    {% if summary_text %}<p class="page-hero__lead prose-serif">{{ summary_text }}</p>{% endif %}
+  </header>
+
+  {% if hero_media %}
+    <figure class="editorial-figure">
+      <img src="{{ hero_media.url }}" alt="{{ hero_media.alt }}" loading="eager">
+      <figcaption class="editorial-figure__caption">{{ hero_media.caption ?: 'Illustrative graphic (demo).'|t }}{% if hero_media.credit %} &middot; {{ hero_media.credit }}{% endif %}</figcaption>
+    </figure>
+  {% endif %}
+
+  <div class="prose-column prose-serif">
+    {{ content.field_body }}
+  </div>
+
+  {{ content.field_components }}
+
+  {% if issue_countries %}
+    <section class="p-block" aria-labelledby="issue-countries-heading">
+      <h2 id="issue-countries-heading" class="p-block__heading">{{ 'Related illustrative country profiles'|t }}</h2>
+      <div style="display:flex; flex-wrap:wrap; gap:12px;">
+        {% for country in issue_countries %}
+          <a class="btn btn--outline-dark" href="{{ country.url }}">{{ country.title }}</a>
+        {% endfor %}
+      </div>
+    </section>
+  {% endif %}
+
+  <aside class="donate-prompt">
+    <div>
+      <h2 class="donate-prompt__title">{{ 'Support medical preparedness (Demo)'|t }}</h2>
+      <p>{{ 'Fictional medical guide for demonstration purposes only.'|t }}</p>
+    </div>
+    <a class="btn btn--primary" href="/donate">{{ 'Try a demo donation'|t }}</a>
+  </aside>
+</article>

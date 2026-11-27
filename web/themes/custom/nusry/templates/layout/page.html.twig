@@ -145,9 +145,8 @@
 </div>
 
 <main id="main-content" class="site-main" tabindex="-1">
-  {{ page.breadcrumb }}
+  {% if not is_front %}<div class="site-main--inner">{{ page.breadcrumb }}{% endif %}
   {{ page.highlighted }}
-  {% if not is_front %}<div class="site-main--inner">{% endif %}
   {{ page.content }}
   {% if not is_front %}</div>{% endif %}
 </main>

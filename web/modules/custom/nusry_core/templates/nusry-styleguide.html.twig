@@ -1,0 +1,63 @@
+<p class="prose-serif">{{ 'Design tokens, typography hierarchy, buttons, form validation states, cards, disclosures, light/dark surfaces and accessibility controls for the Nusry Foundation demo.'|t }}</p>
+
+<section class="p-block" aria-labelledby="sg-colors">
+  <h2 id="sg-colors" class="p-block__heading">{{ '1. Colour Tokens'|t }}</h2>
+  <div class="swatch-grid">
+    <div class="swatch"><div class="swatch__color" style="background:#EE0000;"></div><div class="swatch__meta"><strong>Action Red</strong><br>#EE0000 (white 4.53:1)</div></div>
+    <div class="swatch"><div class="swatch__color" style="background:#C60000;"></div><div class="swatch__meta"><strong>Hover / Pale Text Red</strong><br>#C60000 (&gt;5.1:1)</div></div>
+    <div class="swatch"><div class="swatch__color" style="background:#231F20;"></div><div class="swatch__meta"><strong>Ink / Charcoal</strong><br>#231F20 (16.30:1)</div></div>
+    <div class="swatch"><div class="swatch__color" style="background:#F3F4F0;"></div><div class="swatch__meta"><strong>Statistics Surface</strong><br>#F3F4F0</div></div>
+    <div class="swatch"><div class="swatch__color" style="background:#EFF0EB;"></div><div class="swatch__meta"><strong>Footer / Rules</strong><br>#EFF0EB</div></div>
+    <div class="swatch"><div class="swatch__color" style="background:#FFE75A;"></div><div class="swatch__meta"><strong>Urgent Yellow</strong><br>#FFE75A (13.06:1)</div></div>
+    <div class="swatch"><div class="swatch__color" style="background:#005FCC;"></div><div class="swatch__meta"><strong>Focus Blue</strong><br>#005FCC</div></div>
+    <div class="swatch"><div class="swatch__color" style="background:#176B43;"></div><div class="swatch__meta"><strong>Success</strong><br>#176B43</div></div>
+  </div>
+</section>
+
+<section class="p-block" aria-labelledby="sg-type">
+  <h2 id="sg-type" class="p-block__heading">{{ '2. Typography & Buttons'|t }}</h2>
+  <p class="prose-serif">{{ 'Source Sans 3 (weights 400/600/700/800) handles headings, navigation, labels and CTAs. Source Serif 4 handles editorial prose and disclaimers.'|t }}</p>
+  <div style="display:flex; flex-wrap:wrap; gap:14px; margin-top:20px; align-items:center;">
+    <button type="button" class="btn btn--primary">{{ 'Primary Action'|t }}</button>
+    <button type="button" class="btn btn--outline-dark">{{ 'Secondary Dark'|t }}</button>
+    <button type="button" class="btn btn--primary" disabled style="opacity:0.5; cursor:not-allowed;">{{ 'Disabled State'|t }}</button>
+    <a class="link-chevron" href="#sg-type">{{ 'Chevron Link'|t }}</a>
+  </div>
+  <div class="dark-surface" style="margin-top:24px;">
+    <h3 style="margin-bottom:10px;">{{ 'Dark Surface (#231F20)'|t }}</h3>
+    <p style="margin-bottom:16px;">{{ 'High-contrast inverse typography and outline actions.'|t }}</p>
+    <a class="btn btn--outline-light" href="#sg-type">{{ 'Secondary Light'|t }}</a>
+  </div>
+</section>
+
+<section class="p-block" aria-labelledby="sg-states">
+  <h2 id="sg-states" class="p-block__heading">{{ '3. Feedback, Form & Empty States'|t }}</h2>
+  <div class="state-banner state-banner--success" role="status">{{ 'Success state: Demo confirmation recorded cleanly.'|t }}</div>
+  <div class="state-banner state-banner--error" role="alert">{{ 'Error state: Enter a valid simulated amount or email address.'|t }}</div>
+  <div class="state-banner">{{ 'Empty state: No matching items found. Use Clear filters to reset.'|t }}</div>
+</section>
+
+<section class="p-block" aria-labelledby="sg-interactive">
+  <h2 id="sg-interactive" class="p-block__heading">{{ '4. Sensitive Media Disclosure & Accordion'|t }}</h2>
+  <div class="p-sensitive">
+    <span class="demo-pill">{{ 'Content Warning Demo'|t }}</span>
+    <p style="margin-top:10px;">{{ 'Illustrative graphic gated behind explicit reveal and re-hide controls.'|t }}</p>
+    <p style="margin-top:14px;">
+      <button type="button" class="btn btn--outline-dark" data-sensitive-toggle aria-expanded="false" aria-controls="sg-sensitive-media" data-show-label="Reveal illustrative image" data-hide-label="Hide illustrative image">
+        {{ 'Reveal illustrative image'|t }}
+      </button>
+    </p>
+    <div id="sg-sensitive-media" class="p-sensitive__media" hidden>
+      <img src="{{ theme_base }}/assets/images/help-donor.webp" alt="Illustrative clinic scene revealed after explicit confirmation." width="720" height="450" loading="lazy">
+    </div>
+  </div>
+
+  <div style="margin-top:24px;">
+    <details class="p-faq__item">
+      <summary class="p-faq__summary">{{ 'How are reduced motion and keyboard focus supported?'|t }}</summary>
+      <div class="p-faq__answer">
+        <p>{{ 'All CSS transitions collapse to 0.01ms under prefers-reduced-motion: reduce, and modals/drawers restore focus to their triggering button on Escape or close.'|t }}</p>
+      </div>
+    </details>
+  </div>
+</section>

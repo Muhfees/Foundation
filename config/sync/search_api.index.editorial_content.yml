@@ -1,0 +1,166 @@
+uuid: d94ee853-55e6-4082-948d-5273f38b0503
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_body
+    - field.storage.node.field_countries
+    - field.storage.node.field_date
+    - field.storage.node.field_issues
+    - field.storage.node.field_story_kind
+    - field.storage.node.field_summary
+    - search_api.server.database
+  module:
+    - node
+id: editorial_content
+name: 'Editorial content'
+description: 'Indexes published stories, countries, medical issues, events, campaigns, reports and flexible pages.'
+read_only: false
+field_settings:
+  created:
+    label: 'Authored on'
+    datasource_id: 'entity:node'
+    property_path: created
+    type: date
+    dependencies:
+      module:
+        - node
+  field_body:
+    label: Body
+    datasource_id: 'entity:node'
+    property_path: field_body
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_body
+  field_countries:
+    label: Countries
+    datasource_id: 'entity:node'
+    property_path: field_countries
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_countries
+  field_date:
+    label: 'Publication date'
+    datasource_id: 'entity:node'
+    property_path: field_date
+    type: date
+    dependencies:
+      config:
+        - field.storage.node.field_date
+  field_issues:
+    label: 'Medical issues'
+    datasource_id: 'entity:node'
+    property_path: field_issues
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_issues
+  field_story_kind:
+    label: 'Story type'
+    datasource_id: 'entity:node'
+    property_path: field_story_kind
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_story_kind
+  field_summary:
+    label: Summary
+    datasource_id: 'entity:node'
+    property_path: field_summary
+    type: text
+    boost: 2.0
+    dependencies:
+      config:
+        - field.storage.node.field_summary
+  node_grants:
+    label: 'Node access information'
+    property_path: search_api_node_grants
+    type: string
+    indexed_locked: true
+    type_locked: true
+    hidden: true
+  status:
+    label: Published
+    datasource_id: 'entity:node'
+    property_path: status
+    type: boolean
+    indexed_locked: true
+    type_locked: true
+    dependencies:
+      module:
+        - node
+  title:
+    label: Title
+    datasource_id: 'entity:node'
+    property_path: title
+    type: text
+    boost: 5.0
+    dependencies:
+      module:
+        - node
+  type:
+    label: 'Content type'
+    datasource_id: 'entity:node'
+    property_path: type
+    type: string
+    dependencies:
+      module:
+        - node
+  uid:
+    label: 'Author uid'
+    datasource_id: 'entity:node'
+    property_path: uid
+    type: integer
+    indexed_locked: true
+    type_locked: true
+    dependencies:
+      module:
+        - node
+datasource_settings:
+  'entity:node':
+    bundles:
+      default: true
+      selected: {  }
+    languages:
+      default: true
+      selected: {  }
+processor_settings:
+  add_url: {  }
+  aggregated_field: {  }
+  content_access: {  }
+  custom_value: {  }
+  entity_status: {  }
+  entity_type: {  }
+  html_filter:
+    all_fields: false
+    title: true
+    alt: true
+    tags:
+      b: 2.0
+      em: 1.5
+      h1: 5.0
+      h2: 3.0
+      h3: 2.0
+      strong: 2.0
+      u: 1.5
+  ignorecase:
+    all_fields: false
+  language_with_fallback: {  }
+  rendered_item: {  }
+  tokenizer:
+    all_fields: false
+    spaces: ''
+    ignored: ._-
+    overlap_cjk: 1
+    minimum_word_size: '3'
+tracker_settings:
+  default:
+    indexing_order: fifo
+options:
+  cron_limit: 50
+  delete_on_fail: true
+  index_directly: true
+  track_changes_in_references: true
+server: database

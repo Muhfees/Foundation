@@ -62,6 +62,7 @@ jobs:
           vendor/bin/phpcs
           php -l scripts/install.php
           php -l scripts/configure-editorial.php
+          php -l scripts/configure-search.php
           php -l scripts/verify-editorial-schema.php
           php -l scripts/seed-demo.php
           php -l scripts/verify-demo-seed.php
@@ -73,10 +74,11 @@ jobs:
           vendor/bin/drush status --fields=drupal-version,bootstrap,db-status
           vendor/bin/drush php:script scripts/verify-config.php
           vendor/bin/drush php:script scripts/verify-editorial-schema.php
-      - name: Seed synthetic demo content and run PHPUnit suite
+      - name: Seed synthetic demo content, index search and run PHPUnit suite
         run: |
           vendor/bin/drush php:script scripts/seed-demo.php
           vendor/bin/drush php:script scripts/seed-demo.php
+          vendor/bin/drush search-api:index
           vendor/bin/drush php:script scripts/verify-demo-seed.php
           vendor/bin/phpunit
       - name: Enable and verify Redis
