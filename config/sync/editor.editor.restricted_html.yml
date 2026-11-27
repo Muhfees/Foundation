@@ -1,0 +1,30 @@
+uuid: 2077dc69-5943-4bce-b902-05cac4042e72
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.restricted_html
+  module:
+    - ckeditor5
+format: restricted_html
+editor: ckeditor5
+settings:
+  toolbar:
+    items:
+      - heading
+      - '|'
+      - bold
+      - italic
+      - link
+      - bulletedList
+      - numberedList
+      - blockQuote
+      - undo
+      - redo
+  plugins:
+    ckeditor5_heading:
+      enabled_headings:
+        - heading2
+        - heading3
+image_upload:
+  status: false

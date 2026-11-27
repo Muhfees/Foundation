@@ -1,0 +1,27 @@
+uuid: 7875484b-41ac-4a7d-a1c7-9efc9b39c020
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_frequencies
+field_name: field_frequencies
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: once
+      label: 'One time'
+    -
+      value: monthly
+      label: Monthly
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

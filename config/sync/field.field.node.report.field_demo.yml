@@ -1,0 +1,23 @@
+uuid: 02c2bd86-4414-4d93-9d22-e197bda45802
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_demo
+    - node.type.report
+id: node.report.field_demo
+field_name: field_demo
+entity_type: node
+bundle: report
+label: 'Fictional demo content'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

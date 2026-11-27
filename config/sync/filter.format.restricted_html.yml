@@ -1,0 +1,23 @@
+uuid: c2d51b27-b183-4a68-920f-bc34330b9d94
+langcode: en
+status: true
+dependencies: {  }
+name: 'Restricted editorial HTML'
+format: restricted_html
+weight: 0
+filters:
+  filter_html:
+    id: filter_html
+    provider: filter
+    status: true
+    weight: -10
+    settings:
+      allowed_html: '<p> <br> <strong> <em> <ul> <ol start> <li> <h2> <h3> <blockquote> <a href title>'
+      filter_html_help: true
+      filter_html_nofollow: false
+  filter_htmlcorrector:
+    id: filter_htmlcorrector
+    provider: filter
+    status: true
+    weight: 10
+    settings: {  }

@@ -1,0 +1,135 @@
+uuid: 8ae14ca0-81cb-4459-833e-a7f3c0f4f660
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.event.field_accessibility
+    - field.field.node.event.field_booking
+    - field.field.node.event.field_campaign
+    - field.field.node.event.field_components
+    - field.field.node.event.field_demo
+    - field.field.node.event.field_end
+    - field.field.node.event.field_format
+    - field.field.node.event.field_metatags
+    - field.field.node.event.field_start
+    - field.field.node.event.field_summary
+    - field.field.node.event.field_timezone
+    - field.field.node.event.field_venue
+    - field.field.node.event.field_virtual_url
+    - node.type.event
+  module:
+    - datetime
+    - entity_reference_revisions
+    - link
+    - user
+id: node.event.default
+targetEntityType: node
+bundle: event
+mode: default
+content:
+  field_accessibility:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 15
+    region: content
+  field_booking:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 15
+    region: content
+  field_campaign:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 15
+    region: content
+  field_components:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 15
+    region: content
+  field_end:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 15
+    region: content
+  field_format:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 15
+    region: content
+  field_start:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 15
+    region: content
+  field_summary:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 15
+    region: content
+  field_timezone:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 15
+    region: content
+  field_venue:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 15
+    region: content
+  field_virtual_url:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 15
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_demo: true
+  field_metatags: true
+  langcode: true

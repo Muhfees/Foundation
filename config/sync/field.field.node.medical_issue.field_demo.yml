@@ -1,0 +1,23 @@
+uuid: b188a87c-38ca-4065-a931-75421521e3b3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_demo
+    - node.type.medical_issue
+id: node.medical_issue.field_demo
+field_name: field_demo
+entity_type: node
+bundle: medical_issue
+label: 'Fictional demo content'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

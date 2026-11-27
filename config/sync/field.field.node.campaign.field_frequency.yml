@@ -1,0 +1,21 @@
+uuid: f52212c6-b2c8-4d7b-b64f-b9cafd7fd150
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_frequency
+    - node.type.campaign
+  module:
+    - options
+id: node.campaign.field_frequency
+field_name: field_frequency
+entity_type: node
+bundle: campaign
+label: 'Default frequency'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

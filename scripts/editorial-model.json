@@ -1,0 +1,1253 @@
+{
+  "paragraphs": {
+    "hero": [
+      {
+        "name": "field_heading",
+        "label": "Heading",
+        "type": "string",
+        "options": {}
+      },
+      {
+        "name": "field_summary",
+        "label": "Summary",
+        "type": "string_long",
+        "options": {}
+      },
+      {
+        "name": "field_media",
+        "label": "Image",
+        "type": "entity_reference",
+        "options": {
+          "storage": {
+            "target_type": "media"
+          },
+          "settings": {
+            "handler": "default:media",
+            "handler_settings": {
+              "target_bundles": {
+                "image": "image"
+              }
+            }
+          },
+          "cardinality": 1,
+          "widget": "media_library_widget"
+        }
+      },
+      {
+        "name": "field_mobile_media",
+        "label": "Mobile image",
+        "type": "entity_reference",
+        "options": {
+          "storage": {
+            "target_type": "media"
+          },
+          "settings": {
+            "handler": "default:media",
+            "handler_settings": {
+              "target_bundles": {
+                "image": "image"
+              }
+            }
+          },
+          "cardinality": 1
+        }
+      },
+      {
+        "name": "field_link",
+        "label": "Link",
+        "type": "link",
+        "options": {
+          "settings": {
+            "link_type": 17,
+            "title": 2
+          }
+        }
+      },
+      {
+        "name": "field_secondary_link",
+        "label": "Secondary link",
+        "type": "link",
+        "options": {}
+      }
+    ],
+    "rich_text": [
+      {
+        "name": "field_body",
+        "label": "Body",
+        "type": "text_long",
+        "options": {
+          "settings": {
+            "allowed_formats": [
+              "restricted_html"
+            ]
+          }
+        }
+      }
+    ],
+    "image_text": [
+      {
+        "name": "field_heading",
+        "label": "Heading",
+        "type": "string",
+        "options": {}
+      },
+      {
+        "name": "field_body",
+        "label": "Body",
+        "type": "text_long",
+        "options": {
+          "settings": {
+            "allowed_formats": [
+              "restricted_html"
+            ]
+          }
+        }
+      },
+      {
+        "name": "field_media",
+        "label": "Image",
+        "type": "entity_reference",
+        "options": {
+          "storage": {
+            "target_type": "media"
+          },
+          "settings": {
+            "handler": "default:media",
+            "handler_settings": {
+              "target_bundles": {
+                "image": "image"
+              }
+            }
+          },
+          "cardinality": 1,
+          "widget": "media_library_widget"
+        }
+      },
+      {
+        "name": "field_link",
+        "label": "Link",
+        "type": "link",
+        "options": {
+          "settings": {
+            "link_type": 17,
+            "title": 2
+          }
+        }
+      },
+      {
+        "name": "field_alignment",
+        "label": "Image alignment",
+        "type": "list_string",
+        "options": {
+          "storage": {
+            "allowed_values": {
+              "left": "Left",
+              "right": "Right"
+            }
+          }
+        }
+      }
+    ],
+    "statistics": [
+      {
+        "name": "field_heading",
+        "label": "Heading",
+        "type": "string",
+        "options": {}
+      },
+      {
+        "name": "field_items",
+        "label": "Items",
+        "type": "entity_reference_revisions",
+        "options": {
+          "storage": {
+            "target_type": "paragraph"
+          },
+          "settings": {
+            "handler": "default:paragraph",
+            "handler_settings": {
+              "target_bundles": {
+                "statistic_item": "statistic_item"
+              }
+            }
+          },
+          "cardinality": -1,
+          "widget": "paragraphs",
+          "formatter": "entity_reference_revisions_entity_view"
+        }
+      }
+    ],
+    "statistic_item": [
+      {
+        "name": "field_label",
+        "label": "Label",
+        "type": "string",
+        "options": {
+          "required": true
+        }
+      },
+      {
+        "name": "field_value",
+        "label": "Illustrative value",
+        "type": "string",
+        "options": {
+          "required": true
+        }
+      },
+      {
+        "name": "field_unit",
+        "label": "Unit",
+        "type": "string",
+        "options": {}
+      },
+      {
+        "name": "field_period",
+        "label": "Reporting period",
+        "type": "string",
+        "options": {
+          "required": true
+        }
+      },
+      {
+        "name": "field_source",
+        "label": "Source / report reference",
+        "type": "string_long",
+        "options": {
+          "required": true
+        }
+      }
+    ],
+    "card_grid": [
+      {
+        "name": "field_heading",
+        "label": "Heading",
+        "type": "string",
+        "options": {}
+      },
+      {
+        "name": "field_content",
+        "label": "Curated content",
+        "type": "entity_reference",
+        "options": {
+          "storage": {
+            "target_type": "node"
+          },
+          "settings": {
+            "handler": "default:node",
+            "handler_settings": {
+              "target_bundles": {
+                "story": "story",
+                "campaign": "campaign",
+                "event": "event",
+                "report": "report",
+                "flexible_page": "flexible_page"
+              }
+            }
+          },
+          "cardinality": -1
+        }
+      },
+      {
+        "name": "field_count",
+        "label": "Maximum cards",
+        "type": "integer",
+        "options": {
+          "settings": {
+            "min": 1,
+            "max": 12
+          }
+        }
+      }
+    ],
+    "quote": [
+      {
+        "name": "field_quote",
+        "label": "Quotation",
+        "type": "string_long",
+        "options": {
+          "required": true
+        }
+      },
+      {
+        "name": "field_attribution",
+        "label": "Fictional attribution",
+        "type": "string",
+        "options": {
+          "required": true
+        }
+      },
+      {
+        "name": "field_source",
+        "label": "Source / report reference",
+        "type": "string_long",
+        "options": {
+          "required": true
+        }
+      }
+    ],
+    "video": [
+      {
+        "name": "field_heading",
+        "label": "Heading",
+        "type": "string",
+        "options": {}
+      },
+      {
+        "name": "field_video",
+        "label": "Video",
+        "type": "entity_reference",
+        "options": {
+          "storage": {
+            "target_type": "media"
+          },
+          "settings": {
+            "handler": "default:media",
+            "handler_settings": {
+              "target_bundles": {
+                "remote_video": "remote_video"
+              }
+            }
+          },
+          "cardinality": 1
+        }
+      }
+    ],
+    "faq": [
+      {
+        "name": "field_heading",
+        "label": "Heading",
+        "type": "string",
+        "options": {}
+      },
+      {
+        "name": "field_items",
+        "label": "Items",
+        "type": "entity_reference_revisions",
+        "options": {
+          "storage": {
+            "target_type": "paragraph"
+          },
+          "settings": {
+            "handler": "default:paragraph",
+            "handler_settings": {
+              "target_bundles": {
+                "faq_item": "faq_item"
+              }
+            }
+          },
+          "cardinality": -1,
+          "widget": "paragraphs",
+          "formatter": "entity_reference_revisions_entity_view"
+        }
+      }
+    ],
+    "faq_item": [
+      {
+        "name": "field_question",
+        "label": "Question",
+        "type": "string",
+        "options": {
+          "required": true
+        }
+      },
+      {
+        "name": "field_answer",
+        "label": "Answer",
+        "type": "text_long",
+        "options": {
+          "required": true,
+          "settings": {
+            "allowed_formats": [
+              "restricted_html"
+            ]
+          }
+        }
+      }
+    ],
+    "donation": [
+      {
+        "name": "field_heading",
+        "label": "Heading",
+        "type": "string",
+        "options": {}
+      },
+      {
+        "name": "field_campaign",
+        "label": "Campaign",
+        "type": "entity_reference",
+        "options": {
+          "storage": {
+            "target_type": "node"
+          },
+          "settings": {
+            "handler": "default:node",
+            "handler_settings": {
+              "target_bundles": {
+                "campaign": "campaign"
+              }
+            }
+          },
+          "cardinality": 1
+        }
+      },
+      {
+        "name": "field_amounts",
+        "label": "Preset amounts (minor units)",
+        "type": "integer",
+        "options": {
+          "cardinality": -1,
+          "settings": {
+            "min": 100,
+            "max": 100000000
+          }
+        }
+      },
+      {
+        "name": "field_currency",
+        "label": "Currency",
+        "type": "string",
+        "options": {
+          "default": [
+            {
+              "value": "USD"
+            }
+          ]
+        }
+      },
+      {
+        "name": "field_frequencies",
+        "label": "Frequencies",
+        "type": "list_string",
+        "options": {
+          "cardinality": -1,
+          "storage": {
+            "allowed_values": {
+              "once": "One time",
+              "monthly": "Monthly"
+            }
+          }
+        }
+      }
+    ],
+    "newsletter": [
+      {
+        "name": "field_heading",
+        "label": "Heading",
+        "type": "string",
+        "options": {}
+      },
+      {
+        "name": "field_summary",
+        "label": "Summary",
+        "type": "string_long",
+        "options": {}
+      },
+      {
+        "name": "field_consent_text",
+        "label": "Consent text",
+        "type": "string_long",
+        "options": {
+          "required": true
+        }
+      },
+      {
+        "name": "field_consent_version",
+        "label": "Consent version",
+        "type": "string",
+        "options": {
+          "required": true
+        }
+      },
+      {
+        "name": "field_link",
+        "label": "Link",
+        "type": "link",
+        "options": {
+          "settings": {
+            "link_type": 17,
+            "title": 2
+          }
+        }
+      }
+    ],
+    "downloads": [
+      {
+        "name": "field_heading",
+        "label": "Heading",
+        "type": "string",
+        "options": {}
+      },
+      {
+        "name": "field_documents",
+        "label": "Documents",
+        "type": "entity_reference",
+        "options": {
+          "storage": {
+            "target_type": "media"
+          },
+          "settings": {
+            "handler": "default:media",
+            "handler_settings": {
+              "target_bundles": {
+                "document": "document"
+              }
+            }
+          },
+          "cardinality": -1
+        }
+      }
+    ],
+    "timeline": [
+      {
+        "name": "field_heading",
+        "label": "Heading",
+        "type": "string",
+        "options": {}
+      },
+      {
+        "name": "field_items",
+        "label": "Items",
+        "type": "entity_reference_revisions",
+        "options": {
+          "storage": {
+            "target_type": "paragraph"
+          },
+          "settings": {
+            "handler": "default:paragraph",
+            "handler_settings": {
+              "target_bundles": {
+                "timeline_item": "timeline_item"
+              }
+            }
+          },
+          "cardinality": -1,
+          "widget": "paragraphs",
+          "formatter": "entity_reference_revisions_entity_view"
+        }
+      }
+    ],
+    "timeline_item": [
+      {
+        "name": "field_date",
+        "label": "Date label",
+        "type": "string",
+        "options": {
+          "required": true
+        }
+      },
+      {
+        "name": "field_heading",
+        "label": "Heading",
+        "type": "string",
+        "options": {}
+      },
+      {
+        "name": "field_body",
+        "label": "Body",
+        "type": "text_long",
+        "options": {
+          "settings": {
+            "allowed_formats": [
+              "restricted_html"
+            ]
+          }
+        }
+      },
+      {
+        "name": "field_media",
+        "label": "Image",
+        "type": "entity_reference",
+        "options": {
+          "storage": {
+            "target_type": "media"
+          },
+          "settings": {
+            "handler": "default:media",
+            "handler_settings": {
+              "target_bundles": {
+                "image": "image"
+              }
+            }
+          },
+          "cardinality": 1,
+          "widget": "media_library_widget"
+        }
+      }
+    ],
+    "country_directory": [
+      {
+        "name": "field_heading",
+        "label": "Heading",
+        "type": "string",
+        "options": {}
+      },
+      {
+        "name": "field_regions",
+        "label": "Regions",
+        "type": "entity_reference",
+        "options": {
+          "storage": {
+            "target_type": "taxonomy_term"
+          },
+          "settings": {
+            "handler": "default:taxonomy_term",
+            "handler_settings": {
+              "target_bundles": {
+                "regions": "regions"
+              }
+            }
+          },
+          "cardinality": -1
+        }
+      }
+    ],
+    "principles": [
+      {
+        "name": "field_heading",
+        "label": "Heading",
+        "type": "string",
+        "options": {}
+      },
+      {
+        "name": "field_items",
+        "label": "Items",
+        "type": "entity_reference_revisions",
+        "options": {
+          "storage": {
+            "target_type": "paragraph"
+          },
+          "settings": {
+            "handler": "default:paragraph",
+            "handler_settings": {
+              "target_bundles": {
+                "principle_item": "principle_item"
+              }
+            }
+          },
+          "cardinality": -1,
+          "widget": "paragraphs",
+          "formatter": "entity_reference_revisions_entity_view"
+        }
+      },
+      {
+        "name": "field_link",
+        "label": "Link",
+        "type": "link",
+        "options": {
+          "settings": {
+            "link_type": 17,
+            "title": 2
+          }
+        }
+      }
+    ],
+    "principle_item": [
+      {
+        "name": "field_heading",
+        "label": "Heading",
+        "type": "string",
+        "options": {}
+      },
+      {
+        "name": "field_body",
+        "label": "Body",
+        "type": "text_long",
+        "options": {
+          "settings": {
+            "allowed_formats": [
+              "restricted_html"
+            ]
+          }
+        }
+      }
+    ],
+    "sensitive_image": [
+      {
+        "name": "field_warning",
+        "label": "Content warning",
+        "type": "string_long",
+        "options": {
+          "required": true
+        }
+      },
+      {
+        "name": "field_media",
+        "label": "Image",
+        "type": "entity_reference",
+        "options": {
+          "storage": {
+            "target_type": "media"
+          },
+          "settings": {
+            "handler": "default:media",
+            "handler_settings": {
+              "target_bundles": {
+                "image": "image"
+              }
+            }
+          },
+          "cardinality": 1,
+          "widget": "media_library_widget"
+        }
+      }
+    ]
+  },
+  "nodes": {
+    "flexible_page": {
+      "label": "Flexible page",
+      "fields": [],
+      "path": "pages/[node:title]"
+    },
+    "story": {
+      "label": "Story",
+      "path": "stories/[node:title]",
+      "fields": [
+        {
+          "name": "field_body",
+          "label": "Body",
+          "type": "text_long",
+          "options": {
+            "settings": {
+              "allowed_formats": [
+                "restricted_html"
+              ]
+            }
+          }
+        },
+        {
+          "name": "field_story_kind",
+          "label": "Story type",
+          "type": "list_string",
+          "options": {
+            "required": true,
+            "storage": {
+              "allowed_values": {
+                "news": "News",
+                "story": "Story"
+              }
+            }
+          }
+        },
+        {
+          "name": "field_date",
+          "label": "Publication date",
+          "type": "datetime",
+          "options": {
+            "required": true
+          }
+        },
+        {
+          "name": "field_author",
+          "label": "Author",
+          "type": "string",
+          "options": {
+            "required": true
+          }
+        },
+        {
+          "name": "field_countries",
+          "label": "Countries",
+          "type": "entity_reference",
+          "options": {
+            "storage": {
+              "target_type": "node"
+            },
+            "settings": {
+              "handler": "default:node",
+              "handler_settings": {
+                "target_bundles": {
+                  "country": "country"
+                }
+              }
+            },
+            "cardinality": -1
+          }
+        },
+        {
+          "name": "field_issues",
+          "label": "Medical issues",
+          "type": "entity_reference",
+          "options": {
+            "storage": {
+              "target_type": "node"
+            },
+            "settings": {
+              "handler": "default:node",
+              "handler_settings": {
+                "target_bundles": {
+                  "medical_issue": "medical_issue"
+                }
+              }
+            },
+            "cardinality": -1
+          }
+        },
+        {
+          "name": "field_campaign",
+          "label": "Campaign",
+          "type": "entity_reference",
+          "options": {
+            "storage": {
+              "target_type": "node"
+            },
+            "settings": {
+              "handler": "default:node",
+              "handler_settings": {
+                "target_bundles": {
+                  "campaign": "campaign"
+                }
+              }
+            },
+            "cardinality": 1
+          }
+        },
+        {
+          "name": "field_related",
+          "label": "Related stories",
+          "type": "entity_reference",
+          "options": {
+            "storage": {
+              "target_type": "node"
+            },
+            "settings": {
+              "handler": "default:node",
+              "handler_settings": {
+                "target_bundles": {
+                  "story": "story"
+                }
+              }
+            },
+            "cardinality": -1
+          }
+        },
+        {
+          "name": "field_categories",
+          "label": "Story categories",
+          "type": "entity_reference",
+          "options": {
+            "storage": {
+              "target_type": "taxonomy_term"
+            },
+            "settings": {
+              "handler": "default:taxonomy_term",
+              "handler_settings": {
+                "target_bundles": {
+                  "story_categories": "story_categories"
+                }
+              }
+            },
+            "cardinality": -1
+          }
+        },
+        {
+          "name": "field_reading_time",
+          "label": "Reading time (minutes)",
+          "type": "integer",
+          "options": {
+            "default": [
+              {
+                "value": 1
+              }
+            ],
+            "settings": {
+              "min": 1,
+              "max": 120
+            }
+          }
+        }
+      ]
+    },
+    "country": {
+      "label": "Country",
+      "path": "where-we-work/[node:title]",
+      "fields": [
+        {
+          "name": "field_iso_code",
+          "label": "ISO country code",
+          "type": "string",
+          "options": {
+            "required": true,
+            "storage": {
+              "max_length": 2
+            }
+          }
+        },
+        {
+          "name": "field_region",
+          "label": "Region",
+          "type": "entity_reference",
+          "options": {
+            "storage": {
+              "target_type": "taxonomy_term"
+            },
+            "settings": {
+              "handler": "default:taxonomy_term",
+              "handler_settings": {
+                "target_bundles": {
+                  "regions": "regions"
+                }
+              }
+            },
+            "cardinality": 1
+          }
+        },
+        {
+          "name": "field_facts",
+          "label": "Sourced illustrative facts",
+          "type": "string_long",
+          "options": {}
+        }
+      ]
+    },
+    "medical_issue": {
+      "label": "Medical issue",
+      "path": "medical-issues/[node:title]",
+      "fields": [
+        {
+          "name": "field_body",
+          "label": "Body",
+          "type": "text_long",
+          "options": {
+            "settings": {
+              "allowed_formats": [
+                "restricted_html"
+              ]
+            }
+          }
+        },
+        {
+          "name": "field_reviewed",
+          "label": "Information reviewed",
+          "type": "datetime",
+          "options": {
+            "storage": {
+              "datetime_type": "date"
+            },
+            "required": true
+          }
+        },
+        {
+          "name": "field_countries",
+          "label": "Countries",
+          "type": "entity_reference",
+          "options": {
+            "storage": {
+              "target_type": "node"
+            },
+            "settings": {
+              "handler": "default:node",
+              "handler_settings": {
+                "target_bundles": {
+                  "country": "country"
+                }
+              }
+            },
+            "cardinality": -1
+          }
+        },
+        {
+          "name": "field_categories",
+          "label": "Story categories",
+          "type": "entity_reference",
+          "options": {
+            "storage": {
+              "target_type": "taxonomy_term"
+            },
+            "settings": {
+              "handler": "default:taxonomy_term",
+              "handler_settings": {
+                "target_bundles": {
+                  "story_categories": "story_categories"
+                }
+              }
+            },
+            "cardinality": -1
+          }
+        },
+        {
+          "name": "field_reading_time",
+          "label": "Reading time (minutes)",
+          "type": "integer",
+          "options": {
+            "default": [
+              {
+                "value": 1
+              }
+            ],
+            "settings": {
+              "min": 1,
+              "max": 120
+            }
+          }
+        }
+      ]
+    },
+    "event": {
+      "label": "Event",
+      "path": "events/[node:title]",
+      "fields": [
+        {
+          "name": "field_start",
+          "label": "Starts",
+          "type": "datetime",
+          "options": {
+            "required": true
+          }
+        },
+        {
+          "name": "field_end",
+          "label": "Ends",
+          "type": "datetime",
+          "options": {
+            "required": true
+          }
+        },
+        {
+          "name": "field_timezone",
+          "label": "Event timezone",
+          "type": "string",
+          "options": {
+            "required": true,
+            "default": [
+              {
+                "value": "UTC"
+              }
+            ]
+          }
+        },
+        {
+          "name": "field_format",
+          "label": "Event format",
+          "type": "entity_reference",
+          "options": {
+            "storage": {
+              "target_type": "taxonomy_term"
+            },
+            "settings": {
+              "handler": "default:taxonomy_term",
+              "handler_settings": {
+                "target_bundles": {
+                  "event_formats": "event_formats"
+                }
+              }
+            },
+            "cardinality": 1
+          }
+        },
+        {
+          "name": "field_venue",
+          "label": "Venue / address",
+          "type": "string_long",
+          "options": {}
+        },
+        {
+          "name": "field_virtual_url",
+          "label": "Virtual event URL",
+          "type": "link",
+          "options": {}
+        },
+        {
+          "name": "field_accessibility",
+          "label": "Accessibility information",
+          "type": "string_long",
+          "options": {
+            "required": true
+          }
+        },
+        {
+          "name": "field_booking",
+          "label": "Booking destination",
+          "type": "link",
+          "options": {}
+        },
+        {
+          "name": "field_campaign",
+          "label": "Campaign",
+          "type": "entity_reference",
+          "options": {
+            "storage": {
+              "target_type": "node"
+            },
+            "settings": {
+              "handler": "default:node",
+              "handler_settings": {
+                "target_bundles": {
+                  "campaign": "campaign"
+                }
+              }
+            },
+            "cardinality": 1
+          }
+        }
+      ]
+    },
+    "campaign": {
+      "label": "Campaign",
+      "path": "campaigns/[node:title]",
+      "fields": [
+        {
+          "name": "field_start",
+          "label": "Starts",
+          "type": "datetime",
+          "options": {
+            "required": true
+          }
+        },
+        {
+          "name": "field_end",
+          "label": "Ends",
+          "type": "datetime",
+          "options": {
+            "required": true
+          }
+        },
+        {
+          "name": "field_campaign_id",
+          "label": "Demo campaign ID",
+          "type": "string",
+          "options": {
+            "required": true
+          }
+        },
+        {
+          "name": "field_campaign_status",
+          "label": "Campaign status",
+          "type": "list_string",
+          "options": {
+            "storage": {
+              "allowed_values": {
+                "planned": "Planned",
+                "active": "Active",
+                "closed": "Closed"
+              }
+            }
+          }
+        },
+        {
+          "name": "field_amounts",
+          "label": "Preset amounts (minor units)",
+          "type": "integer",
+          "options": {
+            "cardinality": -1,
+            "settings": {
+              "min": 100,
+              "max": 100000000
+            }
+          }
+        },
+        {
+          "name": "field_frequency",
+          "label": "Default frequency",
+          "type": "list_string",
+          "options": {
+            "storage": {
+              "allowed_values": {
+                "once": "One time",
+                "monthly": "Monthly"
+              }
+            }
+          }
+        },
+        {
+          "name": "field_matching",
+          "label": "Demo matching explanation",
+          "type": "string_long",
+          "options": {}
+        },
+        {
+          "name": "field_themes",
+          "label": "Campaign themes",
+          "type": "entity_reference",
+          "options": {
+            "storage": {
+              "target_type": "taxonomy_term"
+            },
+            "settings": {
+              "handler": "default:taxonomy_term",
+              "handler_settings": {
+                "target_bundles": {
+                  "campaign_themes": "campaign_themes"
+                }
+              }
+            },
+            "cardinality": -1
+          }
+        }
+      ]
+    },
+    "report": {
+      "label": "Report",
+      "path": "reports/[node:title]",
+      "fields": [
+        {
+          "name": "field_period",
+          "label": "Reporting period",
+          "type": "string",
+          "options": {
+            "required": true
+          }
+        },
+        {
+          "name": "field_document",
+          "label": "Document",
+          "type": "entity_reference",
+          "options": {
+            "storage": {
+              "target_type": "media"
+            },
+            "settings": {
+              "handler": "default:media",
+              "handler_settings": {
+                "target_bundles": {
+                  "document": "document"
+                }
+              }
+            },
+            "cardinality": 1,
+            "required": true
+          }
+        },
+        {
+          "name": "field_category",
+          "label": "Report category",
+          "type": "entity_reference",
+          "options": {
+            "storage": {
+              "target_type": "taxonomy_term"
+            },
+            "settings": {
+              "handler": "default:taxonomy_term",
+              "handler_settings": {
+                "target_bundles": {
+                  "report_categories": "report_categories"
+                }
+              }
+            },
+            "cardinality": 1
+          }
+        },
+        {
+          "name": "field_date",
+          "label": "Publication date",
+          "type": "datetime",
+          "options": {
+            "required": true
+          }
+        },
+        {
+          "name": "field_accessible_text",
+          "label": "Accessible HTML summary",
+          "type": "text_long",
+          "options": {
+            "required": true,
+            "settings": {
+              "allowed_formats": [
+                "restricted_html"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  }
+}

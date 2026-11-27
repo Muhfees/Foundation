@@ -1,0 +1,24 @@
+uuid: 230a329c-2010-4a70-bbbf-497603dbfb1e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_regions
+    - paragraphs.paragraphs_type.country_directory
+    - taxonomy.vocabulary.regions
+id: paragraph.country_directory.field_regions
+field_name: field_regions
+entity_type: paragraph
+bundle: country_directory
+label: Regions
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      regions: regions
+field_type: entity_reference

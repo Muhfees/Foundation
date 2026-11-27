@@ -1,0 +1,31 @@
+uuid: ff4018f3-2eef-476c-b11c-7fb6091d1f95
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.country_directory.field_heading
+    - field.field.paragraph.country_directory.field_regions
+    - paragraphs.paragraphs_type.country_directory
+id: paragraph.country_directory.default
+targetEntityType: paragraph
+bundle: country_directory
+mode: default
+content:
+  field_heading:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_regions:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden: {  }

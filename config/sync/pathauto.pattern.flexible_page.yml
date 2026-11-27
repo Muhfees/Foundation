@@ -1,0 +1,23 @@
+uuid: d53ea6e9-a4c5-4919-bf79-f1d6531608fc
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.flexible_page
+  module:
+    - node
+id: flexible_page
+label: 'Flexible page'
+type: 'canonical_entities:node'
+pattern: '/pages/[node:title]'
+selection_criteria:
+  type:
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: node
+    bundles:
+      flexible_page: flexible_page
+selection_logic: and
+weight: 0
+relationships: {  }

@@ -1,0 +1,19 @@
+uuid: eb1f9c21-4a1c-4637-a5fe-eb715e706818
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_source
+    - paragraphs.paragraphs_type.statistic_item
+id: paragraph.statistic_item.field_source
+field_name: field_source
+entity_type: paragraph
+bundle: statistic_item
+label: 'Source / report reference'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

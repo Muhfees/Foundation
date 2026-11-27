@@ -1,0 +1,31 @@
+uuid: ea5d194c-88db-4894-bd7d-c917f1cfc7d2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.downloads.field_documents
+    - field.field.paragraph.downloads.field_heading
+    - paragraphs.paragraphs_type.downloads
+id: paragraph.downloads.default
+targetEntityType: paragraph
+bundle: downloads
+mode: default
+content:
+  field_documents:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_heading:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden: {  }

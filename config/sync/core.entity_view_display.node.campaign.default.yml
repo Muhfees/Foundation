@@ -1,0 +1,119 @@
+uuid: f43f8233-ee51-499c-963d-d85b4e947eb3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.campaign.field_amounts
+    - field.field.node.campaign.field_campaign_id
+    - field.field.node.campaign.field_campaign_status
+    - field.field.node.campaign.field_components
+    - field.field.node.campaign.field_demo
+    - field.field.node.campaign.field_end
+    - field.field.node.campaign.field_frequency
+    - field.field.node.campaign.field_hero
+    - field.field.node.campaign.field_matching
+    - field.field.node.campaign.field_metatags
+    - field.field.node.campaign.field_start
+    - field.field.node.campaign.field_summary
+    - node.type.campaign
+  module:
+    - datetime
+    - entity_reference_revisions
+    - options
+    - user
+id: node.campaign.default
+targetEntityType: node
+bundle: campaign
+mode: default
+content:
+  field_amounts:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 14
+    region: content
+  field_campaign_id:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 14
+    region: content
+  field_campaign_status:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 14
+    region: content
+  field_components:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 14
+    region: content
+  field_end:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 14
+    region: content
+  field_frequency:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 14
+    region: content
+  field_hero:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 14
+    region: content
+  field_matching:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 14
+    region: content
+  field_start:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 14
+    region: content
+  field_summary:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 14
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_demo: true
+  field_metatags: true
+  langcode: true

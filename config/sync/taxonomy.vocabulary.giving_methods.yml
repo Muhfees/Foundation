@@ -1,0 +1,9 @@
+uuid: ba9920d3-84dc-498d-aa61-f029122dbfdb
+langcode: en
+status: true
+dependencies: {  }
+name: 'Giving Methods'
+vid: giving_methods
+description: null
+weight: 0
+new_revision: false

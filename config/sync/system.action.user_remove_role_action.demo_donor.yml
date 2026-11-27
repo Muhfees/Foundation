@@ -1,0 +1,14 @@
+uuid: b6ec8841-6d74-4489-b093-ae1b4a94d2e4
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.demo_donor
+  module:
+    - user
+id: user_remove_role_action.demo_donor
+label: 'Remove the Demo Donor role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: demo_donor

@@ -1,0 +1,60 @@
+uuid: d0648d7c-e011-45a7-899b-93a4b1349deb
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.restricted_html
+    - media.type.document
+    - media.type.image
+    - media.type.remote_video
+    - node.type.campaign
+    - node.type.country
+    - node.type.event
+    - node.type.flexible_page
+    - node.type.medical_issue
+    - node.type.report
+    - node.type.story
+    - workflows.workflow.editorial
+  module:
+    - content_moderation
+    - filter
+    - media
+    - node
+    - system
+id: contributor
+label: Contributor
+weight: 4
+is_admin: false
+permissions:
+  - 'access administration pages'
+  - 'access content'
+  - 'access content overview'
+  - 'access media overview'
+  - 'create campaign content'
+  - 'create country content'
+  - 'create document media'
+  - 'create event content'
+  - 'create flexible_page content'
+  - 'create image media'
+  - 'create medical_issue content'
+  - 'create remote_video media'
+  - 'create report content'
+  - 'create story content'
+  - 'edit own campaign content'
+  - 'edit own country content'
+  - 'edit own document media'
+  - 'edit own event content'
+  - 'edit own flexible_page content'
+  - 'edit own image media'
+  - 'edit own medical_issue content'
+  - 'edit own remote_video media'
+  - 'edit own report content'
+  - 'edit own story content'
+  - 'use editorial transition create_new_draft'
+  - 'use editorial transition submit_review'
+  - 'use text format restricted_html'
+  - 'view latest version'
+  - 'view media'
+  - 'view own unpublished content'
+  - 'view own unpublished media'
+  - 'view the administration theme'

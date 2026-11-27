@@ -1,0 +1,27 @@
+uuid: 049ee7b3-f0c4-4aaa-8f85-efd54a512e54
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_story_kind
+field_name: field_story_kind
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: news
+      label: News
+    -
+      value: story
+      label: Story
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

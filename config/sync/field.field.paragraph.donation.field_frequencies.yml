@@ -1,0 +1,21 @@
+uuid: bac5a11a-d6ed-4f91-9fb7-5193df0e895e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_frequencies
+    - paragraphs.paragraphs_type.donation
+  module:
+    - options
+id: paragraph.donation.field_frequencies
+field_name: field_frequencies
+entity_type: paragraph
+bundle: donation
+label: Frequencies
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

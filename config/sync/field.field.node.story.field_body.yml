@@ -1,0 +1,24 @@
+uuid: 329590e2-7a91-402e-af7c-bede3ae5c0f0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_body
+    - filter.format.restricted_html
+    - node.type.story
+  module:
+    - text
+id: node.story.field_body
+field_name: field_body
+entity_type: node
+bundle: story
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - restricted_html
+field_type: text_long

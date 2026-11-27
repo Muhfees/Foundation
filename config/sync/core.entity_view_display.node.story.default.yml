@@ -1,0 +1,128 @@
+uuid: b8449002-9bad-4eba-adf6-521a38b10aca
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.story.field_author
+    - field.field.node.story.field_body
+    - field.field.node.story.field_campaign
+    - field.field.node.story.field_components
+    - field.field.node.story.field_countries
+    - field.field.node.story.field_date
+    - field.field.node.story.field_demo
+    - field.field.node.story.field_hero
+    - field.field.node.story.field_issues
+    - field.field.node.story.field_metatags
+    - field.field.node.story.field_related
+    - field.field.node.story.field_story_kind
+    - field.field.node.story.field_summary
+    - node.type.story
+  module:
+    - datetime
+    - entity_reference_revisions
+    - options
+    - text
+    - user
+id: node.story.default
+targetEntityType: node
+bundle: story
+mode: default
+content:
+  field_author:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 15
+    region: content
+  field_body:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 15
+    region: content
+  field_campaign:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 15
+    region: content
+  field_components:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 15
+    region: content
+  field_countries:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 15
+    region: content
+  field_date:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 15
+    region: content
+  field_hero:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 15
+    region: content
+  field_issues:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 15
+    region: content
+  field_related:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 15
+    region: content
+  field_story_kind:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 15
+    region: content
+  field_summary:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 15
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_demo: true
+  field_metatags: true
+  langcode: true

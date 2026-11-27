@@ -1,0 +1,19 @@
+uuid: 7e262330-286c-461c-a73a-ca3b93245dfa
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_source
+    - paragraphs.paragraphs_type.quote
+id: paragraph.quote.field_source
+field_name: field_source
+entity_type: paragraph
+bundle: quote
+label: 'Source / report reference'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

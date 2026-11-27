@@ -1,0 +1,21 @@
+uuid: 5e06fb5e-0874-412c-9765-e5c4d8105152
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_currency
+    - paragraphs.paragraphs_type.donation
+id: paragraph.donation.field_currency
+field_name: field_currency
+entity_type: paragraph
+bundle: donation
+label: Currency
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: USD
+default_value_callback: ''
+settings: {  }
+field_type: string

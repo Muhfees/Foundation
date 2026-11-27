@@ -1,0 +1,94 @@
+uuid: 82d22b79-d2b4-4ab2-83d7-e201acb8e0ba
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.restricted_html
+    - media.type.document
+    - media.type.image
+    - media.type.remote_video
+    - node.type.campaign
+    - node.type.country
+    - node.type.event
+    - node.type.flexible_page
+    - node.type.medical_issue
+    - node.type.report
+    - node.type.story
+    - workflows.workflow.editorial
+  module:
+    - content_moderation
+    - filter
+    - media
+    - node
+    - path
+    - scheduler
+    - system
+id: editor
+label: Editor
+weight: 3
+is_admin: false
+permissions:
+  - 'access administration pages'
+  - 'access content'
+  - 'access content overview'
+  - 'access media overview'
+  - 'create campaign content'
+  - 'create country content'
+  - 'create document media'
+  - 'create event content'
+  - 'create flexible_page content'
+  - 'create image media'
+  - 'create medical_issue content'
+  - 'create remote_video media'
+  - 'create report content'
+  - 'create story content'
+  - 'create url aliases'
+  - 'delete any campaign content'
+  - 'delete any country content'
+  - 'delete any document media'
+  - 'delete any event content'
+  - 'delete any flexible_page content'
+  - 'delete any image media'
+  - 'delete any medical_issue content'
+  - 'delete any remote_video media'
+  - 'delete any report content'
+  - 'delete any story content'
+  - 'edit any campaign content'
+  - 'edit any country content'
+  - 'edit any document media'
+  - 'edit any event content'
+  - 'edit any flexible_page content'
+  - 'edit any image media'
+  - 'edit any medical_issue content'
+  - 'edit any remote_video media'
+  - 'edit any report content'
+  - 'edit any story content'
+  - 'revert campaign revisions'
+  - 'revert country revisions'
+  - 'revert event revisions'
+  - 'revert flexible_page revisions'
+  - 'revert medical_issue revisions'
+  - 'revert report revisions'
+  - 'revert story revisions'
+  - 'schedule publishing of nodes'
+  - 'use editorial transition approve_schedule'
+  - 'use editorial transition archive'
+  - 'use editorial transition create_new_draft'
+  - 'use editorial transition publish'
+  - 'use editorial transition submit_review'
+  - 'use text format restricted_html'
+  - 'view all media revisions'
+  - 'view any unpublished content'
+  - 'view campaign revisions'
+  - 'view country revisions'
+  - 'view event revisions'
+  - 'view flexible_page revisions'
+  - 'view latest version'
+  - 'view media'
+  - 'view medical_issue revisions'
+  - 'view own unpublished content'
+  - 'view own unpublished media'
+  - 'view report revisions'
+  - 'view scheduled content'
+  - 'view story revisions'
+  - 'view the administration theme'

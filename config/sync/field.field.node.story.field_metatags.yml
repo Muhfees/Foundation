@@ -1,0 +1,21 @@
+uuid: dd8a5358-7bad-489e-ba5f-fd314cb2dbbe
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_metatags
+    - node.type.story
+  module:
+    - metatag
+id: node.story.field_metatags
+field_name: field_metatags
+entity_type: node
+bundle: story
+label: 'SEO metadata'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag

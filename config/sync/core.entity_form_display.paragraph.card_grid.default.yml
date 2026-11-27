@@ -1,0 +1,42 @@
+uuid: a42ae386-64c5-493b-bf55-b46faf88f73b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.card_grid.field_content
+    - field.field.paragraph.card_grid.field_count
+    - field.field.paragraph.card_grid.field_heading
+    - paragraphs.paragraphs_type.card_grid
+id: paragraph.card_grid.default
+targetEntityType: paragraph
+bundle: card_grid
+mode: default
+content:
+  field_content:
+    type: entity_reference_autocomplete
+    weight: 3
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_count:
+    type: number
+    weight: 3
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_heading:
+    type: string_textfield
+    weight: 3
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

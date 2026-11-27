@@ -1,0 +1,19 @@
+uuid: 527d8653-9117-4cd7-bc86-8858acfebd60
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.field_credit
+field_name: field_credit
+entity_type: media
+type: string_long
+settings:
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

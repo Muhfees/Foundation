@@ -1,0 +1,9 @@
+uuid: 0f21a350-a04d-4542-ae5a-6ad2980461b3
+langcode: en
+status: true
+dependencies: {  }
+name: 'Campaign Themes'
+vid: campaign_themes
+description: null
+weight: 0
+new_revision: false

@@ -1,0 +1,21 @@
+uuid: 63916160-5894-4acb-bf1c-49cf350bd1de
+langcode: en
+status: true
+dependencies:
+  module:
+    - scheduler
+third_party_settings:
+  scheduler:
+    publish_enable: true
+    publish_past_date: error
+    publish_revision: true
+    publish_touch: false
+    unpublish_enable: true
+    unpublish_revision: true
+name: Story
+type: story
+description: null
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: false

@@ -1,0 +1,24 @@
+uuid: 2120daf5-cf44-4da1-a16e-71b1065e776f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_body
+    - filter.format.restricted_html
+    - paragraphs.paragraphs_type.timeline_item
+  module:
+    - text
+id: paragraph.timeline_item.field_body
+field_name: field_body
+entity_type: paragraph
+bundle: timeline_item
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - restricted_html
+field_type: text_long

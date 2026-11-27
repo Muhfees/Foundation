@@ -1,0 +1,33 @@
+uuid: 721ef477-9821-4f65-a304-04a780315354
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.sensitive_image.field_media
+    - field.field.paragraph.sensitive_image.field_warning
+    - paragraphs.paragraphs_type.sensitive_image
+  module:
+    - media_library
+id: paragraph.sensitive_image.default
+targetEntityType: paragraph
+bundle: sensitive_image
+mode: default
+content:
+  field_media:
+    type: media_library_widget
+    weight: 2
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  field_warning:
+    type: string_textarea
+    weight: 2
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

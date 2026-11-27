@@ -1,0 +1,23 @@
+uuid: 64dbb17f-9da7-472c-81f7-c300b46e7437
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_demo
+    - node.type.flexible_page
+id: node.flexible_page.field_demo
+field_name: field_demo
+entity_type: node
+bundle: flexible_page
+label: 'Fictional demo content'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

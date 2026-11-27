@@ -1,0 +1,19 @@
+uuid: 4583ad4f-32f1-4405-8673-1952f49a3c90
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_accessible_text
+    - media.type.remote_video
+id: media.remote_video.field_accessible_text
+field_name: field_accessible_text
+entity_type: media
+bundle: remote_video
+label: Transcript
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

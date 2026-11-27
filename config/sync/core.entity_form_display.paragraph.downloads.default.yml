@@ -1,0 +1,34 @@
+uuid: dd8a6936-ca97-47b9-bfd4-2af41610eec0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.downloads.field_documents
+    - field.field.paragraph.downloads.field_heading
+    - paragraphs.paragraphs_type.downloads
+id: paragraph.downloads.default
+targetEntityType: paragraph
+bundle: downloads
+mode: default
+content:
+  field_documents:
+    type: entity_reference_autocomplete
+    weight: 2
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_heading:
+    type: string_textfield
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

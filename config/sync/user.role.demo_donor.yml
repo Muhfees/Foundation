@@ -1,0 +1,12 @@
+uuid: fb00c861-9f4f-4dac-ade1-8e184c909b28
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+id: demo_donor
+label: 'Demo Donor'
+weight: 6
+is_admin: false
+permissions:
+  - 'access content'

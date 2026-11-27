@@ -1,0 +1,10 @@
+uuid: 82938617-e2ac-443b-abfa-81555ff6249e
+langcode: en
+status: true
+dependencies: {  }
+id: sensitive_image
+label: 'Sensitive Image'
+icon_uuid: null
+icon_default: null
+description: null
+behavior_plugins: {  }

@@ -1,0 +1,19 @@
+uuid: bbd1cd0c-faf8-4c8f-aa33-67e37f1ec04f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_provenance
+    - media.type.document
+id: media.document.field_provenance
+field_name: field_provenance
+entity_type: media
+bundle: document
+label: 'Source and provenance notes'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

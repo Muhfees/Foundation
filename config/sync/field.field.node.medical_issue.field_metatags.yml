@@ -1,0 +1,21 @@
+uuid: 8d4e4c9a-c522-4464-8cac-70900259db16
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_metatags
+    - node.type.medical_issue
+  module:
+    - metatag
+id: node.medical_issue.field_metatags
+field_name: field_metatags
+entity_type: node
+bundle: medical_issue
+label: 'SEO metadata'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag

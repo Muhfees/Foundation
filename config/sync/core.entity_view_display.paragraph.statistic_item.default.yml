@@ -1,0 +1,60 @@
+uuid: aaea3914-01a5-401f-91f8-53d8d35b4d6f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.statistic_item.field_label
+    - field.field.paragraph.statistic_item.field_period
+    - field.field.paragraph.statistic_item.field_source
+    - field.field.paragraph.statistic_item.field_unit
+    - field.field.paragraph.statistic_item.field_value
+    - paragraphs.paragraphs_type.statistic_item
+id: paragraph.statistic_item.default
+targetEntityType: paragraph
+bundle: statistic_item
+mode: default
+content:
+  field_label:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_period:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_source:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_unit:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_value:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 5
+    region: content
+hidden: {  }

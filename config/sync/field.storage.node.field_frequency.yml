@@ -1,0 +1,27 @@
+uuid: 5068786f-28c7-47bf-80d1-c5b75cc91c4c
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_frequency
+field_name: field_frequency
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: once
+      label: 'One time'
+    -
+      value: monthly
+      label: Monthly
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

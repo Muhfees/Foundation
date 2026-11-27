@@ -1,0 +1,23 @@
+uuid: b8a196ff-51b6-471c-bfdc-49590978e0fb
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.medical_issue
+  module:
+    - node
+id: medical_issue
+label: 'Medical issue'
+type: 'canonical_entities:node'
+pattern: '/medical-issues/[node:title]'
+selection_criteria:
+  type:
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: node
+    bundles:
+      medical_issue: medical_issue
+selection_logic: and
+weight: 0
+relationships: {  }

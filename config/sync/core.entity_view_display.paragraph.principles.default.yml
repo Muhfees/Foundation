@@ -1,0 +1,48 @@
+uuid: c4d24810-bf3f-4db3-b251-28af02e09aa5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.principles.field_heading
+    - field.field.paragraph.principles.field_items
+    - field.field.paragraph.principles.field_link
+    - paragraphs.paragraphs_type.principles
+  module:
+    - entity_reference_revisions
+    - link
+id: paragraph.principles.default
+targetEntityType: paragraph
+bundle: principles
+mode: default
+content:
+  field_heading:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_items:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_link:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 3
+    region: content
+hidden: {  }

@@ -1,0 +1,19 @@
+uuid: 6ccd8cfd-5b7c-490b-9723-e45d6f47a969
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_date
+    - paragraphs.paragraphs_type.timeline_item
+id: paragraph.timeline_item.field_date
+field_name: field_date
+entity_type: paragraph
+bundle: timeline_item
+label: 'Date label'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

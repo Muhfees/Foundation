@@ -1,0 +1,24 @@
+uuid: 67794046-07c3-4849-8cce-54b3614f253a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_body
+    - filter.format.restricted_html
+    - node.type.medical_issue
+  module:
+    - text
+id: node.medical_issue.field_body
+field_name: field_body
+entity_type: node
+bundle: medical_issue
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - restricted_html
+field_type: text_long

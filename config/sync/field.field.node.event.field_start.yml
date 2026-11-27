@@ -1,0 +1,21 @@
+uuid: 07efbe22-afdf-452f-8055-607ddcea5516
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_start
+    - node.type.event
+  module:
+    - datetime
+id: node.event.field_start
+field_name: field_start
+entity_type: node
+bundle: event
+label: Starts
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

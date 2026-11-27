@@ -1,0 +1,12 @@
+uuid: 42269cec-2c36-460b-8541-e295dcf4b1da
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+id: donor_services
+label: 'Donor Services'
+weight: 5
+is_admin: false
+permissions:
+  - 'access content'

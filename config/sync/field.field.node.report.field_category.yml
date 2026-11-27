@@ -1,0 +1,24 @@
+uuid: 783e4866-37ec-4e0c-a23b-8766b1dbfd47
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_category
+    - node.type.report
+    - taxonomy.vocabulary.report_categories
+id: node.report.field_category
+field_name: field_category
+entity_type: node
+bundle: report
+label: 'Report category'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      report_categories: report_categories
+field_type: entity_reference

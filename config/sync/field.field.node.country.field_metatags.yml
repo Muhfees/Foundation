@@ -1,0 +1,21 @@
+uuid: ed4118eb-6f8e-461a-a4ef-ea25ee6f130d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_metatags
+    - node.type.country
+  module:
+    - metatag
+id: node.country.field_metatags
+field_name: field_metatags
+entity_type: node
+bundle: country
+label: 'SEO metadata'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag

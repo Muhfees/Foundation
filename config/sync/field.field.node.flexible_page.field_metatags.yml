@@ -1,0 +1,21 @@
+uuid: 750dcfeb-d142-42b8-8619-77c7b14ec439
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_metatags
+    - node.type.flexible_page
+  module:
+    - metatag
+id: node.flexible_page.field_metatags
+field_name: field_metatags
+entity_type: node
+bundle: flexible_page
+label: 'SEO metadata'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag

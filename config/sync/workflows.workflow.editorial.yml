@@ -1,0 +1,101 @@
+uuid: eb9e6700-d0bc-4aee-92ca-276a83287a4e
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.document
+    - media.type.image
+    - media.type.remote_video
+    - node.type.campaign
+    - node.type.country
+    - node.type.event
+    - node.type.flexible_page
+    - node.type.medical_issue
+    - node.type.report
+    - node.type.story
+  module:
+    - content_moderation
+id: editorial
+label: 'Editorial review'
+type: content_moderation
+type_settings:
+  states:
+    archived:
+      label: Archived
+      weight: 4
+      published: false
+      default_revision: true
+    draft:
+      label: Draft
+      weight: 0
+      published: false
+      default_revision: false
+    published:
+      label: Published
+      weight: 3
+      published: true
+      default_revision: true
+    review:
+      label: 'Needs review'
+      weight: 1
+      published: false
+      default_revision: false
+    scheduled:
+      label: 'Approved for scheduling'
+      weight: 2
+      published: false
+      default_revision: false
+  transitions:
+    approve_schedule:
+      label: 'Approve for scheduling'
+      from:
+        - review
+        - scheduled
+      to: scheduled
+      weight: 2
+    archive:
+      label: Archive
+      from:
+        - published
+        - archived
+      to: archived
+      weight: 4
+    create_new_draft:
+      label: 'Save draft'
+      from:
+        - draft
+        - review
+        - scheduled
+        - published
+        - archived
+      to: draft
+      weight: 0
+    publish:
+      label: 'Publish approved content'
+      from:
+        - review
+        - scheduled
+        - published
+      to: published
+      weight: 3
+    submit_review:
+      label: 'Submit for review'
+      from:
+        - draft
+        - review
+      to: review
+      weight: 1
+  entity_types:
+    media:
+      - image
+      - document
+      - remote_video
+    node:
+      - flexible_page
+      - story
+      - country
+      - medical_issue
+      - event
+      - campaign
+      - report
+  default_moderation_state: draft
