@@ -1,0 +1,23 @@
+uuid: c582d354-5640-4782-8691-4783e2b7f256
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_captions_confirmed
+    - media.type.remote_video
+id: media.remote_video.field_captions_confirmed
+field_name: field_captions_confirmed
+entity_type: media
+bundle: remote_video
+label: 'Captions verified'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

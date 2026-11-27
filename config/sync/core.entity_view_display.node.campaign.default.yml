@@ -13,8 +13,10 @@ dependencies:
     - field.field.node.campaign.field_hero
     - field.field.node.campaign.field_matching
     - field.field.node.campaign.field_metatags
+    - field.field.node.campaign.field_social_image
     - field.field.node.campaign.field_start
     - field.field.node.campaign.field_summary
+    - field.field.node.campaign.field_themes
     - node.type.campaign
   module:
     - datetime
@@ -26,6 +28,11 @@ targetEntityType: node
 bundle: campaign
 mode: default
 content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
   field_amounts:
     type: number_integer
     label: above
@@ -33,7 +40,7 @@ content:
       thousand_separator: ''
       prefix_suffix: true
     third_party_settings: {  }
-    weight: 14
+    weight: 15
     region: content
   field_campaign_id:
     type: string
@@ -42,14 +49,14 @@ content:
       link_to_entity: false
       link_rel: canonical
     third_party_settings: {  }
-    weight: 14
+    weight: 15
     region: content
   field_campaign_status:
     type: list_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    weight: 14
+    weight: 15
     region: content
   field_components:
     type: entity_reference_revisions_entity_view
@@ -58,7 +65,7 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
-    weight: 14
+    weight: 15
     region: content
   field_end:
     type: datetime_default
@@ -67,14 +74,14 @@ content:
       timezone_override: ''
       format_type: medium
     third_party_settings: {  }
-    weight: 14
+    weight: 15
     region: content
   field_frequency:
     type: list_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    weight: 14
+    weight: 15
     region: content
   field_hero:
     type: entity_reference_entity_view
@@ -83,14 +90,14 @@ content:
       view_mode: default
       link: false
     third_party_settings: {  }
-    weight: 14
+    weight: 15
     region: content
   field_matching:
     type: basic_string
     label: above
     settings: {  }
     third_party_settings: {  }
-    weight: 14
+    weight: 15
     region: content
   field_start:
     type: datetime_default
@@ -99,14 +106,22 @@ content:
       timezone_override: ''
       format_type: medium
     third_party_settings: {  }
-    weight: 14
+    weight: 15
     region: content
   field_summary:
     type: basic_string
     label: above
     settings: {  }
     third_party_settings: {  }
-    weight: 14
+    weight: 15
+    region: content
+  field_themes:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 15
     region: content
   links:
     settings: {  }
@@ -116,4 +131,5 @@ content:
 hidden:
   field_demo: true
   field_metatags: true
+  field_social_image: true
   langcode: true

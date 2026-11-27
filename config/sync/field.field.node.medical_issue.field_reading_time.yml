@@ -1,0 +1,25 @@
+uuid: fbb4193a-3055-434b-846e-506535218bd6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_reading_time
+    - node.type.medical_issue
+id: node.medical_issue.field_reading_time
+field_name: field_reading_time
+entity_type: node
+bundle: medical_issue
+label: 'Reading time (minutes)'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  min: 1
+  max: 120
+  prefix: ''
+  suffix: ''
+field_type: integer

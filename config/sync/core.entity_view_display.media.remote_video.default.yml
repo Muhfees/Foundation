@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.media.remote_video.field_accessible_text
+    - field.field.media.remote_video.field_captions_confirmed
     - field.field.media.remote_video.field_credit
     - field.field.media.remote_video.field_license
     - field.field.media.remote_video.field_media_remote_video
@@ -20,6 +21,11 @@ targetEntityType: media
 bundle: remote_video
 mode: default
 content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
   created:
     type: timestamp
     label: hidden
@@ -44,21 +50,31 @@ content:
     label: above
     settings: {  }
     third_party_settings: {  }
-    weight: 9
+    weight: 10
+    region: content
+  field_captions_confirmed:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 11
     region: content
   field_credit:
     type: basic_string
     label: above
     settings: {  }
     third_party_settings: {  }
-    weight: 9
+    weight: 10
     region: content
   field_license:
     type: basic_string
     label: above
     settings: {  }
     third_party_settings: {  }
-    weight: 9
+    weight: 10
     region: content
   field_media_remote_video:
     type: string
@@ -67,14 +83,14 @@ content:
       link_to_entity: false
       link_rel: canonical
     third_party_settings: {  }
-    weight: 9
+    weight: 10
     region: content
   field_provenance:
     type: basic_string
     label: above
     settings: {  }
     third_party_settings: {  }
-    weight: 9
+    weight: 10
     region: content
   field_source_url:
     type: link
@@ -86,7 +102,7 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    weight: 9
+    weight: 10
     region: content
   thumbnail:
     type: image

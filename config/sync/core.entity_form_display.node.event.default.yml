@@ -11,6 +11,7 @@ dependencies:
     - field.field.node.event.field_end
     - field.field.node.event.field_format
     - field.field.node.event.field_metatags
+    - field.field.node.event.field_social_image
     - field.field.node.event.field_start
     - field.field.node.event.field_summary
     - field.field.node.event.field_timezone
@@ -22,6 +23,7 @@ dependencies:
     - content_moderation
     - datetime
     - link
+    - media_library
     - metatag
     - paragraphs
     - path
@@ -40,7 +42,7 @@ content:
     third_party_settings: {  }
   field_accessibility:
     type: string_textarea
-    weight: 21
+    weight: 28
     region: content
     settings:
       rows: 5
@@ -48,7 +50,7 @@ content:
     third_party_settings: {  }
   field_booking:
     type: link_default
-    weight: 21
+    weight: 28
     region: content
     settings:
       placeholder_url: ''
@@ -56,7 +58,7 @@ content:
     third_party_settings: {  }
   field_campaign:
     type: entity_reference_autocomplete
-    weight: 21
+    weight: 28
     region: content
     settings:
       match_operator: CONTAINS
@@ -66,7 +68,7 @@ content:
     third_party_settings: {  }
   field_components:
     type: paragraphs
-    weight: 21
+    weight: 28
     region: content
     settings:
       title: Paragraph
@@ -84,20 +86,20 @@ content:
     third_party_settings: {  }
   field_demo:
     type: boolean_checkbox
-    weight: 21
+    weight: 27
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   field_end:
     type: datetime_default
-    weight: 21
+    weight: 28
     region: content
     settings: {  }
     third_party_settings: {  }
   field_format:
     type: entity_reference_autocomplete
-    weight: 21
+    weight: 28
     region: content
     settings:
       match_operator: CONTAINS
@@ -107,21 +109,28 @@ content:
     third_party_settings: {  }
   field_metatags:
     type: metatag_firehose
-    weight: 21
+    weight: 27
     region: content
     settings:
       sidebar: true
       use_details: true
     third_party_settings: {  }
+  field_social_image:
+    type: media_library_widget
+    weight: 27
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
   field_start:
     type: datetime_default
-    weight: 21
+    weight: 28
     region: content
     settings: {  }
     third_party_settings: {  }
   field_summary:
     type: string_textarea
-    weight: 21
+    weight: 27
     region: content
     settings:
       rows: 5
@@ -129,7 +138,7 @@ content:
     third_party_settings: {  }
   field_timezone:
     type: string_textfield
-    weight: 21
+    weight: 28
     region: content
     settings:
       size: 60
@@ -137,7 +146,7 @@ content:
     third_party_settings: {  }
   field_venue:
     type: string_textarea
-    weight: 21
+    weight: 28
     region: content
     settings:
       rows: 5
@@ -145,7 +154,7 @@ content:
     third_party_settings: {  }
   field_virtual_url:
     type: link_default
-    weight: 21
+    weight: 28
     region: content
     settings:
       placeholder_url: ''

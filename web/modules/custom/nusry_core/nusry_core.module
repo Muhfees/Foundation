@@ -2,8 +2,10 @@
 
 /**
  * @file
- * Demo-only page metadata.
+ * Demo identity, editorial validation and story reading-time helpers.
  */
+
+use Drupal\node\NodeInterface;
 
 /**
  * Implements hook_page_attachments().
@@ -14,4 +16,29 @@ function nusry_core_page_attachments(array &$attachments): void {
     'nusry_demo_robots',
   ];
   $attachments['#attached']['http_header'][] = ['X-Robots-Tag', 'noindex, nofollow', TRUE];
+  $attachments['#cache']['tags'][] = 'config:nusry_core.settings';
+}
+
+/**
+ * Implements hook_entity_type_alter().
+ */
+function nusry_core_entity_type_alter(array &$entity_types): void {
+  foreach (['node', 'media', 'paragraph'] as $type) {
+    if (isset($entity_types[$type])) {
+      $entity_types[$type]->addConstraint('NusryEditorial');
+    }
+  }
+  if (isset($entity_types['media'])) {
+    $entity_types['media']->addConstraint('NusryMediaAltOrDecorative');
+  }
+}
+
+/**
+ * Implements hook_node_presave().
+ */
+function nusry_core_node_presave(NodeInterface $node): void {
+  if ($node->bundle() === 'story' && $node->hasField('field_reading_time')) {
+    $minutes = \Drupal::service('nusry_core.reading_time')->calculateForNode($node);
+    $node->set('field_reading_time', $minutes);
+  }
 }

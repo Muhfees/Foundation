@@ -4,7 +4,7 @@ A fictional medical humanitarian nonprofit website demo. No affiliation with Doc
 
 ## Status
 
-Phase 2 is complete in [draft PR #2](https://github.com/Muhfees/Foundation/pull/2), with both [CI jobs passing](https://github.com/Muhfees/Foundation/actions/runs/45869936401). It provides Drupal 11, PHP 8.3, a Twig/Vite theme shell, exported CMS configuration, safe setup scripts and CI checks. The reference homepage, editorial content types and donation flows are later phases. Phase 1 was approved by the user's `next`; [planning PR #1](https://github.com/Muhfees/Foundation/pull/1) remains a draft.
+Phase 3 (editorial content model, moderation/scheduling workflow, synthetic seeds and role/workflow tests) is ready for review on branch `feat/phase-3-editorial`. Phase 2 is in [draft PR #2](https://github.com/Muhfees/Foundation/pull/2), with both [CI jobs passing](https://github.com/Muhfees/Foundation/actions/runs/45869936401). Phase 1 was approved by the user's `next`; [planning PR #1](https://github.com/Muhfees/Foundation/pull/1) remains a draft. The reference homepage, listing templates, search and donation flows belong to Phases 4–6.
 
 ## Local setup
 
@@ -36,7 +36,17 @@ npm run check:assets
 composer validate --strict
 composer audit
 vendor/bin/phpcs
+vendor/bin/phpunit
 npm run test:e2e             # Requires a running local server
+```
+
+To seed and verify the fictional editorial demo dataset locally (Windows SQLite preview):
+
+```powershell
+$env:NUSRY_ENV='local'; $env:NUSRY_LOCAL_SQLITE='1'
+.tools/php/php.exe vendor/drush/drush/drush.php php:script scripts/seed-demo.php
+.tools/php/php.exe vendor/drush/drush/drush.php php:script scripts/verify-editorial-schema.php
+.tools/php/php.exe vendor/drush/drush/drush.php php:script scripts/verify-demo-seed.php
 ```
 
 Before browser checks, install Chromium once: `npx playwright install chromium`. Tests default to port 8765; set `BASE_URL` to test another local origin. For DDEV commands, prefix PHP/Node commands with `ddev exec` or use `ddev composer` / `ddev drush`. On the portable Windows setup use `.tools/php/php.exe .tools/composer.phar` for Composer and `.tools/php/php.exe vendor/drush/drush/drush.php` for Drush, with `NUSRY_ENV=local` and `NUSRY_LOCAL_SQLITE=1`.

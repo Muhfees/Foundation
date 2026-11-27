@@ -1,0 +1,16 @@
+uuid: a1e8c4f9-03f2-438c-b9ed-6dfa5fa64bba
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.medical_issue
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+id: node.medical_issue
+target_entity_type_id: node
+target_bundle: medical_issue
+default_langcode: site_default
+language_alterable: true

@@ -1,0 +1,23 @@
+uuid: 6de6486f-6942-4d9e-be29-10e306e5e28d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_mobile_image
+    - media.type.image
+id: media.image.field_mobile_image
+field_name: field_mobile_image
+entity_type: media
+bundle: image
+label: 'Optional mobile crop'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+field_type: entity_reference

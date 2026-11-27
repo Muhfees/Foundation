@@ -61,6 +61,10 @@ jobs:
           npm run check:assets
           vendor/bin/phpcs
           php -l scripts/install.php
+          php -l scripts/configure-editorial.php
+          php -l scripts/verify-editorial-schema.php
+          php -l scripts/seed-demo.php
+          php -l scripts/verify-demo-seed.php
           php -l web/sites/default/settings.php
       - name: Install from exported configuration and check safe rerun
         run: |
@@ -68,6 +72,13 @@ jobs:
           php scripts/install.php
           vendor/bin/drush status --fields=drupal-version,bootstrap,db-status
           vendor/bin/drush php:script scripts/verify-config.php
+          vendor/bin/drush php:script scripts/verify-editorial-schema.php
+      - name: Seed synthetic demo content and run PHPUnit suite
+        run: |
+          vendor/bin/drush php:script scripts/seed-demo.php
+          vendor/bin/drush php:script scripts/seed-demo.php
+          vendor/bin/drush php:script scripts/verify-demo-seed.php
+          vendor/bin/phpunit
       - name: Enable and verify Redis
         env:
           NUSRY_REDIS_ENABLED: '1'

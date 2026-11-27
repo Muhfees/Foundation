@@ -43,7 +43,7 @@ foreach (['image', 'document', 'remote_video'] as $bundle) {
 foreach (['field_decorative', 'field_sensitive', 'field_caption'] as $name) {
   $check((bool) \Drupal\field\Entity\FieldConfig::loadByName('media', 'image', $name), "Missing media.image.$name");
 }
-$check((bool) \Drupal\field\Entity\FieldConfig::loadByName('media', 'remote_video', 'field_caption_status'), 'Missing media.remote_video.field_caption_status');
+$check((bool) \Drupal\field\Entity\FieldConfig::loadByName('media', 'remote_video', 'field_captions_confirmed'), 'Missing media.remote_video.field_captions_confirmed');
 $check((bool) \Drupal\system\Entity\Menu::load('donate'), 'Missing donate menu');
 foreach (['hero_desktop', 'hero_mobile', 'card_landscape'] as $style_id) {
   $check((bool) \Drupal\image\Entity\ImageStyle::load($style_id), "Missing image style $style_id");

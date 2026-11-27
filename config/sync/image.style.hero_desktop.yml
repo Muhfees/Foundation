@@ -1,0 +1,17 @@
+uuid: 921cce29-7c13-4dea-9573-b85f82bbbdfb
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: hero_desktop
+label: 'Hero Desktop (1440x720)'
+effects:
+  8bdbd7b6-c6f7-4626-9796-ccedae051e8f:
+    uuid: 8bdbd7b6-c6f7-4626-9796-ccedae051e8f
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 1440
+      height: 720
+      crop_type: focal_point

@@ -13,8 +13,10 @@ dependencies:
     - field.field.node.campaign.field_hero
     - field.field.node.campaign.field_matching
     - field.field.node.campaign.field_metatags
+    - field.field.node.campaign.field_social_image
     - field.field.node.campaign.field_start
     - field.field.node.campaign.field_summary
+    - field.field.node.campaign.field_themes
     - node.type.campaign
     - workflows.workflow.editorial
   module:
@@ -39,14 +41,14 @@ content:
     third_party_settings: {  }
   field_amounts:
     type: number
-    weight: 20
+    weight: 27
     region: content
     settings:
       placeholder: ''
     third_party_settings: {  }
   field_campaign_id:
     type: string_textfield
-    weight: 20
+    weight: 27
     region: content
     settings:
       size: 60
@@ -54,13 +56,13 @@ content:
     third_party_settings: {  }
   field_campaign_status:
     type: options_select
-    weight: 20
+    weight: 27
     region: content
     settings: {  }
     third_party_settings: {  }
   field_components:
     type: paragraphs
-    weight: 20
+    weight: 27
     region: content
     settings:
       title: Paragraph
@@ -78,33 +80,33 @@ content:
     third_party_settings: {  }
   field_demo:
     type: boolean_checkbox
-    weight: 20
+    weight: 26
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   field_end:
     type: datetime_default
-    weight: 20
+    weight: 27
     region: content
     settings: {  }
     third_party_settings: {  }
   field_frequency:
     type: options_select
-    weight: 20
+    weight: 27
     region: content
     settings: {  }
     third_party_settings: {  }
   field_hero:
     type: media_library_widget
-    weight: 20
+    weight: 27
     region: content
     settings:
       media_types: {  }
     third_party_settings: {  }
   field_matching:
     type: string_textarea
-    weight: 20
+    weight: 27
     region: content
     settings:
       rows: 5
@@ -112,24 +114,41 @@ content:
     third_party_settings: {  }
   field_metatags:
     type: metatag_firehose
-    weight: 20
+    weight: 26
     region: content
     settings:
       sidebar: true
       use_details: true
     third_party_settings: {  }
+  field_social_image:
+    type: media_library_widget
+    weight: 26
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
   field_start:
     type: datetime_default
-    weight: 20
+    weight: 27
     region: content
     settings: {  }
     third_party_settings: {  }
   field_summary:
     type: string_textarea
-    weight: 20
+    weight: 26
     region: content
     settings:
       rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_themes:
+    type: entity_reference_autocomplete
+    weight: 27
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
       placeholder: ''
     third_party_settings: {  }
   langcode:

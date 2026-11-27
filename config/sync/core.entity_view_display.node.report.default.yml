@@ -11,6 +11,7 @@ dependencies:
     - field.field.node.report.field_document
     - field.field.node.report.field_metatags
     - field.field.node.report.field_period
+    - field.field.node.report.field_social_image
     - field.field.node.report.field_summary
     - node.type.report
   module:
@@ -23,12 +24,17 @@ targetEntityType: node
 bundle: report
 mode: default
 content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
   field_accessible_text:
     type: text_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    weight: 11
+    weight: 12
     region: content
   field_category:
     type: entity_reference_label
@@ -36,7 +42,7 @@ content:
     settings:
       link: true
     third_party_settings: {  }
-    weight: 11
+    weight: 12
     region: content
   field_components:
     type: entity_reference_revisions_entity_view
@@ -45,7 +51,7 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
-    weight: 11
+    weight: 12
     region: content
   field_date:
     type: datetime_default
@@ -54,7 +60,7 @@ content:
       timezone_override: ''
       format_type: medium
     third_party_settings: {  }
-    weight: 11
+    weight: 12
     region: content
   field_document:
     type: entity_reference_label
@@ -62,7 +68,7 @@ content:
     settings:
       link: true
     third_party_settings: {  }
-    weight: 11
+    weight: 12
     region: content
   field_period:
     type: string
@@ -71,14 +77,14 @@ content:
       link_to_entity: false
       link_rel: canonical
     third_party_settings: {  }
-    weight: 11
+    weight: 12
     region: content
   field_summary:
     type: basic_string
     label: above
     settings: {  }
     third_party_settings: {  }
-    weight: 11
+    weight: 12
     region: content
   links:
     settings: {  }
@@ -88,4 +94,5 @@ content:
 hidden:
   field_demo: true
   field_metatags: true
+  field_social_image: true
   langcode: true

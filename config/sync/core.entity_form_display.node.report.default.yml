@@ -11,12 +11,14 @@ dependencies:
     - field.field.node.report.field_document
     - field.field.node.report.field_metatags
     - field.field.node.report.field_period
+    - field.field.node.report.field_social_image
     - field.field.node.report.field_summary
     - node.type.report
     - workflows.workflow.editorial
   module:
     - content_moderation
     - datetime
+    - media_library
     - metatag
     - paragraphs
     - path
@@ -36,7 +38,7 @@ content:
     third_party_settings: {  }
   field_accessible_text:
     type: text_textarea
-    weight: 17
+    weight: 24
     region: content
     settings:
       rows: 5
@@ -44,7 +46,7 @@ content:
     third_party_settings: {  }
   field_category:
     type: entity_reference_autocomplete
-    weight: 17
+    weight: 24
     region: content
     settings:
       match_operator: CONTAINS
@@ -54,7 +56,7 @@ content:
     third_party_settings: {  }
   field_components:
     type: paragraphs
-    weight: 17
+    weight: 24
     region: content
     settings:
       title: Paragraph
@@ -72,20 +74,20 @@ content:
     third_party_settings: {  }
   field_date:
     type: datetime_default
-    weight: 17
+    weight: 24
     region: content
     settings: {  }
     third_party_settings: {  }
   field_demo:
     type: boolean_checkbox
-    weight: 17
+    weight: 23
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   field_document:
     type: entity_reference_autocomplete
-    weight: 17
+    weight: 24
     region: content
     settings:
       match_operator: CONTAINS
@@ -95,7 +97,7 @@ content:
     third_party_settings: {  }
   field_metatags:
     type: metatag_firehose
-    weight: 17
+    weight: 23
     region: content
     settings:
       sidebar: true
@@ -103,15 +105,22 @@ content:
     third_party_settings: {  }
   field_period:
     type: string_textfield
-    weight: 17
+    weight: 24
     region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  field_social_image:
+    type: media_library_widget
+    weight: 23
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
   field_summary:
     type: string_textarea
-    weight: 17
+    weight: 23
     region: content
     settings:
       rows: 5

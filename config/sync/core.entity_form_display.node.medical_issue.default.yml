@@ -4,12 +4,15 @@ status: true
 dependencies:
   config:
     - field.field.node.medical_issue.field_body
+    - field.field.node.medical_issue.field_categories
     - field.field.node.medical_issue.field_components
     - field.field.node.medical_issue.field_countries
     - field.field.node.medical_issue.field_demo
     - field.field.node.medical_issue.field_hero
     - field.field.node.medical_issue.field_metatags
+    - field.field.node.medical_issue.field_reading_time
     - field.field.node.medical_issue.field_reviewed
+    - field.field.node.medical_issue.field_social_image
     - field.field.node.medical_issue.field_summary
     - node.type.medical_issue
     - workflows.workflow.editorial
@@ -36,15 +39,25 @@ content:
     third_party_settings: {  }
   field_body:
     type: text_textarea
-    weight: 16
+    weight: 23
     region: content
     settings:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
+  field_categories:
+    type: entity_reference_autocomplete
+    weight: 23
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   field_components:
     type: paragraphs
-    weight: 16
+    weight: 23
     region: content
     settings:
       title: Paragraph
@@ -62,7 +75,7 @@ content:
     third_party_settings: {  }
   field_countries:
     type: entity_reference_autocomplete
-    weight: 16
+    weight: 23
     region: content
     settings:
       match_operator: CONTAINS
@@ -72,35 +85,49 @@ content:
     third_party_settings: {  }
   field_demo:
     type: boolean_checkbox
-    weight: 16
+    weight: 22
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   field_hero:
     type: media_library_widget
-    weight: 16
+    weight: 23
     region: content
     settings:
       media_types: {  }
     third_party_settings: {  }
   field_metatags:
     type: metatag_firehose
-    weight: 16
+    weight: 22
     region: content
     settings:
       sidebar: true
       use_details: true
     third_party_settings: {  }
+  field_reading_time:
+    type: number
+    weight: 24
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
   field_reviewed:
     type: datetime_default
-    weight: 16
+    weight: 23
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_social_image:
+    type: media_library_widget
+    weight: 22
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
   field_summary:
     type: string_textarea
-    weight: 16
+    weight: 22
     region: content
     settings:
       rows: 5

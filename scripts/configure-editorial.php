@@ -85,6 +85,7 @@ foreach (['image' => 'Image', 'document' => 'Document', 'remote_video' => 'Remot
     $field('media', 'image', 'field_decorative', 'Decorative image (alt text omitted)', 'boolean', ['default' => [['value' => 0]]]);
     $field('media', 'image', 'field_sensitive', 'Contains sensitive imagery', 'boolean', ['default' => [['value' => 0]]]);
     $field('media', 'image', 'field_caption', 'Caption', 'string_long', []);
+    $field('media', 'image', 'field_mobile_image', 'Optional mobile crop', 'entity_reference', ['storage' => ['target_type' => 'media'], 'settings' => ['handler' => 'default:media', 'handler_settings' => ['target_bundles' => ['image' => 'image']]], 'widget' => 'media_library_widget']);
   }
   foreach (['field_credit' => 'Credit', 'field_license' => 'License / permission', 'field_provenance' => 'Source and provenance notes'] as $key => $title) {
     $field('media', $bundle, $key, $title, 'string_long', ['required' => TRUE]);
@@ -93,8 +94,11 @@ foreach (['image' => 'Image', 'document' => 'Document', 'remote_video' => 'Remot
   if ($bundle !== 'image') {
     $field('media', $bundle, 'field_accessible_text', $bundle === 'document' ? 'Accessible text equivalent' : 'Transcript', 'string_long', ['required' => TRUE]);
   }
+  if ($bundle === 'document') {
+    $field('media', 'document', 'field_document_date', 'Document date', 'datetime', ['required' => TRUE]);
+  }
   if ($bundle === 'remote_video') {
-    $field('media', 'remote_video', 'field_caption_status', 'Captions verified', 'boolean', ['default' => [['value' => 1]]]);
+    $field('media', 'remote_video', 'field_captions_confirmed', 'Captions verified', 'boolean', ['default' => [['value' => 1]]]);
   }
 }
 echo "Media bundles and editorial fields configured.\n";
@@ -260,3 +264,9 @@ if ($nusry_config->isNew()) {
   $nusry_config->setData($defaults)->save();
 }
 echo "Review workflow, scheduling, menus, focal-point image styles, translation readiness and least-privilege roles configured.\n";
+
+$field('media', 'image', 'field_sensitive', 'Sensitive content (requires reveal warning)', 'boolean', ['default' => [['value' => 0]]]);
+$field('media', 'image', 'field_caption', 'Illustrative image caption', 'string_long', ['required' => TRUE]);
+$field('media', 'image', 'field_mobile_image', 'Optional mobile crop', 'entity_reference', ['storage' => ['target_type' => 'media'], 'settings' => ['handler' => 'default:media', 'handler_settings' => ['target_bundles' => ['image' => 'image']]]]);
+$field('media', 'remote_video', 'field_captions_confirmed', 'Captions are available', 'boolean', ['default' => [['value' => 0]]]);
+$field('media', 'document', 'field_document_date', 'Document date', 'datetime', ['required' => TRUE, 'storage' => ['datetime_type' => 'date']]);

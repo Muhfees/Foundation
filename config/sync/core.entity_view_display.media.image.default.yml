@@ -3,10 +3,14 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.media.image.field_caption
     - field.field.media.image.field_credit
+    - field.field.media.image.field_decorative
     - field.field.media.image.field_license
     - field.field.media.image.field_media_image
+    - field.field.media.image.field_mobile_image
     - field.field.media.image.field_provenance
+    - field.field.media.image.field_sensitive
     - field.field.media.image.field_source_url
     - image.style.thumbnail
     - media.type.image
@@ -19,6 +23,11 @@ targetEntityType: media
 bundle: image
 mode: default
 content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
   created:
     type: timestamp
     label: hidden
@@ -38,19 +47,36 @@ content:
     third_party_settings: {  }
     weight: 0
     region: content
+  field_caption:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 12
+    region: content
   field_credit:
     type: basic_string
     label: above
     settings: {  }
     third_party_settings: {  }
-    weight: 8
+    weight: 12
+    region: content
+  field_decorative:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 9
     region: content
   field_license:
     type: basic_string
     label: above
     settings: {  }
     third_party_settings: {  }
-    weight: 8
+    weight: 12
     region: content
   field_media_image:
     type: image
@@ -61,14 +87,32 @@ content:
       image_loading:
         attribute: lazy
     third_party_settings: {  }
-    weight: 8
+    weight: 9
+    region: content
+  field_mobile_image:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 12
     region: content
   field_provenance:
     type: basic_string
     label: above
     settings: {  }
     third_party_settings: {  }
-    weight: 8
+    weight: 12
+    region: content
+  field_sensitive:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 12
     region: content
   field_source_url:
     type: link
@@ -80,7 +124,7 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    weight: 8
+    weight: 12
     region: content
   thumbnail:
     type: image

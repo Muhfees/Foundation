@@ -6,11 +6,13 @@ dependencies:
     - field.field.node.flexible_page.field_components
     - field.field.node.flexible_page.field_demo
     - field.field.node.flexible_page.field_metatags
+    - field.field.node.flexible_page.field_social_image
     - field.field.node.flexible_page.field_summary
     - node.type.flexible_page
     - workflows.workflow.editorial
   module:
     - content_moderation
+    - media_library
     - metatag
     - paragraphs
     - path
@@ -29,7 +31,7 @@ content:
     third_party_settings: {  }
   field_components:
     type: paragraphs
-    weight: 12
+    weight: 19
     region: content
     settings:
       title: Paragraph
@@ -47,22 +49,29 @@ content:
     third_party_settings: {  }
   field_demo:
     type: boolean_checkbox
-    weight: 12
+    weight: 18
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   field_metatags:
     type: metatag_firehose
-    weight: 12
+    weight: 18
     region: content
     settings:
       sidebar: true
       use_details: true
     third_party_settings: {  }
+  field_social_image:
+    type: media_library_widget
+    weight: 18
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
   field_summary:
     type: string_textarea
-    weight: 12
+    weight: 18
     region: content
     settings:
       rows: 5

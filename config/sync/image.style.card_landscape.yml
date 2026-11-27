@@ -1,0 +1,17 @@
+uuid: a1c95500-f1b0-4e55-bd76-6be385711dfe
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: card_landscape
+label: 'Card Landscape (720x480)'
+effects:
+  0e1dc38e-8981-4aae-9126-98fe61e71765:
+    uuid: 0e1dc38e-8981-4aae-9126-98fe61e71765
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 720
+      height: 480
+      crop_type: focal_point

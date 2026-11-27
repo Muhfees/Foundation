@@ -1,0 +1,17 @@
+uuid: fd4ed199-8a3e-4a29-b7b0-1cbf6fef461b
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: hero_mobile
+label: 'Hero Mobile (750x900)'
+effects:
+  3196a8d0-fdf0-4b95-afd4-aaa7f2195a37:
+    uuid: 3196a8d0-fdf0-4b95-afd4-aaa7f2195a37
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 750
+      height: 900
+      crop_type: focal_point

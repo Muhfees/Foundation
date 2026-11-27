@@ -3,14 +3,20 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.media.image.field_caption
     - field.field.media.image.field_credit
+    - field.field.media.image.field_decorative
     - field.field.media.image.field_license
     - field.field.media.image.field_media_image
+    - field.field.media.image.field_mobile_image
     - field.field.media.image.field_provenance
+    - field.field.media.image.field_sensitive
     - field.field.media.image.field_source_url
     - image.style.thumbnail
     - media.type.image
+    - workflows.workflow.editorial
   module:
+    - content_moderation
     - focal_point
     - link
     - path
@@ -25,17 +31,32 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-  field_credit:
+  field_caption:
     type: string_textarea
-    weight: 12
+    weight: 16
     region: content
     settings:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
+  field_credit:
+    type: string_textarea
+    weight: 16
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_decorative:
+    type: boolean_checkbox
+    weight: 13
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
   field_license:
     type: string_textarea
-    weight: 12
+    weight: 16
     region: content
     settings:
       rows: 5
@@ -43,7 +64,7 @@ content:
     third_party_settings: {  }
   field_media_image:
     type: image_focal_point
-    weight: 12
+    weight: 13
     region: content
     settings:
       progress_indicator: throbber
@@ -51,17 +72,34 @@ content:
       preview_link: true
       offsets: '50,50'
     third_party_settings: {  }
+  field_mobile_image:
+    type: entity_reference_autocomplete
+    weight: 16
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   field_provenance:
     type: string_textarea
-    weight: 12
+    weight: 16
     region: content
     settings:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
+  field_sensitive:
+    type: boolean_checkbox
+    weight: 16
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
   field_source_url:
     type: link_default
-    weight: 12
+    weight: 16
     region: content
     settings:
       placeholder_url: ''
