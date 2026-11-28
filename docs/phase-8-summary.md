@@ -1,16 +1,16 @@
 # Phase 8 Summary — Final Handoff, Verification Matrix & Readiness Review
 
-All 8 implementation phases of the fictional **Nusry Foundation** Drupal 11 demonstration are complete on branch `docs/phase-8-handoff`, with no live payment, email, or external hosting side effects.
+All 8 implementation phases of the fictional **Nusry Foundation** Drupal 11 demonstration are complete and merged on `main` (`2026-11-28`), with no live payment, email, or external hosting side effects.
 
 ## 1. Documentation & Operational Deliverables
-- **Architecture & Content Model**: [architecture.md](file:///c:/Users/muhfe/Desktop/Nusry%20Foundation/docs/architecture.md), [content-model.md](file:///c:/Users/muhfe/Desktop/Nusry%20Foundation/docs/content-model.md), [phase-plan.md](file:///c:/Users/muhfe/Desktop/Nusry%20Foundation/docs/phase-plan.md)
-- **Design System & Asset Provenance**: [design-spec.md](file:///c:/Users/muhfe/Desktop/Nusry%20Foundation/docs/design-spec.md), [design-tokens.json](file:///c:/Users/muhfe/Desktop/Nusry%20Foundation/docs/design-tokens.json), [design-contract.md](file:///c:/Users/muhfe/Desktop/Nusry%20Foundation/docs/design-contract.md), [wireframes.md](file:///c:/Users/muhfe/Desktop/Nusry%20Foundation/docs/wireframes.md), [asset-register.md](file:///c:/Users/muhfe/Desktop/Nusry%20Foundation/docs/asset-register.md)
-- **Phase Summaries**: [phase-1-summary.md](file:///c:/Users/muhfe/Desktop/Nusry%20Foundation/docs/phase-1-summary.md) through [phase-7-summary.md](file:///c:/Users/muhfe/Desktop/Nusry%20Foundation/docs/phase-7-summary.md)
+- **Architecture & Content Model**: [architecture.md](architecture.md), [content-model.md](content-model.md), [phase-plan.md](phase-plan.md)
+- **Design System & Asset Provenance**: [design-spec.md](design-spec.md), [design-tokens.json](design-tokens.json), [design-contract.md](design-contract.md), [wireframes.md](wireframes.md), [asset-register.md](asset-register.md)
+- **Phase Summaries**: [phase-1-summary.md](phase-1-summary.md) through [phase-7-summary.md](phase-7-summary.md)
 - **Phase 8 Hand-off Pack**:
-  - [editor-guide.md](file:///c:/Users/muhfe/Desktop/Nusry%20Foundation/docs/editor-guide.md) (editorial roles, `Draft` -> `Needs review` -> `Scheduled` -> `Published`, stories/pages/alerts/campaigns, media accessibility rules)
-  - [security-and-ops.md](file:///c:/Users/muhfe/Desktop/Nusry%20Foundation/docs/security-and-ops.md) (security headers, Report-Only CSP, backup/restore rehearsal, deployment/rollback, availability monitoring, retention)
-  - [qa-checklist-and-bug-template.md](file:///c:/Users/muhfe/Desktop/Nusry%20Foundation/docs/qa-checklist-and-bug-template.md) & [.github/ISSUE_TEMPLATE/bug_report.md](file:///c:/Users/muhfe/Desktop/Nusry%20Foundation/.github/ISSUE_TEMPLATE/bug_report.md)
-  - [launch-checklist.md](file:///c:/Users/muhfe/Desktop/Nusry%20Foundation/docs/launch-checklist.md) (explicit authorization gates, demo purge, provider swap, 2FA/SSO, enforced CSP, CDN/Redis/MariaDB readiness)
+  - [editor-guide.md](editor-guide.md) (editorial roles, `Draft` -> `Needs review` -> `Scheduled` -> `Published`, stories/pages/alerts/campaigns, media accessibility rules)
+  - [security-and-ops.md](security-and-ops.md) (security headers, Report-Only CSP, backup/restore rehearsal, deployment/rollback, availability monitoring, retention)
+  - [qa-checklist-and-bug-template.md](qa-checklist-and-bug-template.md) & [.github/ISSUE_TEMPLATE/bug_report.md](../.github/ISSUE_TEMPLATE/bug_report.md)
+  - [launch-checklist.md](launch-checklist.md) (explicit authorization gates, demo purge, provider swap, 2FA/SSO, enforced CSP, CDN/Redis/MariaDB readiness)
 
 ## 2. Final Automated Verification Matrix (Observed Results)
 | Suite / Check | Result | Measured Details |
@@ -28,4 +28,4 @@ All 8 implementation phases of the fictional **Nusry Foundation** Drupal 11 demo
 
 ## 3. Manual / Environment Scope Boundaries
 - No deployment or external service activation has been performed; demo banners, `MockDonationGateway`, `MockNewsletterGateway`, and `X-Robots-Tag: noindex, nofollow` remain enabled intentionally.
-- Multi-browser real device/Firefox/WebKit QA, `k6` staging surge load (`tests/load/k6-baseline-and-surge.js`), CDN HTTP/2/3 & TLS verification, MariaDB backup schedules, and 2FA/SSO enforcement remain pre-launch tasks in [launch-checklist.md](file:///c:/Users/muhfe/Desktop/Nusry%20Foundation/docs/launch-checklist.md).
+- Multi-browser real device/Firefox/WebKit QA, `k6` staging surge load (`tests/load/k6-baseline-and-surge.js`), CDN HTTP/2/3 & TLS verification, MariaDB backup schedules, and 2FA/SSO enforcement remain pre-launch tasks in [launch-checklist.md](launch-checklist.md).
